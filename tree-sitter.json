@@ -1,0 +1,38 @@
+{
+  "grammars": [
+    {
+      "name": "dataprime",
+      "camelcase": "DataPrime",
+      "scope": "source.dataprime",
+      "file-types": [
+        "dataprime"
+      ],
+      "injection-regex": "^dataprime$",
+      "highlights": [
+        "queries/highlights.scm"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Dataprime grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Szepesi Tibor",
+        "email": "smrtrfszm@proton.me"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/smrtrfszm/tree-sitter-dataprime"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
