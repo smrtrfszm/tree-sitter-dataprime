@@ -42,6 +42,7 @@
  "add"
  "agg"
  "aggregate"
+ "and"
  "around"
  "as"
  "asc"
