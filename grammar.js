@@ -47,8 +47,8 @@ module.exports = grammar({
       $.type_cast,
 
       $.keypath,
-      seq('$', $.keypath),
-      // // TODO: replace with keypath
+      $.variable,
+      // TODO: replace with keypath
       seq(delimited1($.ident, '.'), '.', $.function),
       seq(choice('left=>', 'right=>'), $.keypath),
 
@@ -67,6 +67,8 @@ module.exports = grammar({
       prec.left(2, seq($.expr, '~', $.expr)),
       prec.left(2, seq($.expr, '~~', $.expr)),
     ),
+
+    variable: $ => seq('$', $.keypath),
 
     function: $ => seq(
       $.ident,

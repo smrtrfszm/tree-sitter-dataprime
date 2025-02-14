@@ -4,6 +4,7 @@
 (number) @number
 (string) @string
 (type) @type
+(variable) @variable
 
 ; TODO: this should be it's own AST node
 ((expr (keypath (ident)) @constant.builtin)

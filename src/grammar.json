@@ -115,17 +115,8 @@
           "name": "keypath"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "$"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "keypath"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "variable"
         },
         {
           "type": "SEQ",
@@ -405,6 +396,19 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "variable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "keypath"
         }
       ]
     },
