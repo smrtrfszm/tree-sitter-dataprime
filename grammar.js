@@ -85,7 +85,7 @@ module.exports = grammar({
 
     timestamp_literal: $ => seq('@', $.string),
 
-    interval: $ => seq($.number, /[hms]/),
+    interval: $ => seq($.number, /[dhms]/),
 
     keypath: $ => delimited1($.ident, '.'),
 
