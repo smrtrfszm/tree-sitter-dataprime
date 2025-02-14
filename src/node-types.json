@@ -259,6 +259,10 @@
           "named": true
         },
         {
+          "type": "interval",
+          "named": true
+        },
+        {
           "type": "keypath",
           "named": true
         },
@@ -268,6 +272,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "timestamp_literal",
           "named": true
         },
         {
@@ -685,10 +693,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "ident",
+          "type": "expr",
           "named": true
         },
         {
@@ -787,7 +795,15 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
@@ -843,6 +859,10 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
     "type": "around",
     "named": false
   },
@@ -852,6 +872,10 @@
   },
   {
     "type": "asc",
+    "named": false
+  },
+  {
+    "type": "between",
     "named": false
   },
   {
@@ -1016,6 +1040,10 @@
     "named": false
   },
   {
+    "type": "last",
+    "named": false
+  },
+  {
     "type": "left",
     "named": false
   },
@@ -1031,6 +1059,10 @@
     "type": "line_comment",
     "named": true,
     "extra": true
+  },
+  {
+    "type": "logs",
+    "named": false
   },
   {
     "type": "lucene",
@@ -1133,6 +1165,10 @@
     "named": false
   },
   {
+    "type": "spans",
+    "named": false
+  },
+  {
     "type": "stitch",
     "named": false
   },
@@ -1142,6 +1178,10 @@
   },
   {
     "type": "text",
+    "named": false
+  },
+  {
+    "type": "timeshifted",
     "named": false
   },
   {

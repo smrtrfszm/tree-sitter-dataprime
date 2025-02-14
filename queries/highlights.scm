@@ -9,6 +9,8 @@
   (#eq? @constant.builtin "null"))
 
 [
+ "+"
+ "-"
  ">"
  ">="
  "<"
@@ -31,6 +33,11 @@
 ] @punctuation.delimiter
 
 [
+  "@"
+  "$"
+] @punctuation.special
+
+[
  "a"
  "add"
  "agg"
@@ -38,6 +45,7 @@
  "around"
  "as"
  "asc"
+ "between"
  "block"
  "bottom"
  "by"
@@ -73,8 +81,10 @@
  "join"
  "keep"
  "keypath"
+ "last"
  "left"
  "limit"
+ "logs"
  "lucene"
  "m"
  "matching"
@@ -94,8 +104,10 @@
  "sort"
  "sortby"
  "source"
+ "spans"
  "stitch"
  "text"
+ "timeshifted"
  "to"
  "top"
  "using"

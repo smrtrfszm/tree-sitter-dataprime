@@ -100,6 +100,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "timestamp_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "interval"
+        },
+        {
+          "type": "SYMBOL",
           "name": "type_cast"
         },
         {
@@ -200,7 +208,7 @@
               },
               {
                 "type": "STRING",
-                "value": "<"
+                "value": "+"
               },
               {
                 "type": "SYMBOL",
@@ -212,6 +220,48 @@
         {
           "type": "PREC_LEFT",
           "value": 0,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              },
+              {
+                "type": "STRING",
+                "value": "-"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              },
+              {
+                "type": "STRING",
+                "value": "<"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expr"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 1,
           "content": {
             "type": "SEQ",
             "members": [
@@ -232,7 +282,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 0,
+          "value": 1,
           "content": {
             "type": "SEQ",
             "members": [
@@ -253,7 +303,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 0,
+          "value": 1,
           "content": {
             "type": "SEQ",
             "members": [
@@ -274,7 +324,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 2,
           "content": {
             "type": "SEQ",
             "members": [
@@ -295,7 +345,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 2,
           "content": {
             "type": "SEQ",
             "members": [
@@ -316,7 +366,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 2,
           "content": {
             "type": "SEQ",
             "members": [
@@ -337,7 +387,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 2,
           "content": {
             "type": "SEQ",
             "members": [
@@ -610,8 +660,17 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "ident"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "logs"
+            },
+            {
+              "type": "STRING",
+              "value": "spans"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -650,6 +709,53 @@
                           "type": "BLANK"
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "between"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "expr"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "and"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "expr"
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "last"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "interval"
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "timeshifted"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "interval"
                     }
                   ]
                 }

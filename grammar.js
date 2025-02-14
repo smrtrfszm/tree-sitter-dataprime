@@ -41,6 +41,8 @@ module.exports = grammar({
       $.number,
       $.string,
       $.function,
+      $.timestamp_literal,
+      $.interval,
 
       $.type_cast,
 
@@ -54,14 +56,16 @@ module.exports = grammar({
     ),
 
     binary_expression: $ => choice(
-      prec.left(0, seq($.expr, '<', $.expr)),
-      prec.left(0, seq($.expr, '<=', $.expr)),
-      prec.left(0, seq($.expr, '>', $.expr)),
-      prec.left(0, seq($.expr, '>=', $.expr)),
-      prec.left(1, seq($.expr, '==', $.expr)),
-      prec.left(1, seq($.expr, '!=', $.expr)),
-      prec.left(1, seq($.expr, '~', $.expr)),
-      prec.left(1, seq($.expr, '~~', $.expr)),
+      prec.left(0, seq($.expr, '+', $.expr)),
+      prec.left(0, seq($.expr, '-', $.expr)),
+      prec.left(1, seq($.expr, '<', $.expr)),
+      prec.left(1, seq($.expr, '<=', $.expr)),
+      prec.left(1, seq($.expr, '>', $.expr)),
+      prec.left(1, seq($.expr, '>=', $.expr)),
+      prec.left(2, seq($.expr, '==', $.expr)),
+      prec.left(2, seq($.expr, '!=', $.expr)),
+      prec.left(2, seq($.expr, '~', $.expr)),
+      prec.left(2, seq($.expr, '~~', $.expr)),
     ),
 
     function: $ => seq(
@@ -116,9 +120,12 @@ module.exports = grammar({
 
     source_command: $ => seq(
       choice('source', 'from'),
-      $.ident,
+      choice('logs', 'spans'),
       optional(choice(
-        seq('around', $.timestamp_literal, optionalq('interval', $.interval))
+        seq('around', $.timestamp_literal, optionalq('interval', $.interval)),
+        seq('between', $.expr, 'and', $.expr),
+        seq('last', $.interval),
+        seq('timeshifted', $.interval),
       ))
     ),
 
