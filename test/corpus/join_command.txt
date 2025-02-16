@@ -49,8 +49,7 @@ join (source logs) on expr into logins
     right_query: (query
       (source_command
         datastore: (ident)))
-    condition: (expr
-      (keypath
-        (ident)))
+    condition: (keypath
+      (ident))
     into: (keypath
       (ident))))

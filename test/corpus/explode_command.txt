@@ -8,9 +8,8 @@ explode expr into path
 
 (query
   (explode_command
-    expr: (expr
-      (keypath
-        (ident)))
+    expr: (keypath
+      (ident))
     into: (keypath
       (ident))))
 
@@ -24,8 +23,7 @@ explode expr into path original discard
 
 (query
   (explode_command
-    expr: (expr
-      (keypath
-        (ident)))
+    expr: (keypath
+      (ident))
     into: (keypath
       (ident))))

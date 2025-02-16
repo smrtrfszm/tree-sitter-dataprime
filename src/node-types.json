@@ -1,5 +1,73 @@
 [
   {
+    "type": "expression",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "binary_expression",
+        "named": true
+      },
+      {
+        "type": "call_expression",
+        "named": true
+      },
+      {
+        "type": "case",
+        "named": true
+      },
+      {
+        "type": "keypath",
+        "named": true
+      },
+      {
+        "type": "primary_expression",
+        "named": true
+      },
+      {
+        "type": "type_cast",
+        "named": true
+      },
+      {
+        "type": "variable",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "primary_expression",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "false",
+        "named": true
+      },
+      {
+        "type": "interval",
+        "named": true
+      },
+      {
+        "type": "null",
+        "named": true
+      },
+      {
+        "type": "number",
+        "named": true
+      },
+      {
+        "type": "string",
+        "named": true
+      },
+      {
+        "type": "timestamp_literal",
+        "named": true
+      },
+      {
+        "type": "true",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "aggregate_command",
     "named": true,
     "fields": {
@@ -8,7 +76,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -34,7 +102,7 @@
       "required": false,
       "types": [
         {
-          "type": "expr",
+          "type": "expression",
           "named": true
         }
       ]
@@ -49,7 +117,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -113,7 +181,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -129,7 +197,7 @@
       "required": true,
       "types": [
         {
-          "type": "expr",
+          "type": "expression",
           "named": true
         }
       ]
@@ -154,7 +222,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -174,7 +242,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -220,7 +288,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -230,7 +298,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -240,7 +308,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -334,7 +402,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -360,7 +428,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -386,7 +454,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -422,7 +490,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -474,7 +542,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -492,57 +560,6 @@
     }
   },
   {
-    "type": "expr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "case",
-          "named": true
-        },
-        {
-          "type": "interval",
-          "named": true
-        },
-        {
-          "type": "keypath",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "timestamp_literal",
-          "named": true
-        },
-        {
-          "type": "type_cast",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "extract_command",
     "named": true,
     "fields": {}
@@ -556,7 +573,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -598,7 +615,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -618,7 +635,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -649,7 +666,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -790,7 +807,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -836,7 +853,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -852,7 +869,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1062,7 +1079,7 @@
         "required": true,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1098,7 +1115,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1128,7 +1145,7 @@
         "required": false,
         "types": [
           {
-            "type": "expr",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1485,6 +1502,10 @@
     "named": false
   },
   {
+    "type": "false",
+    "named": true
+  },
+  {
     "type": "filter",
     "named": false
   },
@@ -1576,6 +1597,10 @@
   {
     "type": "multigroupby",
     "named": false
+  },
+  {
+    "type": "null",
+    "named": true
   },
   {
     "type": "number",
@@ -1676,6 +1701,10 @@
   {
     "type": "top",
     "named": false
+  },
+  {
+    "type": "true",
+    "named": true
   },
   {
     "type": "type",

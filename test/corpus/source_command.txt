@@ -75,12 +75,10 @@ source logs between @'2024-12-30T00:12:23Z' and @'2024-12-30T00:12:23Z'
 (query
   (source_command
     datastore: (ident)
-    start: (expr
-      (timestamp_literal
-        (string)))
-    end: (expr
-      (timestamp_literal
-        (string)))))
+    start: (timestamp_literal
+        (string))
+    end: (timestamp_literal
+        (string))))
 
 ===================================
 source logs between time expression
@@ -93,22 +91,16 @@ source logs between @'now' - 24h and @'now' + 24h
 (query
   (source_command
     datastore: (ident)
-    start: (expr
-      (binary_expression
-        left: (expr
-          (timestamp_literal
-            (string)))
-        right: (expr
-          (interval
-            (number)))))
-    end: (expr
-      (binary_expression
-        left: (expr
-          (timestamp_literal
-            (string)))
-        right: (expr
-          (interval
-            (number)))))))
+    start: (binary_expression
+      left: (timestamp_literal
+        (string))
+      right: (interval
+        (number)))
+    end: (binary_expression
+      left: (timestamp_literal
+        (string))
+      right: (interval
+        (number)))))
 
 =========================
 source logs last interval

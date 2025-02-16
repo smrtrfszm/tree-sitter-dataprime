@@ -9,14 +9,12 @@ multigroupby (expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident))))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))))
+      grouping: (keypath
+        (ident)))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))))
 
 ===========================
 multigroupby multiple group
@@ -29,24 +27,19 @@ multigroupby (expr, expr), (expr, expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident)))
-      grouping: (expr
-        (keypath
-	  (ident))))
+      grouping: (keypath
+        (ident))
+      grouping: (keypath
+        (ident)))
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident)))
-      grouping: (expr
-        (keypath
-	  (ident))))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))))
+      grouping: (keypath
+        (ident))
+      grouping: (keypath
+        (ident)))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))))
 
 ======================================
 multigroupby multiple group with alias
@@ -59,32 +52,27 @@ multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggr
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident)))
+      grouping: (keypath
+        (ident))
       alias: (keypath
         (ident))
-      grouping: (expr
-        (keypath
-	  (ident)))
+      grouping: (keypath
+        (ident))
       alias: (keypath
         (ident)))
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident)))
+      grouping: (keypath
+        (ident))
       alias: (keypath
         (ident))
-      grouping: (expr
-        (keypath
-	  (ident)))
+      grouping: (keypath
+        (ident))
       alias: (keypath
         (ident)))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))))
 
 ======================================
 multigroupby with multiple aggregation
@@ -97,19 +85,16 @@ multigroupby (expr) aggregate count(), count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-	  (ident))))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))))
+      grouping: (keypath
+        (ident)))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))))
 
 =================================================
 multigroupby with multiple aggregation with alias
@@ -122,20 +107,17 @@ multigroupby (expr) aggregate count() as alias, count() as alias
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (expr
-        (keypath
-          (ident))))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))
+      grouping: (keypath
+        (ident)))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))
     alias: (keypath
       (ident))
-    aggregation: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments)))
+    aggregation: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments))
     alias: (keypath
       (ident))))

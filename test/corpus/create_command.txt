@@ -10,9 +10,8 @@ create path from expr
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 ========================
 create on keypath exists
@@ -26,9 +25,8 @@ create path from expr on keypath exists fail
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 =========================
 create on keypath missing
@@ -42,9 +40,8 @@ create path from expr on keypath missing create
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 =========================
 create on datatype change
@@ -58,9 +55,8 @@ create path from expr on datatype change overwrite
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 ======================
 create with everything
@@ -74,9 +70,8 @@ create path from expr on keypath exists fail on keypath missing create on dataty
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 =======
 c alias
@@ -90,9 +85,8 @@ c path from expr
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 =========
 add alias
@@ -106,9 +100,8 @@ add path from expr
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))
 
 =======
 a alias
@@ -122,6 +115,5 @@ a path from expr
   (create_command
     keypath: (keypath
       (ident))
-    from: (expr
-      (keypath
-        (ident)))))
+    from: (keypath
+      (ident))))

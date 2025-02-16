@@ -8,6 +8,5 @@ block expr
 
 (query
   (block_command
-    (expr
-      (keypath
-        (ident)))))
+    (keypath
+      (ident))))

@@ -16,6 +16,11 @@ module.exports = grammar({
     /[ \t\f\r\n]/,
   ],
 
+  supertypes: $ => [
+    $.expression,
+    $.primary_expression,
+  ],
+
   rules: {
     query: $ => delimited1($._command, '|'),
 
@@ -28,35 +33,38 @@ module.exports = grammar({
     )),
 
     ident: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
-
     number: _ => /-?([0-9]\.)?[0-9]+/,
-
     string: _ => /'[^']*'/,
-
     type: _ => /[a-z]+/,
-
     regex: _ => /[^/]*/,
 
-    expr: $ => choice(
-      $.number,
-      $.string,
-      $.timestamp_literal,
-      $.interval,
+    true: _ => 'true',
+    false: _ => 'false',
+    null: _ => 'null',
 
-      $.type_cast,
-
+    expression: $ => choice(
+      $.primary_expression,
       $.keypath,
       $.variable,
-      seq(choice('left=>', 'right=>'), $.keypath),
-
+      $.type_cast,
       $.call_expression,
       $.binary_expression,
       $.case,
     ),
 
+    primary_expression: $ => choice(
+      $.number,
+      $.string,
+      $.timestamp_literal,
+      $.interval,
+      $.true,
+      $.false,
+      $.null,
+    ),
+
     arguments: $ => seq(
       '(',
-      optional(comma_separatedq1($.expr)),
+      optional(comma_separatedq1($.expression)),
       ')',
     ),
 
@@ -83,9 +91,9 @@ module.exports = grammar({
         [2, '~'],
         [2, '~~'],
       ].map(([precedence, operator]) => prec.left(precedence, seq(
-        field('left', $.expr),
+        field('left', $.expression),
         field('operator', operator),
-        field('right', $.expr),
+        field('right', $.expression),
       )))
     ),
 
@@ -101,19 +109,22 @@ module.exports = grammar({
 
     interval: $ => seq($.number, /[dhms]/),
 
-    keypath: $ => delimited1($.ident, '.'),
+    keypath: $ => seq(
+      optional(choice('left=>', 'right=>')),
+      delimited1($.ident, '.'),
+    ),
 
     case: $ => seq(
       choice('case', 'case_contains', 'case_equals', 'case_greatherthan', 'case_lessthan'),
       '{',
       optionalq(
-        field('compare', $.expr),
+        field('compare', $.expression),
         ',',
       ),
       optional(comma_separatedq1(
-        field('value', $.expr),
+        field('value', $.expression),
         '->',
-        field('result', $.expr),
+        field('result', $.expression),
       )),
       '}',
     ),
@@ -163,9 +174,9 @@ module.exports = grammar({
         ),
         seq(
           'between',
-          field('start', $.expr),
+          field('start', $.expression),
           'and',
-          field('end', $.expr),
+          field('end', $.expression),
         ),
         seq(
           'last',
@@ -181,7 +192,7 @@ module.exports = grammar({
     aggregate_command: $ => seq(
       'aggregate',
       comma_separatedq1(
-        field('aggregation', $.expr),
+        field('aggregation', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -191,21 +202,21 @@ module.exports = grammar({
 
     block_command: $ => seq(
       'block',
-      $.expr,
+      $.expression,
     ),
 
     bottom_command: $ => seq(
       choice('bottom', 'top'),
       field('limit', $.number),
       comma_separatedq1(
-        field('groupby', $.expr),
+        field('groupby', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
         ),
       ),
       'by',
-      field('orderby', $.expr),
+      field('orderby', $.expression),
       optionalq(
         'as',
         field('alias', $.keypath),
@@ -243,7 +254,7 @@ module.exports = grammar({
 
     countby_command: $ => seq(
       'countby',
-      field('expr', $.expr),
+      field('expr', $.expression),
       optionalq(
         'as',
         field('alias', $.keypath),
@@ -258,7 +269,7 @@ module.exports = grammar({
       choice('a', 'add', 'c', 'create'),
       field('keypath', $.keypath),
       'from',
-      field('from', $.expr),
+      field('from', $.expression),
       optionalq(
         'on', 'keypath', 'exists',
         choice('fail', 'skip', 'overwrite'),
@@ -276,7 +287,7 @@ module.exports = grammar({
     dedupeby_command: $ => seq(
       'dedupeby',
       comma_separatedq1(
-        field('expr', $.expr),
+        field('expr', $.expression),
       ),
       'keep',
       field('keep', $.number),
@@ -285,7 +296,7 @@ module.exports = grammar({
     distinct_command: $ => seq(
       'distinct',
       comma_separatedq1(
-        field('expr', $.expr),
+        field('expr', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -304,7 +315,7 @@ module.exports = grammar({
 
     explode_command: $ => seq(
       'explode',
-      field('expr', $.expr),
+      field('expr', $.expression),
       'into',
       field('into', $.keypath),
       optionalq(
@@ -317,7 +328,7 @@ module.exports = grammar({
       choice('e', 'extract'),
       // TODO:
 
-      // $.expr,
+      // $.expression,
       // 'into',
       // $.ident,
       // 'using',
@@ -325,7 +336,7 @@ module.exports = grammar({
 
     filter_command: $ => seq(
       choice('f', 'filter', 'where'),
-      field('condition', $.expr),
+      field('condition', $.expression),
     ),
 
     find_command: $ => seq(
@@ -338,7 +349,7 @@ module.exports = grammar({
     groupby_command: $ => seq(
       'groupby',
       comma_separatedq1(
-        field('grouping', $.expr),
+        field('grouping', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -352,7 +363,7 @@ module.exports = grammar({
         'calc',
       )),
       comma_separatedq1(
-        field('aggregation', $.expr),
+        field('aggregation', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -363,7 +374,7 @@ module.exports = grammar({
     multigroupby_group: $ => seq(
       '(',
       comma_separatedq1(
-        field('grouping', $.expr),
+        field('grouping', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -382,7 +393,7 @@ module.exports = grammar({
         'agg',
       )),
       comma_separatedq1(
-        field('aggregation', $.expr),
+        field('aggregation', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -402,7 +413,7 @@ module.exports = grammar({
       choice(
         seq(
           'on',
-          field('condition', $.expr),
+          field('condition', $.expression),
         ),
         seq(
           'using',
@@ -440,7 +451,7 @@ module.exports = grammar({
         seq('sort', 'by'),
       ),
       comma_separatedq1(
-        field('key', $.expr),
+        field('key', $.expression),
         optional(choice('asc', 'desc')),
       ),
     ),
@@ -468,7 +479,7 @@ module.exports = grammar({
       'replace',
       field('keypath', $.keypath),
       'with',
-      field('with', $.expr),
+      field('with', $.expression),
     ),
 
     stitch_command: $ => seq(

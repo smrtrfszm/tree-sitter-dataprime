@@ -11,17 +11,13 @@ filter 1234567890
 
 (query
   (filter_command
-    condition: (expr
-      (number)))
+    condition: (number))
   (filter_command
-    condition: (expr
-      (number)))
+    condition: (number))
   (filter_command
-    condition: (expr
-      (number)))
+    condition: (number))
   (filter_command
-    condition: (expr
-      (number))))
+    condition: (number)))
 
 =======
 strings
@@ -34,11 +30,9 @@ filter ''
 
 (query
   (filter_command
-    condition: (expr
-      (string)))
+    condition: (string))
   (filter_command
-    condition: (expr
-      (string))))
+    condition: (string)))
 
 ==========
 timestamps
@@ -51,13 +45,11 @@ filter @'now'
 
 (query
   (filter_command
-    condition: (expr
-      (timestamp_literal
-       (string))))
+    condition: (timestamp_literal
+     (string)))
   (filter_command
-    condition: (expr
-      (timestamp_literal
-       (string)))))
+    condition: (timestamp_literal
+     (string))))
 
 ========
 keypaths
@@ -70,16 +62,14 @@ filter path
 
 (query
   (filter_command
-    condition: (expr
-      (keypath
-        (ident))))
+    condition: (keypath
+      (ident)))
   (filter_command
-    condition: (expr
-      (keypath
-        (ident)
-        (ident)
-        (ident)
-        (ident)))))
+    condition: (keypath
+      (ident)
+      (ident)
+      (ident)
+      (ident))))
 
 =========
 functions
@@ -94,52 +84,42 @@ filter function()
 
 (query
   (filter_command
-    condition: (expr
-      (call_expression
-        function: (keypath
-          (ident))
-        arguments: (arguments))))
+    condition: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments)))
   (filter_command
-    condition: (expr
-      (call_expression
-        function: (keypath
+    condition: (call_expression
+      function: (keypath
+        (ident))
+      arguments: (arguments
+        (keypath
           (ident))
-        arguments: (arguments
-          (expr
-            (keypath
-              (ident)))
-          (expr
-            (keypath
-              (ident)))))))
-      (filter_command
-        condition: (expr
-          (call_expression
-            function: (keypath
-              (ident)
-              (ident)
-              (ident))
-            arguments: (arguments
-              (expr
-                (keypath
-                  (ident)))
-              (expr
-                (keypath
-                  (ident)))))))
-      (filter_command
-        condition: (expr
-          (call_expression
-            function: (variable
-              (keypath
-                (ident)
-                (ident)
-                (ident)))
-            arguments: (arguments
-              (expr
-                (keypath
-                  (ident)))
-              (expr
-                (keypath
-                  (ident))))))))
+        (keypath
+          (ident)))))
+  (filter_command
+    condition: (call_expression
+      function: (keypath
+        (ident)
+        (ident)
+        (ident))
+      arguments: (arguments
+        (keypath
+          (ident))
+        (keypath
+          (ident)))))
+  (filter_command
+    condition: (call_expression
+      function: (variable
+        (keypath
+          (ident)
+          (ident)
+          (ident)))
+      arguments: (arguments
+        (keypath
+          (ident))
+        (keypath
+          (ident))))))
 
 =========
 intervals
@@ -154,21 +134,17 @@ filter 1s
 
 (query
   (filter_command
-    condition: (expr
-      (interval
-        (number))))
+    condition: (interval
+      (number)))
   (filter_command
-    condition: (expr
-      (interval
-        (number))))
+    condition: (interval
+      (number)))
   (filter_command
-    condition: (expr
-      (interval
-        (number))))
+    condition: (interval
+      (number)))
   (filter_command
-    condition: (expr
-      (interval
-        (number)))))
+    condition: (interval
+      (number))))
 
 =========
 typecasts
@@ -181,18 +157,16 @@ filter path:type
 
 (query
   (filter_command
-    condition: (expr
-      (type_cast
-        keypath: (keypath
-	  (ident))
-	type: (type))))
+    condition: (type_cast
+      keypath: (keypath
+        (ident))
+      type: (type)))
   (filter_command
-    condition: (expr
-      (type_cast
-        keypath: (keypath
-	  (ident)
-	  (ident))
-	type: (type)))))
+    condition: (type_cast
+      keypath: (keypath
+        (ident)
+        (ident))
+      type: (type))))
 
 =====
 cases
@@ -210,23 +184,16 @@ filter case {
 
 (query
   (filter_command
-    condition: (expr
-      (case
-        value: (expr
-          (keypath
-            (ident)))
-        result: (expr
-          (keypath
-            (ident))))))
+    condition: (case
+      value: (keypath
+        (ident))
+      result: (keypath
+        (ident))))
   (filter_command
-    condition: (expr
-      (case
-        compare: (expr
-          (keypath
-            (ident)))
-        value: (expr
-          (keypath
-            (ident)))
-        result: (expr
-          (keypath
-            (ident)))))))
+    condition: (case
+      compare: (keypath
+        (ident))
+      value: (keypath
+        (ident))
+      result: (keypath
+        (ident)))))
