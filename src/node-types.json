@@ -848,9 +848,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "interval_unit",
+          "named": true
+        },
         {
           "type": "number",
           "named": true
@@ -1710,6 +1714,10 @@
   {
     "type": "interval",
     "named": false
+  },
+  {
+    "type": "interval_unit",
+    "named": true
   },
   {
     "type": "into",

@@ -48,7 +48,8 @@ source logs around @'2024-12-30T00:12:23Z' interval 1h
     around: (timestamp_literal
       (string))
     interval: (interval
-      (number))))
+      (number)
+      (interval_unit))))
 
 ========================================
 source logs around time without interval
@@ -95,12 +96,14 @@ source logs between @'now' - 24h and @'now' + 24h
       left: (timestamp_literal
         (string))
       right: (interval
-        (number)))
+        (number)
+	(interval_unit)))
     end: (binary_expression
       left: (timestamp_literal
         (string))
       right: (interval
-        (number)))))
+        (number)
+	(interval_unit)))))
 
 =========================
 source logs last interval
@@ -114,7 +117,8 @@ source logs last 1h
   (source_command
     datastore: (ident)
     last: (interval
-      (number))))
+      (number)
+      (interval_unit))))
 
 =======================
 source logs timeshifted
@@ -128,4 +132,5 @@ source logs timeshifted 1h
   (source_command
     datastore: (ident)
     timeshift: (interval
-      (number))))
+      (number)
+      (interval_unit))))

@@ -838,6 +838,10 @@
         }
       ]
     },
+    "interval_unit": {
+      "type": "PATTERN",
+      "value": "[dhms]"
+    },
     "interval": {
       "type": "SEQ",
       "members": [
@@ -846,8 +850,8 @@
           "name": "number"
         },
         {
-          "type": "PATTERN",
-          "value": "[dhms]"
+          "type": "SYMBOL",
+          "name": "interval_unit"
         }
       ]
     },

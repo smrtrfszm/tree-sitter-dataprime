@@ -55,7 +55,7 @@ enum ts_symbol_identifiers {
   anon_sym_TILDE_TILDE = 33,
   anon_sym_COLON = 34,
   anon_sym_AT = 35,
-  aux_sym_interval_token1 = 36,
+  sym_interval_unit = 36,
   anon_sym_case = 37,
   anon_sym_case_contains = 38,
   anon_sym_case_equals = 39,
@@ -245,7 +245,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_TILDE_TILDE] = "~~",
   [anon_sym_COLON] = ":",
   [anon_sym_AT] = "@",
-  [aux_sym_interval_token1] = "interval_token1",
+  [sym_interval_unit] = "interval_unit",
   [anon_sym_case] = "case",
   [anon_sym_case_contains] = "case_contains",
   [anon_sym_case_equals] = "case_equals",
@@ -435,7 +435,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_TILDE_TILDE] = anon_sym_TILDE_TILDE,
   [anon_sym_COLON] = anon_sym_COLON,
   [anon_sym_AT] = anon_sym_AT,
-  [aux_sym_interval_token1] = aux_sym_interval_token1,
+  [sym_interval_unit] = sym_interval_unit,
   [anon_sym_case] = anon_sym_case,
   [anon_sym_case_contains] = anon_sym_case_contains,
   [anon_sym_case_equals] = anon_sym_case_equals,
@@ -733,9 +733,9 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [aux_sym_interval_token1] = {
-    .visible = false,
-    .named = false,
+  [sym_interval_unit] = {
+    .visible = true,
+    .named = true,
   },
   [anon_sym_case] = {
     .visible = true,
@@ -3567,10 +3567,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_AT);
       END_STATE();
     case 92:
-      ACCEPT_TOKEN(aux_sym_interval_token1);
+      ACCEPT_TOKEN(sym_interval_unit);
       END_STATE();
     case 93:
-      ACCEPT_TOKEN(aux_sym_interval_token1);
+      ACCEPT_TOKEN(sym_interval_unit);
       if (lookahead == 'e') ADVANCE(24);
       END_STATE();
     case 94:
@@ -5437,7 +5437,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_TILDE_TILDE] = ACTIONS(1),
     [anon_sym_COLON] = ACTIONS(1),
     [anon_sym_AT] = ACTIONS(1),
-    [aux_sym_interval_token1] = ACTIONS(1),
+    [sym_interval_unit] = ACTIONS(1),
     [anon_sym_case] = ACTIONS(1),
     [anon_sym_case_contains] = ACTIONS(1),
     [anon_sym_case_equals] = ACTIONS(1),
@@ -6124,7 +6124,7 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_with,
   [240] = 4,
     ACTIONS(129), 1,
-      aux_sym_interval_token1,
+      sym_interval_unit,
     ACTIONS(3), 2,
       sym_line_comment,
       sym_block_comment,
@@ -7501,7 +7501,7 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_with,
   [1807] = 4,
     ACTIONS(243), 1,
-      aux_sym_interval_token1,
+      sym_interval_unit,
     ACTIONS(3), 2,
       sym_line_comment,
       sym_block_comment,
@@ -13568,7 +13568,7 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_desc,
   [9559] = 4,
     ACTIONS(311), 1,
-      aux_sym_interval_token1,
+      sym_interval_unit,
     ACTIONS(3), 2,
       sym_line_comment,
       sym_block_comment,
@@ -18815,7 +18815,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_block_comment,
   [16437] = 2,
     ACTIONS(243), 1,
-      aux_sym_interval_token1,
+      sym_interval_unit,
     ACTIONS(3), 2,
       sym_line_comment,
       sym_block_comment,

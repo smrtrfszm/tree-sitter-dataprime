@@ -152,16 +152,20 @@ filter 1s
 (query
   (filter_command
     condition: (interval
-      (number)))
+      (number)
+      (interval_unit)))
   (filter_command
     condition: (interval
-      (number)))
+      (number)
+      (interval_unit)))
   (filter_command
     condition: (interval
-      (number)))
+      (number)
+      (interval_unit)))
   (filter_command
     condition: (interval
-      (number))))
+      (number)
+      (interval_unit))))
 
 =========
 typecasts

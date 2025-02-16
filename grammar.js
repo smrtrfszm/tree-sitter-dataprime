@@ -141,7 +141,9 @@ module.exports = grammar({
 
     timestamp_literal: $ => seq('@', $.string),
 
-    interval: $ => seq($.number, /[dhms]/),
+    interval_unit: _ => /[dhms]/,
+
+    interval: $ => seq($.number, $.interval_unit),
 
     case: $ => seq(
       choice('case', 'case_contains', 'case_equals', 'case_greatherthan', 'case_lessthan'),
