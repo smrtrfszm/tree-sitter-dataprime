@@ -895,7 +895,7 @@
               "members": [
                 {
                   "type": "FIELD",
-                  "name": "compare",
+                  "name": "subject",
                   "content": {
                     "type": "SYMBOL",
                     "name": "expression"
@@ -922,24 +922,8 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "FIELD",
-                      "name": "value",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "expression"
-                      }
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "->"
-                    },
-                    {
-                      "type": "FIELD",
-                      "name": "result",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "expression"
-                      }
+                      "type": "SYMBOL",
+                      "name": "case_clause"
                     }
                   ]
                 },
@@ -956,24 +940,8 @@
                         "type": "SEQ",
                         "members": [
                           {
-                            "type": "FIELD",
-                            "name": "value",
-                            "content": {
-                              "type": "SYMBOL",
-                              "name": "expression"
-                            }
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "->"
-                          },
-                          {
-                            "type": "FIELD",
-                            "name": "result",
-                            "content": {
-                              "type": "SYMBOL",
-                              "name": "expression"
-                            }
+                            "type": "SYMBOL",
+                            "name": "case_clause"
                           }
                         ]
                       }
@@ -990,6 +958,31 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "case_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "FIELD",
+          "name": "result",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
         }
       ]
     },

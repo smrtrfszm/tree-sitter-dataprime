@@ -193,6 +193,7 @@ cases
 =====
 
 filter case {
+  expr -> value,
   expr -> value
 }
 | filter case_contains {
@@ -205,10 +206,15 @@ filter case {
 (query
   (filter_command
     condition: (case
-      value: (key)
-      result: (key)))
+      (case_clause
+        value: (key)
+        result: (key))
+      (case_clause
+        value: (key)
+        result: (key))))
   (filter_command
     condition: (case
-      compare: (key)
-      value: (key)
-      result: (key))))
+      subject: (key)
+      (case_clause
+        value: (key)
+        result: (key)))))

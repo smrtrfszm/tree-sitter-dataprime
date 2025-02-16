@@ -413,7 +413,7 @@
     "type": "case",
     "named": true,
     "fields": {
-      "compare": {
+      "subject": {
         "multiple": false,
         "required": false,
         "types": [
@@ -422,10 +422,26 @@
             "named": true
           }
         ]
-      },
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "case_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_clause",
+    "named": true,
+    "fields": {
       "result": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "expression",
@@ -434,8 +450,8 @@
         ]
       },
       "value": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "expression",

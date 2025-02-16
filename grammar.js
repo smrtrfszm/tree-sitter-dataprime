@@ -149,15 +149,17 @@ module.exports = grammar({
       choice('case', 'case_contains', 'case_equals', 'case_greatherthan', 'case_lessthan'),
       '{',
       optionalq(
-        field('compare', $.expression),
+        field('subject', $.expression),
         ',',
       ),
-      optional(comma_separatedq1(
-        field('value', $.expression),
-        '->',
-        field('result', $.expression),
-      )),
+      optional(comma_separatedq1($.case_clause)),
       '}',
+    ),
+
+    case_clause: $ => seq(
+      field('value', $.expression),
+      '->',
+      field('result', $.expression),
     ),
 
     command: $ => choice(
