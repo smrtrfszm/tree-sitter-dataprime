@@ -25,7 +25,8 @@ redact keypath /pattern/ to 'redacted'
   (redact_command
     keypath: (keypath
       (ident))
-    pattern: (regex)
+    pattern: (regex
+      (regex_pattern))
     to: (string)))
 
 ============================
@@ -55,5 +56,6 @@ redact keypath matching /pattern/ to 'redacted'
   (redact_command
     keypath: (keypath
       (ident))
-    pattern: (regex)
+    pattern: (regex
+      (regex_pattern))
     to: (string)))

@@ -1015,13 +1015,9 @@
         ]
       },
       "pattern": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "/",
-            "named": false
-          },
           {
             "type": "regex",
             "named": true
@@ -1042,6 +1038,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "regex",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "regex_pattern",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1639,7 +1650,7 @@
     "named": false
   },
   {
-    "type": "regex",
+    "type": "regex_pattern",
     "named": true
   },
   {

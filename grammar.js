@@ -36,7 +36,8 @@ module.exports = grammar({
     number: _ => /-?([0-9]\.)?[0-9]+/,
     string: _ => /'[^']*'/,
     type: _ => /[a-z]+/,
-    regex: _ => /[^/]*/,
+    regex_pattern: _ => /[^/]*/,
+    regex: $ => seq('/', $.regex_pattern, '/'),
 
     true: _ => 'true',
     false: _ => 'false',
@@ -461,7 +462,7 @@ module.exports = grammar({
       field('keypath', $.keypath),
       optional('matching'),
       field('pattern', choice(
-        seq('/', $.regex, '/'),
+        $.regex,
         $.string,
       )),
       'to',

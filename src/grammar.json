@@ -79,9 +79,26 @@
       "type": "PATTERN",
       "value": "[a-z]+"
     },
-    "regex": {
+    "regex_pattern": {
       "type": "PATTERN",
       "value": "[^/]*"
+    },
+    "regex": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "regex_pattern"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        }
+      ]
     },
     "true": {
       "type": "STRING",
@@ -3145,21 +3162,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "/"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "regex"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "/"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "regex"
               },
               {
                 "type": "SYMBOL",
