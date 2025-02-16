@@ -1204,6 +1204,20 @@
             "named": true
           }
         ]
+      },
+      "order": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "asc",
+            "named": false
+          },
+          {
+            "type": "desc",
+            "named": false
+          }
+        ]
       }
     }
   },

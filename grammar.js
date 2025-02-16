@@ -504,7 +504,7 @@ module.exports = grammar({
       ),
       comma_separatedq1(
         field('key', $.expression),
-        optional(choice('asc', 'desc')),
+        optional(field('order', choice('asc', 'desc'))),
       ),
     ),
 

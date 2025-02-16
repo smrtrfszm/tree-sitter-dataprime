@@ -3313,17 +3313,21 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "CHOICE",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "asc"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "desc"
-                        }
-                      ]
+                      "type": "FIELD",
+                      "name": "order",
+                      "content": {
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "asc"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": "desc"
+                          }
+                        ]
+                      }
                     },
                     {
                       "type": "BLANK"
@@ -3356,17 +3360,21 @@
                         "type": "CHOICE",
                         "members": [
                           {
-                            "type": "CHOICE",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "asc"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "desc"
-                              }
-                            ]
+                            "type": "FIELD",
+                            "name": "order",
+                            "content": {
+                              "type": "CHOICE",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "asc"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": "desc"
+                                }
+                              ]
+                            }
                           },
                           {
                             "type": "BLANK"
