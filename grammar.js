@@ -53,6 +53,7 @@ module.exports = grammar({
       seq(choice('left=>', 'right=>'), $.keypath),
 
       $.binary_expression,
+      $.case,
     ),
 
     binary_expression: $ => choice(
@@ -98,6 +99,21 @@ module.exports = grammar({
     interval: $ => seq($.number, /[dhms]/),
 
     keypath: $ => delimited1($.ident, '.'),
+
+    case: $ => seq(
+      choice('case', 'case_contains', 'case_equals', 'case_greatherthan', 'case_lessthan'),
+      '{',
+      optionalq(
+        field('compare', $.expr),
+        ',',
+      ),
+      optional(comma_separatedq1(
+        field('value', $.expr),
+        '->',
+        field('result', $.expr),
+      )),
+      '}',
+    ),
 
     _command: $ => choice(
       $.source_command,

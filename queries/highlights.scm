@@ -25,11 +25,14 @@
  "!="
  "~"
  "~~"
+ "->"
 ] @operator
 
 [
   "("
   ")"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [
@@ -58,6 +61,11 @@
  "by"
  "by"
  "c"
+ "case"
+ "case_contains"
+ "case_equals"
+ "case_greatherthan"
+ "case_lessthan"
  "change"
  "choose"
  "conv"

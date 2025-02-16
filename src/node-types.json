@@ -167,6 +167,42 @@
     }
   },
   {
+    "type": "case",
+    "named": true,
+    "fields": {
+      "compare": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "result": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "choose_command",
     "named": true,
     "fields": {
@@ -420,6 +456,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "case",
           "named": true
         },
         {
@@ -1221,6 +1261,10 @@
     "named": false
   },
   {
+    "type": "->",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -1319,6 +1363,26 @@
   },
   {
     "type": "calculate",
+    "named": false
+  },
+  {
+    "type": "case",
+    "named": false
+  },
+  {
+    "type": "case_contains",
+    "named": false
+  },
+  {
+    "type": "case_equals",
+    "named": false
+  },
+  {
+    "type": "case_greatherthan",
+    "named": false
+  },
+  {
+    "type": "case_lessthan",
     "named": false
   },
   {
@@ -1623,7 +1687,15 @@
     "named": false
   },
   {
+    "type": "{",
+    "named": false
+  },
+  {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   },
   {

@@ -158,3 +158,40 @@ filter path:type
 	  (ident)
 	  (ident))
 	type: (type)))))
+
+=====
+cases
+=====
+
+filter case {
+  expr -> value
+}
+| filter case_contains {
+  value,
+  expr -> value
+}
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (case
+        value: (expr
+          (keypath
+            (ident)))
+        result: (expr
+          (keypath
+            (ident))))))
+  (filter_command
+    condition: (expr
+      (case
+        compare: (expr
+          (keypath
+            (ident)))
+        value: (expr
+          (keypath
+            (ident)))
+        result: (expr
+          (keypath
+            (ident)))))))
