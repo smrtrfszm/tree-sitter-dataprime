@@ -103,42 +103,39 @@ filter function()
 (query
   (filter_command
     condition: (call_expression
-      function: (key)
+      function: (ident)
       arguments: (arguments)))
   (filter_command
     condition: (call_expression
-      function: (key)
+      function: (ident)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      function: (property_expression
-        expression: (property_expression
-          expression: (key)
-          property: (property))
-        property: (property))
+      expression: (property_expression
+        expression: (key)
+	property: (property))
+      function: (ident)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      function: (property_expression
-        expression: (property_expression
-          expression: (variable
-            (ident))
-          property: (property))
+      expression: (property_expression
+        expression: (variable
+          (ident))
         property: (property))
+      function: (ident)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      function: (property_expression
-        expression: (call_expression
-          function: (key)
-          arguments: (arguments))
-        property: (property))
+      expression: (call_expression
+        function: (ident)
+        arguments: (arguments))
+      function: (ident)
       arguments: (arguments))))
 
 =========

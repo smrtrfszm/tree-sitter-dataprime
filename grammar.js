@@ -104,7 +104,11 @@ module.exports = grammar({
     ),
 
     call_expression: $ => seq(
-      field('function', $.expression),
+      optionalq(
+        field('expression', $.expression),
+        '.',
+      ),
+      field('function', $.ident),
       field('arguments', $.arguments),
     ),
 
