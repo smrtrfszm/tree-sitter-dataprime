@@ -750,9 +750,110 @@
     }
   },
   {
+    "type": "extract_argument",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "regex",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "extract_command",
     "named": true,
-    "fields": {}
+    "fields": {
+      "datatype": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "type_cast",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "extract_function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "extract_function",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "key",
+            "named": true
+          },
+          {
+            "type": "property_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "extract_function",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "extract_argument",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "filter_command",
@@ -1504,6 +1605,10 @@
   },
   {
     "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {

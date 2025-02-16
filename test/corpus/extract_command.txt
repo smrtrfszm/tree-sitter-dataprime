@@ -1,0 +1,79 @@
+=======
+extract
+=======
+
+extract message into my_data using regexp(e=/regexp/)
+
+---
+
+(query
+  (extract_command
+    expr: (key)
+    into: (key)
+    extract_function: (extract_function
+      type: (identifier)
+      (extract_argument
+        argument: (identifier)
+        value: (regex
+          (regex_pattern))))))
+
+=========================
+extract multiple argument
+=========================
+
+extract message into my_data using regexp(e=/regexp/, b='asd')
+
+---
+
+(query
+  (extract_command
+    expr: (key)
+    into: (key)
+    extract_function: (extract_function
+      type: (identifier)
+        (extract_argument
+          argument: (identifier)
+          value: (regex
+            (regex_pattern)))
+        (extract_argument
+          argument: (identifier)
+          value: (string)))))
+
+=================
+extract datatypes
+=================
+
+extract msg into data using kv() datatypes field:number
+
+---
+
+(query
+  (extract_command
+    expr: (key)
+    into: (key)
+    extract_function: (extract_function
+      type: (identifier))
+    datatype: (type_cast
+      keypath: (key)
+      type: (type))))
+
+==========================
+extract multiple datatypes
+==========================
+
+extract msg into data using kv() datatypes field:number, field2:number
+
+---
+
+(query
+  (extract_command
+    expr: (key)
+    into: (key)
+    extract_function: (extract_function
+      type: (identifier))
+    datatype: (type_cast
+      keypath: (key)
+      type: (type))
+    datatype: (type_cast
+      keypath: (key)
+      type: (type))))

@@ -359,12 +359,31 @@ module.exports = grammar({
 
     extract_command: $ => seq(
       choice('e', 'extract'),
-      // TODO:
+      field('expr', $.expression),
+      'into',
+      field('into', $._keypath),
+      'using',
+      field('extract_function', $.extract_function),
+      optionalq(
+        'datatypes',
+        comma_separatedq1(field('datatype', $.type_cast)),
+      ),
+    ),
 
-      // $.expression,
-      // 'into',
-      // $.identifier,
-      // 'using',
+    extract_function: $ => seq(
+      field('type', $.identifier),
+      '(',
+      optional(comma_separatedq1($.extract_argument)),
+      ')',
+    ),
+
+    extract_argument: $ => seq(
+      field('argument', $.identifier),
+      '=',
+      field('value', choice(
+        $.expression,
+        $.regex,
+      )),
     ),
 
     filter_command: $ => seq(
