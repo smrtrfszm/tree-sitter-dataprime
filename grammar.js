@@ -29,7 +29,7 @@ module.exports = grammar({
 
     ident: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
 
-    number: _ => /-?[0-9]+/,
+    number: _ => /-?([0-9]\.)?[0-9]+/,
 
     string: _ => /'[^']*'/,
 

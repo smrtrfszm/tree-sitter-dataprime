@@ -1,60 +1,51 @@
-======
-number
-======
+=======
+numbers
+=======
 
 filter 1234567890
+| filter -1237823
+| filter 1.23
+| filter -1.23
 
 ---
 
 (query
   (filter_command
     condition: (expr
-      (number))))
-
-===============
-negative number
-===============
-
-filter -1237823
-
----
-
-(query
+      (number)))
+  (filter_command
+    condition: (expr
+      (number)))
+  (filter_command
+    condition: (expr
+      (number)))
   (filter_command
     condition: (expr
       (number))))
 
-============
-empty string
-============
+=======
+strings
+=======
 
 filter ''
+| filter 'some string'
 
 ---
 
 (query
   (filter_command
     condition: (expr
-      (string))))
-
-=================
-string with space
-=================
-
-filter 'some string'
-
----
-
-(query
+      (string)))
   (filter_command
     condition: (expr
       (string))))
 
-=========
-timestamp
-=========
+==========
+timestamps
+==========
 
 filter @'now'
+| filter @'2025-02-16T01:41:07Z'
 
 ---
 
@@ -62,13 +53,18 @@ filter @'now'
   (filter_command
     condition: (expr
       (timestamp_literal
+       (string))))
+  (filter_command
+    condition: (expr
+      (timestamp_literal
        (string)))))
 
-=======
-keypath
-=======
+========
+keypaths
+========
 
 filter path
+| filter path.path2.path3.path4
 
 ---
 
@@ -76,17 +72,7 @@ filter path
   (filter_command
     condition: (expr
       (keypath
-        (ident)))))
-
-==============
-longer keypath
-==============
-
-filter path.path2.path3.path4
-
----
-
-(query
+        (ident))))
   (filter_command
     condition: (expr
       (keypath
@@ -95,11 +81,12 @@ filter path.path2.path3.path4
         (ident)
         (ident)))))
 
-==============
-empty function
-==============
+=========
+functions
+=========
 
 filter function()
+| filter function(arg1, arg2)
 
 ---
 
@@ -107,17 +94,7 @@ filter function()
   (filter_command
     condition: (expr
       (function
-        name: (ident)))))
-
-=======================
-function with arguments
-=======================
-
-filter function(arg1, arg2)
-
----
-
-(query
+        name: (ident))))
   (filter_command
     condition: (expr
       (function
@@ -129,9 +106,9 @@ filter function(arg1, arg2)
 	  (keypath
 	    (ident)))))))
 
-========
-interval
-========
+=========
+intervals
+=========
 
 filter 1s
 | filter 2m
@@ -158,11 +135,12 @@ filter 1s
       (interval
         (number)))))
 
-========
-typecast
-========
+=========
+typecasts
+=========
 
 filter path:type
+| filter path.path:type
 
 ---
 
@@ -171,5 +149,12 @@ filter path:type
     condition: (expr
       (type_cast
         keypath: (keypath
+	  (ident))
+	type: (type))))
+  (filter_command
+    condition: (expr
+      (type_cast
+        keypath: (keypath
+	  (ident)
 	  (ident))
 	type: (type)))))
