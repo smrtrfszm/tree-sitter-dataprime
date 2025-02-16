@@ -67,6 +67,7 @@ keypaths
 
 filter path
 | filter path.path2.path3.path4
+| filter $d.message
 
 ---
 
@@ -80,6 +81,11 @@ filter path
           expression: (key)
           property: (property))
         property: (property))
+      property: (property)))
+  (filter_command
+    condition: (property_expression
+      expression: (variable
+        (ident))
       property: (property))))
 
 =========
