@@ -13,7 +13,7 @@ groupby expr aggregate func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 ==========================
 groupby multiple groupings
@@ -33,7 +33,7 @@ groupby expr, expr aggregate func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 =====================================
 groupby multiple groupings with alias
@@ -57,7 +57,7 @@ groupby expr as alias, expr as alias aggregate func()
       (ident))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 ============================
 groupby multiple aggregation
@@ -74,10 +74,10 @@ groupby expr aggregate func(), func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))
+        name: (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 ==============================
 groupby aggregation with alias
@@ -94,7 +94,7 @@ groupby expr aggregate func() as alias
         (ident)))
     aggregation: (expr
       (function
-        (ident)))
+        name: (ident)))
     alias: (keypath
       (ident))))
 
@@ -113,12 +113,12 @@ groupby expr aggregate func() as alias, func() as alias
         (ident)))
     aggregation: (expr
       (function
-        (ident)))
+        name: (ident)))
     alias: (keypath
       (ident))
     aggregation: (expr
       (function
-        (ident)))
+        name: (ident)))
     alias: (keypath
       (ident))))
 
@@ -137,7 +137,7 @@ groupby expr agg func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 =======================
 groupby calculate alias
@@ -154,7 +154,7 @@ groupby expr calculate func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 ==================
 groupby calc alias
@@ -171,4 +171,4 @@ groupby expr calc func()
         (ident)))
     aggregation: (expr
       (function
-        (ident)))))
+        name: (ident)))))

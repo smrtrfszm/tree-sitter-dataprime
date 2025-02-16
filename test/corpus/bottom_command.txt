@@ -14,7 +14,7 @@ bottom 10 user by count()
         (ident)))
     orderby: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 =================
 bottom with alias
@@ -34,7 +34,7 @@ bottom 10 user as u by count() as c
       (ident))
     orderby: (expr
       (function
-        (ident)))
+        name: (ident)))
     alias: (keypath
       (ident))))
 
@@ -57,7 +57,7 @@ bottom 10 user, user2 by count()
         (ident)))
     orderby: (expr
       (function
-        (ident)))))
+        name: (ident)))))
 
 =======================================
 bottom with multiple groupby with alias
@@ -82,7 +82,7 @@ bottom 10 user as u, user2 as u2 by count() as c
       (ident))
     orderby: (expr
       (function
-        (ident)))
+        name: (ident)))
     alias: (keypath
       (ident))))
 
@@ -102,4 +102,4 @@ top 10 user by count()
         (ident)))
     orderby: (expr
       (function
-        (ident)))))
+        name: (ident)))))

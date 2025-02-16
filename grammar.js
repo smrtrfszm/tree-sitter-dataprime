@@ -77,16 +77,18 @@ module.exports = grammar({
     variable: $ => seq('$', $.keypath),
 
     function: $ => seq(
-      $.ident,
+      field('name', $.ident),
       '(',
-      delimited($.expr, ','),
+      optional(comma_separatedq1(
+        field('argument', $.expr),
+      )),
       ')',
     ),
 
     type_cast: $ => seq(
-      $.keypath,
+      field('keypath', $.keypath),
       ':',
-      $.type,
+      field('type', $.type),
     ),
 
     timestamp_literal: $ => seq('@', $.string),

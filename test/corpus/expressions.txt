@@ -1,0 +1,175 @@
+======
+number
+======
+
+filter 1234567890
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (number))))
+
+===============
+negative number
+===============
+
+filter -1237823
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (number))))
+
+============
+empty string
+============
+
+filter ''
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (string))))
+
+=================
+string with space
+=================
+
+filter 'some string'
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (string))))
+
+=========
+timestamp
+=========
+
+filter @'now'
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (timestamp_literal
+       (string)))))
+
+=======
+keypath
+=======
+
+filter path
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (keypath
+        (ident)))))
+
+==============
+longer keypath
+==============
+
+filter path.path2.path3.path4
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (keypath
+        (ident)
+        (ident)
+        (ident)
+        (ident)))))
+
+==============
+empty function
+==============
+
+filter function()
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (function
+        name: (ident)))))
+
+=======================
+function with arguments
+=======================
+
+filter function(arg1, arg2)
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (function
+        name: (ident)
+	argument: (expr
+	  (keypath
+	    (ident)))
+	argument: (expr
+	  (keypath
+	    (ident)))))))
+
+========
+interval
+========
+
+filter 1s
+| filter 2m
+| filter 3h
+| filter 4d
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (interval
+        (number))))
+  (filter_command
+    condition: (expr
+      (interval
+        (number))))
+  (filter_command
+    condition: (expr
+      (interval
+        (number))))
+  (filter_command
+    condition: (expr
+      (interval
+        (number)))))
+
+========
+typecast
+========
+
+filter path:type
+
+---
+
+(query
+  (filter_command
+    condition: (expr
+      (type_cast
+        keypath: (keypath
+	  (ident))
+	type: (type)))))
