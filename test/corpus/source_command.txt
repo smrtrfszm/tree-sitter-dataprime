@@ -8,7 +8,7 @@ source spans
 
 (query
   (source_command
-    datastore: (ident)))
+    datastore: (identifier)))
 
 ===========
 source logs
@@ -20,7 +20,7 @@ source spans
 
 (query
   (source_command
-    datastore: (ident)))
+    datastore: (identifier)))
 
 ========================
 source custom enrichment
@@ -32,7 +32,7 @@ source custom_enrichment_name
 
 (query
   (source_command
-    datastore: (ident)))
+    datastore: (identifier)))
 
 =======================
 source logs around time 
@@ -44,7 +44,7 @@ source logs around @'2024-12-30T00:12:23Z' interval 1h
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     around: (timestamp_literal
       (string))
     interval: (interval
@@ -61,7 +61,7 @@ source logs around @'2024-12-30T00:12:23Z'
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     around: (timestamp_literal
       (string))))
 
@@ -75,7 +75,7 @@ source logs between @'2024-12-30T00:12:23Z' and @'2024-12-30T00:12:23Z'
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     start: (timestamp_literal
         (string))
     end: (timestamp_literal
@@ -91,7 +91,7 @@ source logs between @'now' - 24h and @'now' + 24h
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     start: (binary_expression
       left: (timestamp_literal
         (string))
@@ -115,7 +115,7 @@ source logs last 1h
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     last: (interval
       (number)
       (interval_unit))))
@@ -130,7 +130,7 @@ source logs timeshifted 1h
 
 (query
   (source_command
-    datastore: (ident)
+    datastore: (identifier)
     timeshift: (interval
       (number)
       (interval_unit))))

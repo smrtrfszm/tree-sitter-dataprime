@@ -85,7 +85,7 @@ filter path
   (filter_command
     condition: (property_expression
       expression: (variable
-        (ident))
+        (identifier))
       property: (property))))
 
 =========
@@ -103,11 +103,11 @@ filter function()
 (query
   (filter_command
     condition: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments)))
   (filter_command
     condition: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments
         (key)
         (key))))
@@ -116,7 +116,7 @@ filter function()
       expression: (property_expression
         expression: (key)
 	property: (property))
-      function: (ident)
+      function: (identifier)
       arguments: (arguments
         (key)
         (key))))
@@ -124,18 +124,18 @@ filter function()
     condition: (call_expression
       expression: (property_expression
         expression: (variable
-          (ident))
+          (identifier))
         property: (property))
-      function: (ident)
+      function: (identifier)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
       expression: (call_expression
-        function: (ident)
+        function: (identifier)
         arguments: (arguments))
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))))
 
 =========

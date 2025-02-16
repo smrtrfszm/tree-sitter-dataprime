@@ -8,7 +8,7 @@ convert keypath:type
 
 (query
   (convert_command
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)))
 
 ==============================
@@ -21,7 +21,7 @@ convert datatypes keypath:type
 
 (query
   (convert_command
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)))
 
 ================
@@ -34,9 +34,9 @@ convert keypath:type, path2:type
 
 (query
   (convert_command
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)))
 
 =======================================
@@ -49,9 +49,9 @@ convert datatypes keypath:type, path2:type
 
 (query
   (convert_command
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)))
 
 ==========
@@ -64,5 +64,5 @@ conv keypath:type
 
 (query
   (convert_command
-    keypath: (ident)
+    keypath: (identifier)
     type: (type)))

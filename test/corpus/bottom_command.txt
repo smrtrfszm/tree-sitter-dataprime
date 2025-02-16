@@ -11,7 +11,7 @@ bottom 10 user by count()
     limit: (number)
     groupby: (key)
     orderby: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))))
 
 =================
@@ -28,7 +28,7 @@ bottom 10 user as u by count() as c
     groupby: (key)
     alias: (key)
     orderby: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))
     alias: (key)))
 
@@ -46,7 +46,7 @@ bottom 10 user, user2 by count()
     groupby: (key)
     groupby: (key)
     orderby: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))))
 
 =======================================
@@ -65,7 +65,7 @@ bottom 10 user as u, user2 as u2 by count() as c
     groupby: (key)
     alias: (key)
     orderby: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))
     alias: (key)))
 
@@ -82,5 +82,5 @@ top 10 user by count()
     limit: (number)
     groupby: (key)
     orderby: (call_expression
-      function: (ident)
+      function: (identifier)
       arguments: (arguments))))

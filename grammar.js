@@ -25,7 +25,7 @@ module.exports = grammar({
     $.command,
   ],
 
-  word: $ => $.ident,
+  word: $ => $.identifier,
 
   rules: {
     query: $ => delimited1($.command, '|'),
@@ -38,7 +38,7 @@ module.exports = grammar({
       '/'
     )),
 
-    ident: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
+    identifier: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
     number: _ => /-?([0-9]\.)?[0-9]+/,
     string: _ => /'[^']*'/,
     string_fragment: _ => /[^`{}]+/,
@@ -69,7 +69,7 @@ module.exports = grammar({
       $.number,
       $.string,
       $.timestamp_literal,
-      alias($.ident, $.key),
+      alias($.identifier, $.key),
       $.variable,
       $.interval,
       $.true,
@@ -90,16 +90,16 @@ module.exports = grammar({
       ')',
     ),
 
-    variable: $ => seq('$', $.ident),
+    variable: $ => seq('$', $.identifier),
 
     property_expression: $ => seq(
       field('expression', $.expression),
       '.',
-      field('property', alias($.ident, $.property))
+      field('property', alias($.identifier, $.property))
     ),
 
     _keypath: $ => choice(
-      alias($.ident, $.key),
+      alias($.identifier, $.key),
       $.property_expression,
     ),
 
@@ -108,7 +108,7 @@ module.exports = grammar({
         field('expression', $.expression),
         '.',
       ),
-      field('function', $.ident),
+      field('function', $.identifier),
       field('arguments', $.arguments),
     ),
 
@@ -195,7 +195,7 @@ module.exports = grammar({
 
     source_command: $ => seq(
       choice('source', 'from'),
-      field('datastore', $.ident),
+      field('datastore', $.identifier),
       optional(choice(
         seq(
           'around',
@@ -271,7 +271,7 @@ module.exports = grammar({
       choice('conv', 'convert'),
       optional('datatypes'),
       comma_separatedq1(
-        field('keypath', $.ident),
+        field('keypath', $.identifier),
         ':',
         field('type', $.type),
       ),
@@ -363,7 +363,7 @@ module.exports = grammar({
 
       // $.expression,
       // 'into',
-      // $.ident,
+      // $.identifier,
       // 'using',
     ),
 

@@ -402,7 +402,7 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -504,7 +504,7 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1276,7 +1276,7 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1428,7 +1428,7 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -1720,7 +1720,7 @@
     "named": false
   },
   {
-    "type": "ident",
+    "type": "identifier",
     "named": true
   },
   {
