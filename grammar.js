@@ -22,6 +22,8 @@ module.exports = grammar({
     $.command,
   ],
 
+  word: $ => $.ident,
+
   rules: {
     query: $ => delimited1($.command, '|'),
 
