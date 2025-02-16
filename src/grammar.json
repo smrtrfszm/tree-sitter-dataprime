@@ -76,6 +76,10 @@
       "type": "PATTERN",
       "value": "'[^']*'"
     },
+    "string_fragment": {
+      "type": "PATTERN",
+      "value": "[^`{}]+"
+    },
     "type": {
       "type": "PATTERN",
       "value": "[a-z]+"
@@ -96,8 +100,11 @@
           "name": "regex_pattern"
         },
         {
-          "type": "STRING",
-          "value": "/"
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "/"
+          }
         }
       ]
     },
@@ -113,12 +120,62 @@
       "type": "STRING",
       "value": "null"
     },
+    "format_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "`"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "string_fragment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "template_substitution"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "`"
+        }
+      ]
+    },
+    "template_substitution": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
           "name": "primary_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "format_string"
         },
         {
           "type": "SYMBOL",

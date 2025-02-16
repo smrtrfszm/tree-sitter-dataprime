@@ -25,6 +25,8 @@ strings
 
 filter ''
 | filter 'some string'
+| filter `asdfsadf`
+| filter `{asd} asdfsadf`
 
 ---
 
@@ -32,7 +34,16 @@ filter ''
   (filter_command
     condition: (string))
   (filter_command
-    condition: (string)))
+    condition: (string))
+  (filter_command
+    condition: (format_string
+      (string_fragment)))
+  (filter_command
+    condition: (format_string
+      (template_substitution
+        (keypath
+          (ident)))
+      (string_fragment))))
 
 ==========
 timestamps

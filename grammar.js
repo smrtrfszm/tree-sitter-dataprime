@@ -38,16 +38,33 @@ module.exports = grammar({
     ident: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
     number: _ => /-?([0-9]\.)?[0-9]+/,
     string: _ => /'[^']*'/,
+    string_fragment: _ => /[^`{}]+/,
     type: _ => /[a-z]+/,
     regex_pattern: _ => /[^/]*/,
-    regex: $ => seq('/', $.regex_pattern, '/'),
+    regex: $ => seq('/', $.regex_pattern, token.immediate('/')),
 
     true: _ => 'true',
     false: _ => 'false',
     null: _ => 'null',
 
+    format_string: $ => seq(
+      '`',
+      repeat(choice(
+        $.string_fragment,
+        $.template_substitution,
+      )),
+      '`',
+    ),
+
+    template_substitution: $ => seq(
+      '{',
+      $.expression,
+      '}',
+    ),
+
     expression: $ => choice(
       $.primary_expression,
+      $.format_string,
       $.keypath,
       $.variable,
       $.type_cast,
