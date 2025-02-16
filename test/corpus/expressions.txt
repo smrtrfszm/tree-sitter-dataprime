@@ -87,24 +87,59 @@ functions
 
 filter function()
 | filter function(arg1, arg2)
+| filter keypath.subpath.function(arg1, arg2)
+| filter $variable.subpath.function(arg1, arg2)
 
 ---
 
 (query
   (filter_command
     condition: (expr
-      (function
-        name: (ident))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments))))
   (filter_command
     condition: (expr
-      (function
-        name: (ident)
-	argument: (expr
-	  (keypath
-	    (ident)))
-	argument: (expr
-	  (keypath
-	    (ident)))))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments
+          (expr
+            (keypath
+              (ident)))
+          (expr
+            (keypath
+              (ident)))))))
+      (filter_command
+        condition: (expr
+          (call_expression
+            function: (keypath
+              (ident)
+              (ident)
+              (ident))
+            arguments: (arguments
+              (expr
+                (keypath
+                  (ident)))
+              (expr
+                (keypath
+                  (ident)))))))
+      (filter_command
+        condition: (expr
+          (call_expression
+            function: (variable
+              (keypath
+                (ident)
+                (ident)
+                (ident)))
+            arguments: (arguments
+              (expr
+                (keypath
+                  (ident)))
+              (expr
+                (keypath
+                  (ident))))))))
 
 =========
 intervals

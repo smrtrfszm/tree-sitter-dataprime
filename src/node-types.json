@@ -26,6 +26,21 @@
     }
   },
   {
+    "type": "arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "binary_expression",
     "named": true,
     "fields": {
@@ -160,6 +175,36 @@
         "types": [
           {
             "type": "expr",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "call_expression",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arguments",
+            "named": true
+          }
+        ]
+      },
+      "function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          },
+          {
+            "type": "variable",
             "named": true
           }
         ]
@@ -451,7 +496,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -459,15 +504,11 @@
           "named": true
         },
         {
+          "type": "call_expression",
+          "named": true
+        },
+        {
           "type": "case",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "ident",
           "named": true
         },
         {
@@ -542,32 +583,6 @@
         "types": [
           {
             "type": "string",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "function",
-    "named": true,
-    "fields": {
-      "argument": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "expr",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "ident",
             "named": true
           }
         ]

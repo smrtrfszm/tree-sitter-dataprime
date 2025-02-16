@@ -13,8 +13,10 @@ multigroupby (expr) aggregate count()
         (keypath
 	  (ident))))
     aggregation: (expr
-      (function
-        name: (ident)))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))))
 
 ===========================
 multigroupby multiple group
@@ -41,8 +43,10 @@ multigroupby (expr, expr), (expr, expr) aggregate count()
         (keypath
 	  (ident))))
     aggregation: (expr
-      (function
-        name: (ident)))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))))
 
 ======================================
 multigroupby multiple group with alias
@@ -77,8 +81,10 @@ multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggr
       alias: (keypath
         (ident)))
     aggregation: (expr
-      (function
-        name: (ident)))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))))
 
 ======================================
 multigroupby with multiple aggregation
@@ -95,11 +101,15 @@ multigroupby (expr) aggregate count(), count()
         (keypath
 	  (ident))))
     aggregation: (expr
-      (function
-        name: (ident)))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))
     aggregation: (expr
-      (function
-        name: (ident)))))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))))
 
 =================================================
 multigroupby with multiple aggregation with alias
@@ -114,14 +124,18 @@ multigroupby (expr) aggregate count() as alias, count() as alias
     group: (multigroupby_group
       grouping: (expr
         (keypath
-	  (ident))))
+          (ident))))
     aggregation: (expr
-      (function
-        name: (ident)))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))
     alias: (keypath
       (ident))
     aggregation: (expr
-      (function
-        name: (ident)))
+      (call_expression
+        function: (keypath
+          (ident))
+        arguments: (arguments)))
     alias: (keypath
       (ident))))

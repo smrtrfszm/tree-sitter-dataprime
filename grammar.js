@@ -40,7 +40,6 @@ module.exports = grammar({
     expr: $ => choice(
       $.number,
       $.string,
-      $.function,
       $.timestamp_literal,
       $.interval,
 
@@ -48,12 +47,25 @@ module.exports = grammar({
 
       $.keypath,
       $.variable,
-      // TODO: replace with keypath
-      seq(delimited1($.ident, '.'), '.', $.function),
       seq(choice('left=>', 'right=>'), $.keypath),
 
+      $.call_expression,
       $.binary_expression,
       $.case,
+    ),
+
+    arguments: $ => seq(
+      '(',
+      optional(comma_separatedq1($.expr)),
+      ')',
+    ),
+
+    call_expression: $ => seq(
+      choice(
+        field('function', $.keypath),
+        field('function', $.variable),
+      ),
+      field('arguments', $.arguments),
     ),
 
     binary_expression: $ => choice(
@@ -78,15 +90,6 @@ module.exports = grammar({
     ),
 
     variable: $ => seq('$', $.keypath),
-
-    function: $ => seq(
-      field('name', $.ident),
-      '(',
-      optional(comma_separatedq1(
-        field('argument', $.expr),
-      )),
-      ')',
-    ),
 
     type_cast: $ => seq(
       field('keypath', $.keypath),
