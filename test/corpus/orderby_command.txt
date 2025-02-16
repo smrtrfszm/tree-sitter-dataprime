@@ -1,0 +1,103 @@
+=======
+orderby
+=======
+
+orderby key
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))
+
+============
+orderby desc
+============
+
+orderby key desc
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))
+
+===========
+orderby asc
+===========
+
+orderby key asc
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))
+
+=====================
+orderby multiple keys
+=====================
+
+orderby key, key2, key3
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))
+    key: (expr
+      (keypath
+        (ident)))
+    key: (expr
+      (keypath
+        (ident)))))
+
+============
+sortby alias
+============
+
+sortby key
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))
+
+==============
+order by alias
+==============
+
+order by key
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))
+
+=============
+sort by alias
+=============
+
+sort by key
+
+---
+
+(query
+  (orderby_command
+    key: (expr
+      (keypath
+        (ident)))))

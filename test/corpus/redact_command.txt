@@ -1,0 +1,59 @@
+=============
+redact string
+=============
+
+redact keypath 'pattern' to 'redacted'
+
+---
+
+(query
+  (redact_command
+    keypath: (keypath
+      (ident))
+    pattern: (string)
+    to: (string)))
+
+============
+redact regex
+============
+
+redact keypath /pattern/ to 'redacted'
+
+---
+
+(query
+  (redact_command
+    keypath: (keypath
+      (ident))
+    pattern: (regex)
+    to: (string)))
+
+============================
+redact string with matching keyword
+============================
+
+redact keypath matching 'pattern' to 'redacted'
+
+---
+
+(query
+  (redact_command
+    keypath: (keypath
+      (ident))
+    pattern: (string)
+    to: (string)))
+
+==================================
+redact regex with matching keyword
+==================================
+
+redact keypath matching /pattern/ to 'redacted'
+
+---
+
+(query
+  (redact_command
+    keypath: (keypath
+      (ident))
+    pattern: (regex)
+    to: (string)))

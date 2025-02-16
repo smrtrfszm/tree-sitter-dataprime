@@ -1,0 +1,103 @@
+=========
+aggregate
+=========
+
+aggregate count
+
+---
+
+(query
+  (aggregate_command
+    (expr
+      (keypath
+        (ident)))))
+
+============
+aggregate as
+============
+
+aggregate count as cnt
+
+---
+
+(query
+  (aggregate_command
+    aggregation: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+====================
+aggregate as keypath
+====================
+
+aggregate count as cnt.asd
+
+---
+
+(query
+  (aggregate_command
+    aggregation: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident)
+      (ident))))
+
+==================
+aggregate multiple
+==================
+
+aggregate count, count2
+
+---
+
+(query
+  (aggregate_command
+    aggregation: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (keypath
+        (ident)))))
+
+==========================
+aggregate multiple with as
+==========================
+
+aggregate count as cnt, count2 as cnt2
+
+---
+
+(query
+  (aggregate_command
+    aggregation: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))
+    aggregation: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+===============================
+aggregate multiple with some as
+===============================
+
+aggregate count, count2 as cnt2
+
+---
+
+(query
+  (aggregate_command
+    aggregation: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))

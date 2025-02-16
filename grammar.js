@@ -29,13 +29,13 @@ module.exports = grammar({
 
     ident: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
 
-    number: _ => /[0-9]+/,
+    number: _ => /-?[0-9]+/,
 
     string: _ => /'[^']*'/,
 
     type: _ => /[a-z]+/,
 
-    regexp: _ => /[^/]*/,
+    regex: _ => /[^/]*/,
 
     expr: $ => choice(
       $.number,
@@ -56,16 +56,22 @@ module.exports = grammar({
     ),
 
     binary_expression: $ => choice(
-      prec.left(0, seq($.expr, '+', $.expr)),
-      prec.left(0, seq($.expr, '-', $.expr)),
-      prec.left(1, seq($.expr, '<', $.expr)),
-      prec.left(1, seq($.expr, '<=', $.expr)),
-      prec.left(1, seq($.expr, '>', $.expr)),
-      prec.left(1, seq($.expr, '>=', $.expr)),
-      prec.left(2, seq($.expr, '==', $.expr)),
-      prec.left(2, seq($.expr, '!=', $.expr)),
-      prec.left(2, seq($.expr, '~', $.expr)),
-      prec.left(2, seq($.expr, '~~', $.expr)),
+      ...[
+        [0, '+'],
+        [0, '-'],
+        [1, '<'],
+        [1, '<='],
+        [1, '>'],
+        [1, '>='],
+        [2, '=='],
+        [2, '!='],
+        [2, '~'],
+        [2, '~~'],
+      ].map(([precedence, operator]) => prec.left(precedence, seq(
+        field('left', $.expr),
+        field('operator', operator),
+        field('right', $.expr),
+      )))
     ),
 
     variable: $ => seq('$', $.keypath),
@@ -98,7 +104,7 @@ module.exports = grammar({
       $.convert_command,
       $.count_command,
       $.countby_command,
-      $.create_commmand,
+      $.create_command,
       $.dedupeby_command,
       $.distinct_command,
       $.enrich_command,
@@ -122,74 +128,114 @@ module.exports = grammar({
 
     source_command: $ => seq(
       choice('source', 'from'),
-      choice('logs', 'spans'),
+      field('datastore', $.ident),
       optional(choice(
-        seq('around', $.timestamp_literal, optionalq('interval', $.interval)),
-        seq('between', $.expr, 'and', $.expr),
-        seq('last', $.interval),
-        seq('timeshifted', $.interval),
+        seq(
+          'around',
+          field('around', $.timestamp_literal),
+          optionalq(
+            'interval',
+            field('interval', $.interval),
+          ),
+        ),
+        seq(
+          'between',
+          field('start', $.expr),
+          'and',
+          field('end', $.expr),
+        ),
+        seq(
+          'last',
+          field('last', $.interval)
+        ),
+        seq(
+          'timeshifted',
+          field('timeshift', $.interval),
+        ),
       ))
     ),
 
     aggregate_command: $ => seq(
       'aggregate',
-      delimited1(
-        seq($.expr, optionalq('as', $.ident)),
-        ',',
+      comma_separatedq1(
+        field('aggregation', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
     ),
 
     block_command: $ => seq(
       'block',
-      $.expr
+      $.expr,
     ),
 
     bottom_command: $ => seq(
       choice('bottom', 'top'),
-      $.number,
-      delimited1(
-        seq($.expr, optionalq('as', $.ident)),
-        ',',
+      field('limit', $.number),
+      comma_separatedq1(
+        field('groupby', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
       'by',
-      $.expr,
-      optionalq('as', $.ident),
+      field('orderby', $.expr),
+      optionalq(
+        'as',
+        field('alias', $.keypath),
+      ),
     ),
 
     choose_command: $ => seq(
       choice('choose', 'select'),
-      delimited1(
-        seq($.keypath, optionalq('as', $.ident)),
-        ','
+      comma_separatedq1(
+        field('keypath', $.keypath),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
     ),
 
     convert_command: $ => seq(
       choice('conv', 'convert'),
       optional('datatypes'),
-      delimited1(
-        seq($.ident, ':', $.type),
-        ','
+      comma_separatedq1(
+        field('keypath', $.ident),
+        ':',
+        field('type', $.type),
       ),
     ),
 
     count_command: $ => seq(
       'count',
-      optionalq('into', $.ident),
+      optionalq(
+        'into',
+        field('into', $.keypath),
+      ),
     ),
 
     countby_command: $ => seq(
       'countby',
-      $.expr,
-      optionalq('as', $.ident),
-      optionalq('into', $.ident),
+      field('expr', $.expr),
+      optionalq(
+        'as',
+        field('alias', $.keypath),
+      ),
+      optionalq(
+        'into',
+        field('into', $.keypath),
+      ),
     ),
 
-    create_commmand: $ => seq(
+    create_command: $ => seq(
       choice('a', 'add', 'c', 'create'),
-      $.ident,
+      field('keypath', $.keypath),
       'from',
-      $.expr,
+      field('from', $.expr),
       optionalq(
         'on', 'keypath', 'exists',
         choice('fail', 'skip', 'overwrite'),
@@ -206,33 +252,38 @@ module.exports = grammar({
 
     dedupeby_command: $ => seq(
       'dedupeby',
-      delimited1($.expr, ','),
+      comma_separatedq1(
+        field('expr', $.expr),
+      ),
       'keep',
-      $.number,
+      field('keep', $.number),
     ),
 
     distinct_command: $ => seq(
       'distinct',
-      delimited1(
-        seq($.expr, optionalq('as', $.ident)),
-        ',',
+      comma_separatedq1(
+        field('expr', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
     ),
 
     enrich_command: $ => seq(
       'enrich',
-      $.expr,
+      field('value', $.keypath),
       'into',
-      $.ident,
+      field('key', $.keypath),
       'using',
-      $.ident,
+      field('table', $.keypath),
     ),
 
     explode_command: $ => seq(
       'explode',
-      $.expr,
+      field('expr', $.expr),
       'into',
-      $.ident,
+      field('into', $.keypath),
       optionalq(
         'original',
         choice('discard', 'preserve'),
@@ -251,135 +302,164 @@ module.exports = grammar({
 
     filter_command: $ => seq(
       choice('f', 'filter', 'where'),
-      $.expr,
+      field('condition', $.expr),
     ),
 
     find_command: $ => seq(
       choice('find', 'text'),
-      $.string,
+      field('search', $.string),
       'in',
-      $.keypath,
+      field('keypath', $.keypath),
     ),
 
     groupby_command: $ => seq(
       'groupby',
-      delimited1(
-        seq($.expr, optionalq('as', $.ident)),
-        ','
+      comma_separatedq1(
+        field('grouping', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
-      choice('calculate', 'calc', 'aggregate', 'agg'),
-      delimited1(
-        seq($.function, optionalq('as', $.keypath)),
-        ',',
+      optional(choice(
+        'aggregate',
+        'agg',
+        // These are deprecated
+        'calculate',
+        'calc',
+      )),
+      comma_separatedq1(
+        field('aggregation', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
+    ),
+
+    multigroupby_group: $ => seq(
+      '(',
+      comma_separatedq1(
+        field('grouping', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
+      ),
+      ')',
     ),
 
     multigroupby_command: $ => seq(
       'multigroupby',
-      delimited1(
-        seq(
-          '(',
-          delimited1(
-            seq($.expr, optionalq('as', $.ident)),
-            ','
-          ),
-          ')',
-        ),
-        ',',
+      comma_separatedq1(
+        field('group', $.multigroupby_group),
       ),
-      optional(choice('aggregate', 'agg')),
-      delimited1(
-        seq($.expr, optionalq('as', $.ident)),
-        ','
+      optional(choice(
+        'aggregate',
+        'agg',
+      )),
+      comma_separatedq1(
+        field('aggregation', $.expr),
+        optionalq(
+          'as',
+          field('alias', $.keypath),
+        ),
       ),
     ),
 
     join_command: $ => seq(
       'join',
-      // TODO: maybe left and right is not acceptable
-      optional(choice('left', 'right', 'full', 'cross')),
+      optional(
+        // TODO: maybe left and right is not acceptable
+        field('type', choice('left', 'right', 'full', 'cross')),
+      ),
       '(',
-      $.query,
+      field('right_query', $.query),
       ')',
       choice(
         seq(
           'on',
-          $.expr,
+          field('condition', $.expr),
         ),
         seq(
           'using',
-          delimited1($.keypath, ','),
+          comma_separatedq1(
+            field('join_path', $.keypath),
+          ),
         ),
       ),
       'into',
-      $.ident,
+      field('into', $.keypath),
     ),
 
     limit_command: $ => seq(
       'limit',
-      $.number,
+      field('limit', $.number),
     ),
 
     lucene_command: $ => seq(
       'lucene',
-      $.string,
+      field('query', $.string),
     ),
 
     move_command: $ => seq(
       choice('m', 'move'),
-      $.keypath,
+      field('keypath', $.keypath),
       'to',
-      $.keypath,
+      field('to', $.keypath),
     ),
 
     orderby_command: $ => seq(
-      choice('orderby', 'sortby', seq('order', 'by'), seq('sort', 'by')),
-      delimited1(
-        seq($.expr, optional(choice('asc', 'desc'))),
-        ',',
+      choice(
+        'orderby',
+        'sortby',
+        seq('order', 'by'),
+        seq('sort', 'by'),
+      ),
+      comma_separatedq1(
+        field('key', $.expr),
+        optional(choice('asc', 'desc')),
       ),
     ),
 
     redact_command: $ => seq(
       'redact',
-      $.keypath,
+      field('keypath', $.keypath),
       optional('matching'),
-      choice(
-        seq(
-          '/',
-          $.regexp,
-          '/',
-        ),
+      field('pattern', choice(
+        seq('/', $.regex, '/'),
         $.string,
-      ),
+      )),
       'to',
-      $.string,
+      field('to', $.string),
     ),
 
     remove_command: $ => seq(
       choice('r', 'remove'),
-      delimited1($.keypath, ','),
+      comma_separatedq1(
+        field('keypath', $.keypath),
+      ),
     ),
 
     replace_command: $ => seq(
       'replace',
-      $.keypath,
+      field('keypath', $.keypath),
       'with',
-      $.expr,
+      field('with', $.expr),
     ),
 
     stitch_command: $ => seq(
       'stitch',
       '(',
-      $.query,
+      field('subquery', $.query),
       ')',
       'into',
-      $.keypath,
+      field('into', $.keypath),
     ),
 
     wildfind_command: $ => seq(
       choice('wildfind', 'wildtext'),
-      $.string,
+      field('query', $.string),
     ),
   },
 });
@@ -394,4 +474,8 @@ function delimited(item, delimiter) {
 
 function delimited1(item, delimiter) {
   return seq(item, repeat(seq(delimiter, item)))
+}
+
+function comma_separatedq1(...item) {
+  return delimited1(seq(...item), ',')
 }

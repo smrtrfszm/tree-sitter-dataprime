@@ -1,0 +1,127 @@
+======
+create
+======
+
+create path from expr
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+========================
+create on keypath exists
+========================
+
+create path from expr on keypath exists fail
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+=========================
+create on keypath missing
+=========================
+
+create path from expr on keypath missing create
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+=========================
+create on datatype change
+=========================
+
+create path from expr on datatype change overwrite
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+======================
+create with everything
+======================
+
+create path from expr on keypath exists fail on keypath missing create on datatype change overwrite
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+=======
+c alias
+=======
+
+c path from expr
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+=========
+add alias
+=========
+
+add path from expr
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))
+
+=======
+a alias
+=======
+
+a path from expr
+
+---
+
+(query
+  (create_command
+    keypath: (keypath
+      (ident))
+    from: (expr
+      (keypath
+        (ident)))))

@@ -1,0 +1,174 @@
+=======
+groupby
+=======
+
+groupby expr aggregate func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+==========================
+groupby multiple groupings
+==========================
+
+groupby expr, expr aggregate func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+=====================================
+groupby multiple groupings with alias
+=====================================
+
+groupby expr as alias, expr as alias aggregate func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))
+    grouping: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+============================
+groupby multiple aggregation
+============================
+
+groupby expr aggregate func(), func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+==============================
+groupby aggregation with alias
+==============================
+
+groupby expr aggregate func() as alias
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+=======================================
+groupby multiple aggregation with alias
+=======================================
+
+groupby expr aggregate func() as alias, func() as alias
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))
+    alias: (keypath
+      (ident))
+    aggregation: (expr
+      (function
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+=================
+groupby agg alias
+=================
+
+groupby expr agg func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+=======================
+groupby calculate alias
+=======================
+
+groupby expr calculate func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+==================
+groupby calc alias
+==================
+
+groupby expr calc func()
+
+---
+
+(query
+  (groupby_command
+    grouping: (expr
+      (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))

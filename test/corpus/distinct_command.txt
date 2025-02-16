@@ -1,0 +1,67 @@
+========
+distinct
+========
+
+distinct expr
+
+---
+
+(query
+  (distinct_command
+    expr: (expr
+      (keypath
+        (ident)))))
+
+===================
+distinct with alias
+===================
+
+distinct expr as alias
+
+---
+
+(query
+  (distinct_command
+    expr: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+=================
+distinct multiple
+=================
+
+distinct expr, expr2
+
+---
+
+(query
+  (distinct_command
+    expr: (expr
+      (keypath
+        (ident)))
+    expr: (expr
+      (keypath
+        (ident)))))
+
+============================
+distinct multiple with alias
+============================
+
+distinct expr1 as alias2, expr2 as alias2
+
+---
+
+(query
+  (distinct_command
+    expr: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))
+    expr: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))

@@ -1,0 +1,139 @@
+============
+source spans
+============
+
+source spans
+
+---
+
+(query
+  (source_command
+    datastore: (ident)))
+
+===========
+source logs
+===========
+
+source spans
+
+---
+
+(query
+  (source_command
+    datastore: (ident)))
+
+========================
+source custom enrichment
+========================
+
+source custom_enrichment_name
+
+---
+
+(query
+  (source_command
+    datastore: (ident)))
+
+=======================
+source logs around time 
+=======================
+
+source logs around @'2024-12-30T00:12:23Z' interval 1h
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    around: (timestamp_literal
+      (string))
+    interval: (interval
+      (number))))
+
+========================================
+source logs around time without interval
+========================================
+
+source logs around @'2024-12-30T00:12:23Z'
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    around: (timestamp_literal
+      (string))))
+
+========================
+source logs between time 
+========================
+
+source logs between @'2024-12-30T00:12:23Z' and @'2024-12-30T00:12:23Z'
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    start: (expr
+      (timestamp_literal
+        (string)))
+    end: (expr
+      (timestamp_literal
+        (string)))))
+
+===================================
+source logs between time expression
+===================================
+
+source logs between @'now' - 24h and @'now' + 24h
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    start: (expr
+      (binary_expression
+        left: (expr
+          (timestamp_literal
+            (string)))
+        right: (expr
+          (interval
+            (number)))))
+    end: (expr
+      (binary_expression
+        left: (expr
+          (timestamp_literal
+            (string)))
+        right: (expr
+          (interval
+            (number)))))))
+
+=========================
+source logs last interval
+=========================
+
+source logs last 1h
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    last: (interval
+      (number))))
+
+=======================
+source logs timeshifted
+=======================
+
+source logs timeshifted 1h
+
+---
+
+(query
+  (source_command
+    datastore: (ident)
+    timeshift: (interval
+      (number))))

@@ -1,0 +1,11 @@
+=====
+limit
+=====
+
+limit 1
+
+---
+
+(query
+  (limit_command
+    limit: (number)))

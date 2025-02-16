@@ -1,0 +1,63 @@
+=======
+countby
+=======
+
+countby expr
+
+---
+
+(query
+  (countby_command
+    expr: (expr
+      (keypath
+        (ident)))))
+
+==================
+countby with alias
+==================
+
+countby expr as e
+
+---
+
+(query
+  (countby_command
+    expr: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))))
+
+=================
+countby with into
+=================
+
+countby expr into path
+
+---
+
+(query
+  (countby_command
+    expr: (expr
+      (keypath
+        (ident)))
+    into: (keypath
+      (ident))))
+
+===========================
+countby with alias and into
+===========================
+
+countby expr as a into path
+
+---
+
+(query
+  (countby_command
+    expr: (expr
+      (keypath
+        (ident)))
+    alias: (keypath
+      (ident))
+    into: (keypath
+      (ident))))

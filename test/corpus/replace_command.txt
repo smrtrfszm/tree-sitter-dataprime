@@ -1,0 +1,15 @@
+=======
+replace
+=======
+
+replace key with expr
+
+---
+
+(query
+  (replace_command
+    keypath: (keypath
+      (ident))
+    with: (expr
+      (keypath
+        (ident)))))

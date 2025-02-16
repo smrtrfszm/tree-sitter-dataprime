@@ -1,0 +1,27 @@
+====
+find
+====
+
+find 'a' in path
+
+---
+
+(query
+  (find_command
+    search: (string)
+    keypath: (keypath
+      (ident))))
+
+==========
+text alias
+==========
+
+text 'a' in path
+
+---
+
+(query
+  (find_command
+    search: (string)
+    keypath: (keypath
+      (ident))))

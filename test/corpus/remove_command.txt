@@ -1,0 +1,42 @@
+======
+remove
+======
+
+remove path
+
+---
+
+(query
+  (remove_command
+    keypath: (keypath
+      (ident))))
+
+========================
+remove multiple keypaths
+========================
+
+remove path, path2, path3
+
+---
+
+(query
+  (remove_command
+    keypath: (keypath
+      (ident))
+    keypath: (keypath
+      (ident))
+    keypath: (keypath
+      (ident))))
+
+=======
+r alias
+=======
+
+r path
+
+---
+
+(query
+  (remove_command
+    keypath: (keypath
+      (ident))))

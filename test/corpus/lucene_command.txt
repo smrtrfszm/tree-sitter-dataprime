@@ -1,0 +1,11 @@
+============
+lucene query
+============
+
+lucene 'some query'
+
+---
+
+(query
+  (lucene_command
+    query: (string)))

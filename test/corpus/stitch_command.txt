@@ -1,0 +1,15 @@
+======
+stitch
+======
+
+stitch (source logs) into keypath
+
+---
+
+(query
+  (stitch_command
+    subquery: (query
+      (source_command
+        datastore: (ident)))
+    into: (keypath
+      (ident))))

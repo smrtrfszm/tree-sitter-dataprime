@@ -1,0 +1,29 @@
+====
+move
+====
+
+move path1 to path2
+
+---
+
+(query
+  (move_command
+    keypath: (keypath
+      (ident))
+    to: (keypath
+      (ident))))
+
+=======
+m alias
+=======
+
+m path1 to path2
+
+---
+
+(query
+  (move_command
+    keypath: (keypath
+      (ident))
+    to: (keypath
+      (ident))))

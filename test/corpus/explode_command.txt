@@ -1,0 +1,31 @@
+=======
+explode
+=======
+
+explode expr into path
+
+---
+
+(query
+  (explode_command
+    expr: (expr
+      (keypath
+        (ident)))
+    into: (keypath
+      (ident))))
+
+=====================
+explode with original
+=====================
+
+explode expr into path original discard
+
+---
+
+(query
+  (explode_command
+    expr: (expr
+      (keypath
+        (ident)))
+    into: (keypath
+      (ident))))

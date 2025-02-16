@@ -1,0 +1,23 @@
+=====
+count
+=====
+
+count
+
+---
+
+(query
+  (count_command))
+
+==========
+count into
+==========
+
+count into path
+
+---
+
+(query
+  (count_command
+    into: (keypath
+      (ident))))

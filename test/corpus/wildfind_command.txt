@@ -1,0 +1,23 @@
+========
+wildfind
+========
+
+wildfind 'some query'
+
+---
+
+(query
+  (wildfind_command
+    query: (string)))
+
+==============
+wildtext alias
+==============
+
+wildtext 'some query'
+
+---
+
+(query
+  (wildfind_command
+    query: (string)))

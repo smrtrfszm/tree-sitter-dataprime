@@ -2,35 +2,99 @@
   {
     "type": "aggregate_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "aggregation": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "binary_expression",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "!=",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": "<=",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": ">=",
+            "named": false
+          },
+          {
+            "type": "~",
+            "named": false
+          },
+          {
+            "type": "~~",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -51,191 +115,291 @@
   {
     "type": "bottom_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "groupby": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "limit": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "orderby": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "choose_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "keypath",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "keypath": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "convert_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "count_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "into": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "countby_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
-    "type": "create_commmand",
+    "type": "create_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "from": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "keypath": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "dedupeby_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
+    "fields": {
+      "expr": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "keep": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "distinct_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "enrich_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "table": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "explode_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -297,35 +461,43 @@
   {
     "type": "filter_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "find_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "keypath",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "search": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -350,28 +522,37 @@
   {
     "type": "groupby_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "keypath",
-          "named": true
-        }
-      ]
+    "fields": {
+      "aggregation": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "grouping": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -392,28 +573,69 @@
   {
     "type": "join_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "keypath",
-          "named": true
-        },
-        {
-          "type": "query",
-          "named": true
-        }
-      ]
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "join_path": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "right_query": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "query",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "cross",
+            "named": false
+          },
+          {
+            "type": "full",
+            "named": false
+          },
+          {
+            "type": "left",
+            "named": false
+          },
+          {
+            "type": "right",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -434,80 +656,137 @@
   {
     "type": "limit_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
+    "fields": {
+      "limit": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "lucene_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
+    "fields": {
+      "query": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "move_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "keypath",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "multigroupby_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
+    "fields": {
+      "aggregation": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "group": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "multigroupby_group",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "multigroupby_group",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "grouping": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "orderby_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        }
-      ]
+    "fields": {
+      "key": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -548,7 +827,7 @@
           "named": true
         },
         {
-          "type": "create_commmand",
+          "type": "create_command",
           "named": true
         },
         {
@@ -637,100 +916,189 @@
   {
     "type": "redact_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "keypath",
-          "named": true
-        },
-        {
-          "type": "regexp",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "/",
+            "named": false
+          },
+          {
+            "type": "regex",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "to": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "remove_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "keypath",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "replace_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "keypath",
-          "named": true
-        }
-      ]
+    "fields": {
+      "keypath": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "with": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "source_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "expr",
-          "named": true
-        },
-        {
-          "type": "interval",
-          "named": true
-        },
-        {
-          "type": "timestamp_literal",
-          "named": true
-        }
-      ]
+    "fields": {
+      "around": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "timestamp_literal",
+            "named": true
+          }
+        ]
+      },
+      "datastore": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
+      },
+      "end": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "interval": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "interval",
+            "named": true
+          }
+        ]
+      },
+      "last": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "interval",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expr",
+            "named": true
+          }
+        ]
+      },
+      "timeshift": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "interval",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "stitch_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "keypath",
-          "named": true
-        },
-        {
-          "type": "query",
-          "named": true
-        }
-      ]
+    "fields": {
+      "into": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "subquery": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "query",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -785,16 +1153,17 @@
   {
     "type": "wildfind_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
+    "fields": {
+      "query": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1080,10 +1449,6 @@
     "extra": true
   },
   {
-    "type": "logs",
-    "named": false
-  },
-  {
     "type": "lucene",
     "named": false
   },
@@ -1144,7 +1509,7 @@
     "named": false
   },
   {
-    "type": "regexp",
+    "type": "regex",
     "named": true
   },
   {
@@ -1181,10 +1546,6 @@
   },
   {
     "type": "source",
-    "named": false
-  },
-  {
-    "type": "spans",
     "named": false
   },
   {

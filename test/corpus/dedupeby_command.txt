@@ -1,0 +1,32 @@
+========
+dedupeby
+========
+
+dedupeby a keep 10
+
+---
+
+(query
+  (dedupeby_command
+    expr: (expr
+      (keypath
+        (ident)))
+    keep: (number)))
+
+======================
+dedupeby multiple expr
+======================
+
+dedupeby a, b keep 10
+
+---
+
+(query
+  (dedupeby_command
+    expr: (expr
+      (keypath
+        (ident)))
+    expr: (expr
+      (keypath
+        (ident)))
+    keep: (number)))

@@ -1,0 +1,127 @@
+============
+multigroupby
+============
+
+multigroupby (expr) aggregate count()
+
+---
+
+(query
+  (multigroupby_command
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident))))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+===========================
+multigroupby multiple group
+===========================
+
+multigroupby (expr, expr), (expr, expr) aggregate count()
+
+---
+
+(query
+  (multigroupby_command
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident)))
+      grouping: (expr
+        (keypath
+	  (ident))))
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident)))
+      grouping: (expr
+        (keypath
+	  (ident))))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+======================================
+multigroupby multiple group with alias
+======================================
+
+multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggregate count()
+
+---
+
+(query
+  (multigroupby_command
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident)))
+      alias: (keypath
+        (ident))
+      grouping: (expr
+        (keypath
+	  (ident)))
+      alias: (keypath
+        (ident)))
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident)))
+      alias: (keypath
+        (ident))
+      grouping: (expr
+        (keypath
+	  (ident)))
+      alias: (keypath
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+======================================
+multigroupby with multiple aggregation
+======================================
+
+multigroupby (expr) aggregate count(), count()
+
+---
+
+(query
+  (multigroupby_command
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident))))
+    aggregation: (expr
+      (function
+        (ident)))
+    aggregation: (expr
+      (function
+        (ident)))))
+
+=================================================
+multigroupby with multiple aggregation with alias
+=================================================
+
+multigroupby (expr) aggregate count() as alias, count() as alias
+
+---
+
+(query
+  (multigroupby_command
+    group: (multigroupby_group
+      grouping: (expr
+        (keypath
+	  (ident))))
+    aggregation: (expr
+      (function
+        (ident)))
+    alias: (keypath
+      (ident))
+    aggregation: (expr
+      (function
+        (ident)))
+    alias: (keypath
+      (ident))))

@@ -1,0 +1,16 @@
+======
+enrich
+======
+
+enrich userid into user_enriched using my_users
+
+---
+
+(query
+  (enrich_command
+    value: (keypath
+      (ident))
+    key: (keypath
+      (ident))
+    table: (keypath
+      (ident))))

@@ -1,0 +1,68 @@
+=======
+convert
+=======
+
+convert keypath:type
+
+---
+
+(query
+  (convert_command
+    keypath: (ident)
+    type: (type)))
+
+==============================
+convert with datatypes keyword
+==============================
+
+convert datatypes keypath:type
+
+---
+
+(query
+  (convert_command
+    keypath: (ident)
+    type: (type)))
+
+================
+convert multiple
+================
+
+convert keypath:type, path2:type
+
+---
+
+(query
+  (convert_command
+    keypath: (ident)
+    type: (type)
+    keypath: (ident)
+    type: (type)))
+
+=======================================
+convert multiple with datatypes keyword
+=======================================
+
+convert datatypes keypath:type, path2:type
+
+---
+
+(query
+  (convert_command
+    keypath: (ident)
+    type: (type)
+    keypath: (ident)
+    type: (type)))
+
+==========
+conv alias
+==========
+
+conv keypath:type
+
+---
+
+(query
+  (convert_command
+    keypath: (ident)
+    type: (type)))
