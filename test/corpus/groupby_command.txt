@@ -8,11 +8,9 @@ groupby expr aggregate func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ==========================
@@ -25,13 +23,10 @@ groupby expr, expr aggregate func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
-    grouping: (keypath
-      (ident))
+    grouping: (key)
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 =====================================
@@ -44,17 +39,12 @@ groupby expr as alias, expr as alias aggregate func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
-    alias: (keypath
-      (ident))
-    grouping: (keypath
-      (ident))
-    alias: (keypath
-      (ident))
+    grouping: (key)
+    alias: (key)
+    grouping: (key)
+    alias: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ============================
@@ -67,15 +57,12 @@ groupby expr aggregate func(), func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ==============================
@@ -88,14 +75,11 @@ groupby expr aggregate func() as alias
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
-    alias: (keypath
-      (ident))))
+    alias: (key)))
 
 =======================================
 groupby multiple aggregation with alias
@@ -107,20 +91,15 @@ groupby expr aggregate func() as alias, func() as alias
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
-    alias: (keypath
-      (ident))
+    alias: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
-    alias: (keypath
-      (ident))))
+    alias: (key)))
 
 =================
 groupby agg alias
@@ -132,11 +111,9 @@ groupby expr agg func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 =======================
@@ -149,11 +126,9 @@ groupby expr calculate func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ==================
@@ -166,9 +141,7 @@ groupby expr calc func()
 
 (query
   (groupby_command
-    grouping: (keypath
-      (ident))
+    grouping: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))

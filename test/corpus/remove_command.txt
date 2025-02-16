@@ -8,8 +8,7 @@ remove path
 
 (query
   (remove_command
-    keypath: (keypath
-      (ident))))
+    keypath: (key)))
 
 ========================
 remove multiple keypaths
@@ -21,12 +20,9 @@ remove path, path2, path3
 
 (query
   (remove_command
-    keypath: (keypath
-      (ident))
-    keypath: (keypath
-      (ident))
-    keypath: (keypath
-      (ident))))
+    keypath: (key)
+    keypath: (key)
+    keypath: (key)))
 
 =======
 r alias
@@ -38,5 +34,4 @@ r path
 
 (query
   (remove_command
-    keypath: (keypath
-      (ident))))
+    keypath: (key)))

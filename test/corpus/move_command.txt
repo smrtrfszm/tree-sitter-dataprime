@@ -8,10 +8,8 @@ move path1 to path2
 
 (query
   (move_command
-    keypath: (keypath
-      (ident))
-    to: (keypath
-      (ident))))
+    keypath: (key)
+    to: (key)))
 
 =======
 m alias
@@ -23,7 +21,5 @@ m path1 to path2
 
 (query
   (move_command
-    keypath: (keypath
-      (ident))
-    to: (keypath
-      (ident))))
+    keypath: (key)
+    to: (key)))

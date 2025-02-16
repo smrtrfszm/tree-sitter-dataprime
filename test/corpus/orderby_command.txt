@@ -8,8 +8,7 @@ orderby key
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))
 
 ============
 orderby desc
@@ -21,8 +20,7 @@ orderby key desc
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))
 
 ===========
 orderby asc
@@ -34,8 +32,7 @@ orderby key asc
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))
 
 =====================
 orderby multiple keys
@@ -47,12 +44,9 @@ orderby key, key2, key3
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))
-    key: (keypath
-      (ident))
-    key: (keypath
-      (ident))))
+    key: (key)
+    key: (key)
+    key: (key)))
 
 ============
 sortby alias
@@ -64,8 +58,7 @@ sortby key
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))
 
 ==============
 order by alias
@@ -77,8 +70,7 @@ order by key
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))
 
 =============
 sort by alias
@@ -90,5 +82,4 @@ sort by key
 
 (query
   (orderby_command
-    key: (keypath
-      (ident))))
+    key: (key)))

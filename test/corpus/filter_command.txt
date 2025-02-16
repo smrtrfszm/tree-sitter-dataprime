@@ -8,8 +8,7 @@ filter expr
 
 (query
   (filter_command
-    condition: (keypath
-      (ident))))
+    condition: (key)))
 
 =======
 f alias
@@ -21,8 +20,7 @@ f expr
 
 (query
   (filter_command
-    condition: (keypath
-      (ident))))
+    condition: (key)))
 
 ===========
 where alias
@@ -34,5 +32,4 @@ where expr
 
 (query
   (filter_command
-    condition: (keypath
-      (ident))))
+    condition: (key)))

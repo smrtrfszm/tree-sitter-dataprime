@@ -41,8 +41,7 @@ filter ''
   (filter_command
     condition: (format_string
       (template_substitution
-        (keypath
-          (ident)))
+        (key))
       (string_fragment))))
 
 ==========
@@ -73,14 +72,15 @@ filter path
 
 (query
   (filter_command
-    condition: (keypath
-      (ident)))
+    condition: (key))
   (filter_command
-    condition: (keypath
-      (ident)
-      (ident)
-      (ident)
-      (ident))))
+    condition: (property_expression
+      expression: (property_expression
+        expression: (property_expression
+          expression: (key)
+          property: (property))
+        property: (property))
+      property: (property))))
 
 =========
 functions
@@ -90,47 +90,50 @@ filter function()
 | filter function(arg1, arg2)
 | filter keypath.subpath.function(arg1, arg2)
 | filter $variable.subpath.function(arg1, arg2)
+| filter fn().fn()
 
 ---
 
 (query
   (filter_command
     condition: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments)))
   (filter_command
     condition: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments
-        (keypath
-          (ident))
-        (keypath
-          (ident)))))
+        (key)
+        (key))))
   (filter_command
     condition: (call_expression
-      function: (keypath
-        (ident)
-        (ident)
-        (ident))
+      function: (property_expression
+        expression: (property_expression
+          expression: (key)
+          property: (property))
+        property: (property))
       arguments: (arguments
-        (keypath
-          (ident))
-        (keypath
-          (ident)))))
+        (key)
+        (key))))
   (filter_command
     condition: (call_expression
-      function: (variable
-        (keypath
-          (ident)
-          (ident)
-          (ident)))
+      function: (property_expression
+        expression: (property_expression
+          expression: (variable
+            (ident))
+          property: (property))
+        property: (property))
       arguments: (arguments
-        (keypath
-          (ident))
-        (keypath
-          (ident))))))
+        (key)
+        (key))))
+  (filter_command
+    condition: (call_expression
+      function: (property_expression
+        expression: (call_expression
+          function: (key)
+          arguments: (arguments))
+        property: (property))
+      arguments: (arguments))))
 
 =========
 intervals
@@ -169,14 +172,13 @@ filter path:type
 (query
   (filter_command
     condition: (type_cast
-      keypath: (keypath
-        (ident))
+      keypath: (key)
       type: (type)))
   (filter_command
     condition: (type_cast
-      keypath: (keypath
-        (ident)
-        (ident))
+      keypath: (property_expression
+        expression: (key)
+	property: (property))
       type: (type))))
 
 =====
@@ -196,15 +198,10 @@ filter case {
 (query
   (filter_command
     condition: (case
-      value: (keypath
-        (ident))
-      result: (keypath
-        (ident))))
+      value: (key)
+      result: (key)))
   (filter_command
     condition: (case
-      compare: (keypath
-        (ident))
-      value: (keypath
-        (ident))
-      result: (keypath
-        (ident)))))
+      compare: (key)
+      value: (key)
+      result: (key))))

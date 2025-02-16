@@ -9,11 +9,9 @@ multigroupby (expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (keypath
-        (ident)))
+      grouping: (key))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ===========================
@@ -27,18 +25,13 @@ multigroupby (expr, expr), (expr, expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (keypath
-        (ident))
-      grouping: (keypath
-        (ident)))
+      grouping: (key)
+      grouping: (key))
     group: (multigroupby_group
-      grouping: (keypath
-        (ident))
-      grouping: (keypath
-        (ident)))
+      grouping: (key)
+      grouping: (key))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ======================================
@@ -52,26 +45,17 @@ multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggr
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (keypath
-        (ident))
-      alias: (keypath
-        (ident))
-      grouping: (keypath
-        (ident))
-      alias: (keypath
-        (ident)))
+      grouping: (key)
+      alias: (key)
+      grouping: (key)
+      alias: (key))
     group: (multigroupby_group
-      grouping: (keypath
-        (ident))
-      alias: (keypath
-        (ident))
-      grouping: (keypath
-        (ident))
-      alias: (keypath
-        (ident)))
+      grouping: (key)
+      alias: (key)
+      grouping: (key)
+      alias: (key))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 ======================================
@@ -85,15 +69,12 @@ multigroupby (expr) aggregate count(), count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (keypath
-        (ident)))
+      grouping: (key))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))))
 
 =================================================
@@ -107,17 +88,12 @@ multigroupby (expr) aggregate count() as alias, count() as alias
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (keypath
-        (ident)))
+      grouping: (key))
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
-    alias: (keypath
-      (ident))
+    alias: (key)
     aggregation: (call_expression
-      function: (keypath
-        (ident))
+      function: (key)
       arguments: (arguments))
-    alias: (keypath
-      (ident))))
+    alias: (key)))
