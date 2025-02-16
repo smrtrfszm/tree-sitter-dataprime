@@ -19,10 +19,11 @@ module.exports = grammar({
   supertypes: $ => [
     $.expression,
     $.primary_expression,
+    $.command,
   ],
 
   rules: {
-    query: $ => delimited1($._command, '|'),
+    query: $ => delimited1($.command, '|'),
 
     line_comment: _ => token(seq('//', /[^\r\n]*/)),
 
@@ -130,7 +131,7 @@ module.exports = grammar({
       '}',
     ),
 
-    _command: $ => choice(
+    command: $ => choice(
       $.source_command,
       $.aggregate_command,
       $.block_command,

@@ -7,7 +7,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_command"
+          "name": "command"
         },
         {
           "type": "REPEAT",
@@ -20,7 +20,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_command"
+                "name": "command"
               }
             ]
           }
@@ -922,7 +922,7 @@
         }
       ]
     },
-    "_command": {
+    "command": {
       "type": "CHOICE",
       "members": [
         {
@@ -3360,7 +3360,8 @@
   "inline": [],
   "supertypes": [
     "expression",
-    "primary_expression"
+    "primary_expression",
+    "command"
   ],
   "reserved": {}
 }

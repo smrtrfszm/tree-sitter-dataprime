@@ -1,5 +1,123 @@
 [
   {
+    "type": "command",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "aggregate_command",
+        "named": true
+      },
+      {
+        "type": "block_command",
+        "named": true
+      },
+      {
+        "type": "bottom_command",
+        "named": true
+      },
+      {
+        "type": "choose_command",
+        "named": true
+      },
+      {
+        "type": "convert_command",
+        "named": true
+      },
+      {
+        "type": "count_command",
+        "named": true
+      },
+      {
+        "type": "countby_command",
+        "named": true
+      },
+      {
+        "type": "create_command",
+        "named": true
+      },
+      {
+        "type": "dedupeby_command",
+        "named": true
+      },
+      {
+        "type": "distinct_command",
+        "named": true
+      },
+      {
+        "type": "enrich_command",
+        "named": true
+      },
+      {
+        "type": "explode_command",
+        "named": true
+      },
+      {
+        "type": "extract_command",
+        "named": true
+      },
+      {
+        "type": "filter_command",
+        "named": true
+      },
+      {
+        "type": "find_command",
+        "named": true
+      },
+      {
+        "type": "groupby_command",
+        "named": true
+      },
+      {
+        "type": "join_command",
+        "named": true
+      },
+      {
+        "type": "limit_command",
+        "named": true
+      },
+      {
+        "type": "lucene_command",
+        "named": true
+      },
+      {
+        "type": "move_command",
+        "named": true
+      },
+      {
+        "type": "multigroupby_command",
+        "named": true
+      },
+      {
+        "type": "orderby_command",
+        "named": true
+      },
+      {
+        "type": "redact_command",
+        "named": true
+      },
+      {
+        "type": "remove_command",
+        "named": true
+      },
+      {
+        "type": "replace_command",
+        "named": true
+      },
+      {
+        "type": "source_command",
+        "named": true
+      },
+      {
+        "type": "stitch_command",
+        "named": true
+      },
+      {
+        "type": "wildfind_command",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "expression",
     "named": true,
     "subtypes": [
@@ -886,115 +1004,7 @@
       "required": true,
       "types": [
         {
-          "type": "aggregate_command",
-          "named": true
-        },
-        {
-          "type": "block_command",
-          "named": true
-        },
-        {
-          "type": "bottom_command",
-          "named": true
-        },
-        {
-          "type": "choose_command",
-          "named": true
-        },
-        {
-          "type": "convert_command",
-          "named": true
-        },
-        {
-          "type": "count_command",
-          "named": true
-        },
-        {
-          "type": "countby_command",
-          "named": true
-        },
-        {
-          "type": "create_command",
-          "named": true
-        },
-        {
-          "type": "dedupeby_command",
-          "named": true
-        },
-        {
-          "type": "distinct_command",
-          "named": true
-        },
-        {
-          "type": "enrich_command",
-          "named": true
-        },
-        {
-          "type": "explode_command",
-          "named": true
-        },
-        {
-          "type": "extract_command",
-          "named": true
-        },
-        {
-          "type": "filter_command",
-          "named": true
-        },
-        {
-          "type": "find_command",
-          "named": true
-        },
-        {
-          "type": "groupby_command",
-          "named": true
-        },
-        {
-          "type": "join_command",
-          "named": true
-        },
-        {
-          "type": "limit_command",
-          "named": true
-        },
-        {
-          "type": "lucene_command",
-          "named": true
-        },
-        {
-          "type": "move_command",
-          "named": true
-        },
-        {
-          "type": "multigroupby_command",
-          "named": true
-        },
-        {
-          "type": "orderby_command",
-          "named": true
-        },
-        {
-          "type": "redact_command",
-          "named": true
-        },
-        {
-          "type": "remove_command",
-          "named": true
-        },
-        {
-          "type": "replace_command",
-          "named": true
-        },
-        {
-          "type": "source_command",
-          "named": true
-        },
-        {
-          "type": "stitch_command",
-          "named": true
-        },
-        {
-          "type": "wildfind_command",
+          "type": "command",
           "named": true
         }
       ]
