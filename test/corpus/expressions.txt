@@ -37,15 +37,15 @@ filter ''
   (filter_command
     condition: (string))
   (filter_command
-    condition: (format_string
+    condition: (string_interpolation
       (string_fragment)))
   (filter_command
-    condition: (format_string
+    condition: (string_interpolation
       (template_substitution
         (key))
       (string_fragment)))
   (filter_command
-    condition: (format_string
+    condition: (string_interpolation
       (string_fragment)
       (template_substitution))))
 
@@ -78,7 +78,7 @@ filter @'now'
         right: (number))))
   (filter_command
     condition: (timestamp_literal
-      (format_string
+      (string_interpolation
         (string_fragment)
         (template_substitution
           (key))))))

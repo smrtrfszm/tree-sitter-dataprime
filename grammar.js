@@ -50,7 +50,7 @@ module.exports = grammar({
     false: _ => 'false',
     null: _ => 'null',
 
-    format_string: $ => seq(
+    string_interpolation: $ => seq(
       '`',
       repeat(choice(
         $.string_fragment,
@@ -76,7 +76,7 @@ module.exports = grammar({
       $.false,
       $.null,
 
-      $.format_string,
+      $.string_interpolation,
       $.field_expression,
       $.type_cast,
       $.call_expression,
@@ -167,7 +167,7 @@ module.exports = grammar({
       '@',
       choice(
         $.string,
-        $.format_string,
+        $.string_interpolation,
         $.number,
         seq('(', $.expression, ')'),
       ),
@@ -175,6 +175,7 @@ module.exports = grammar({
 
     interval_unit: _ => choice('d', 'h', 'm', 's', 'ms', 'us', 'ms'),
 
+    // TODO: multi unit
     interval: $ => seq($.number, $.interval_unit),
 
     case: $ => seq(

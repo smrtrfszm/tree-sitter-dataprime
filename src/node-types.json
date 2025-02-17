@@ -146,10 +146,6 @@
         "named": true
       },
       {
-        "type": "format_string",
-        "named": true
-      },
-      {
         "type": "interval",
         "named": true
       },
@@ -167,6 +163,10 @@
       },
       {
         "type": "string",
+        "named": true
+      },
+      {
+        "type": "string_interpolation",
         "named": true
       },
       {
@@ -978,25 +978,6 @@
     }
   },
   {
-    "type": "format_string",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "string_fragment",
-          "named": true
-        },
-        {
-          "type": "template_substitution",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "groupby_command",
     "named": true,
     "fields": {
@@ -1657,6 +1638,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "string_interpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_fragment",
+          "named": true
+        },
+        {
+          "type": "template_substitution",
+          "named": true
+        }
+      ]
     }
   },
   {

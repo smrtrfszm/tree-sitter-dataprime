@@ -120,7 +120,7 @@
       "type": "STRING",
       "value": "null"
     },
-    "format_string": {
+    "string_interpolation": {
       "type": "SEQ",
       "members": [
         {
@@ -220,7 +220,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "format_string"
+          "name": "string_interpolation"
         },
         {
           "type": "SYMBOL",
@@ -1053,7 +1053,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "format_string"
+              "name": "string_interpolation"
             },
             {
               "type": "SYMBOL",

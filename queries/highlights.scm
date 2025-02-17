@@ -3,7 +3,7 @@
 
 (number) @number
 (string) @string
-(format_string) @string
+(string_interpolation) @string
 (type) @type
 (variable) @variable
 (key) @variable
