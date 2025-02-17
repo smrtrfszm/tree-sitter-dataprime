@@ -94,8 +94,10 @@ module.exports = grammar({
 
     field_expression: $ => seq(
       field('expression', $.expression),
-      '.',
-      field('field', alias($.identifier, $.field))
+      choice(
+        seq('.', field('field', alias($.identifier, $.field))),
+        seq('[', field('field', $.string), ']'),
+      ),
     ),
 
     _keypath: $ => choice(

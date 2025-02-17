@@ -68,6 +68,8 @@ keypaths
 filter path
 | filter path.path2.path3.path4
 | filter $d.message
+| filter $d
+| filter path['subpath']
 
 ---
 
@@ -86,7 +88,14 @@ filter path
     condition: (field_expression
       expression: (variable
         (identifier))
-      field: (field))))
+      field: (field)))
+  (filter_command
+    condition: (variable
+      (identifier)))
+  (filter_command
+    condition: (field_expression
+      expression: (key)
+      field: (string))))
 
 =========
 functions
