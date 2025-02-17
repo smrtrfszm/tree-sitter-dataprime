@@ -7,7 +7,7 @@
 (type) @type
 (variable) @variable
 (key) @variable
-(property) @variable.member
+(field) @variable.member
 (true) @boolean
 (false) @boolean
 (null) @constant.builtin

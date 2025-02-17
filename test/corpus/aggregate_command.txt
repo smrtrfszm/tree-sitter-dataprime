@@ -34,9 +34,9 @@ aggregate count as cnt.asd
 (query
   (aggregate_command
     aggregation: (key)
-    alias: (property_expression
+    alias: (field_expression
       expression: (key)
-      property: (property))))
+      field: (field))))
 
 ==================
 aggregate multiple

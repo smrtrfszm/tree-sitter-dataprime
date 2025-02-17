@@ -77,7 +77,7 @@ module.exports = grammar({
       $.null,
 
       $.format_string,
-      $.property_expression,
+      $.field_expression,
       $.type_cast,
       $.call_expression,
       $.binary_expression,
@@ -92,16 +92,16 @@ module.exports = grammar({
 
     variable: $ => seq('$', $.identifier),
 
-    property_expression: $ => seq(
+    field_expression: $ => seq(
       field('expression', $.expression),
       '.',
-      field('property', alias($.identifier, $.property))
+      field('field', alias($.identifier, $.field))
     ),
 
     _keypath: $ => choice(
       $.variable,
       alias($.identifier, $.key),
-      $.property_expression,
+      $.field_expression,
     ),
 
     call_expression: $ => seq(

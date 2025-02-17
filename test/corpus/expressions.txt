@@ -75,18 +75,18 @@ filter path
   (filter_command
     condition: (key))
   (filter_command
-    condition: (property_expression
-      expression: (property_expression
-        expression: (property_expression
+    condition: (field_expression
+      expression: (field_expression
+        expression: (field_expression
           expression: (key)
-          property: (property))
-        property: (property))
-      property: (property)))
+          field: (field))
+        field: (field))
+      field: (field)))
   (filter_command
-    condition: (property_expression
+    condition: (field_expression
       expression: (variable
         (identifier))
-      property: (property))))
+      field: (field))))
 
 =========
 functions
@@ -113,19 +113,19 @@ filter function()
         (key))))
   (filter_command
     condition: (call_expression
-      expression: (property_expression
+      expression: (field_expression
         expression: (key)
-	property: (property))
+	field: (field))
       function: (identifier)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      expression: (property_expression
+      expression: (field_expression
         expression: (variable
           (identifier))
-        property: (property))
+        field: (field))
       function: (identifier)
       arguments: (arguments
         (key)
@@ -183,9 +183,9 @@ filter path:type
       type: (type)))
   (filter_command
     condition: (type_cast
-      keypath: (property_expression
+      keypath: (field_expression
         expression: (key)
-	property: (property))
+	field: (field))
       type: (type))))
 
 =====

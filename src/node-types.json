@@ -142,6 +142,10 @@
         "named": true
       },
       {
+        "type": "field_expression",
+        "named": true
+      },
+      {
         "type": "format_string",
         "named": true
       },
@@ -159,10 +163,6 @@
       },
       {
         "type": "number",
-        "named": true
-      },
-      {
-        "type": "property_expression",
         "named": true
       },
       {
@@ -206,11 +206,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -256,6 +256,10 @@
         "types": [
           {
             "type": "!=",
+            "named": false
+          },
+          {
+            "type": "%",
             "named": false
           },
           {
@@ -348,11 +352,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -490,11 +494,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -508,11 +512,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -558,11 +562,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -582,11 +586,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -610,11 +614,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -644,11 +648,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -694,11 +698,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -728,11 +732,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -746,11 +750,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -764,11 +768,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -798,11 +802,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -882,11 +886,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -924,6 +928,32 @@
     }
   },
   {
+    "type": "field_expression",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "field": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "filter_command",
     "named": true,
     "fields": {
@@ -948,11 +978,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1011,11 +1041,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1074,11 +1104,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1092,11 +1122,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1180,11 +1210,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1198,11 +1228,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1232,11 +1262,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1266,11 +1296,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1322,32 +1352,6 @@
     }
   },
   {
-    "type": "property_expression",
-    "named": true,
-    "fields": {
-      "expression": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "property": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "property",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "query",
     "named": true,
     "root": true,
@@ -1372,11 +1376,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1435,11 +1439,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1459,11 +1463,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1503,11 +1507,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1521,11 +1525,11 @@
         "required": false,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1621,11 +1625,11 @@
         "required": true,
         "types": [
           {
-            "type": "key",
+            "type": "field_expression",
             "named": true
           },
           {
-            "type": "property_expression",
+            "type": "key",
             "named": true
           },
           {
@@ -1739,6 +1743,10 @@
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": "%",
     "named": false
   },
   {
@@ -1991,6 +1999,10 @@
     "named": true
   },
   {
+    "type": "field",
+    "named": true
+  },
+  {
     "type": "filter",
     "named": false
   },
@@ -2118,10 +2130,6 @@
   {
     "type": "preserve",
     "named": false
-  },
-  {
-    "type": "property",
-    "named": true
   },
   {
     "type": "r",
