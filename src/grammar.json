@@ -1011,8 +1011,37 @@
       ]
     },
     "interval_unit": {
-      "type": "PATTERN",
-      "value": "[dhms]"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "d"
+        },
+        {
+          "type": "STRING",
+          "value": "h"
+        },
+        {
+          "type": "STRING",
+          "value": "m"
+        },
+        {
+          "type": "STRING",
+          "value": "s"
+        },
+        {
+          "type": "STRING",
+          "value": "ms"
+        },
+        {
+          "type": "STRING",
+          "value": "us"
+        },
+        {
+          "type": "STRING",
+          "value": "ms"
+        }
+      ]
     },
     "interval": {
       "type": "SEQ",

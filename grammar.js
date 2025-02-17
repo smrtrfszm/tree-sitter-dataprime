@@ -155,7 +155,7 @@ module.exports = grammar({
       ),
     ),
 
-    interval_unit: _ => /[dhms]/,
+    interval_unit: _ => choice('d', 'h', 'm', 's', 'ms', 'us', 'ms'),
 
     interval: $ => seq($.number, $.interval_unit),
 
