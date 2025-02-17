@@ -27,6 +27,7 @@ filter ''
 | filter 'some string'
 | filter `asdfsadf`
 | filter `{asd} asdfsadf`
+| filter `empty {}`
 
 ---
 
@@ -42,7 +43,11 @@ filter ''
     condition: (format_string
       (template_substitution
         (key))
-      (string_fragment))))
+      (string_fragment)))
+  (filter_command
+    condition: (format_string
+      (string_fragment)
+      (template_substitution))))
 
 ==========
 timestamps
@@ -50,16 +55,33 @@ timestamps
 
 filter @'now'
 | filter @'2025-02-16T01:41:07Z'
+| filter @123123
+| filter @(ts * 1000)
+| filter @`2025-{month}`
 
 ---
 
 (query
   (filter_command
     condition: (timestamp_literal
-     (string)))
+      (string)))
   (filter_command
     condition: (timestamp_literal
-     (string))))
+      (string)))
+  (filter_command
+    condition: (timestamp_literal
+      (number)))
+  (filter_command
+    condition: (timestamp_literal
+      (binary_expression
+        left: (key)
+        right: (number))))
+  (filter_command
+    condition: (timestamp_literal
+      (format_string
+        (string_fragment)
+        (template_substitution
+          (key))))))
 
 ========
 keypaths

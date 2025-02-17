@@ -61,7 +61,7 @@ module.exports = grammar({
 
     template_substitution: $ => seq(
       '{',
-      $.expression,
+      optional($.expression),
       '}',
     ),
 
@@ -145,7 +145,15 @@ module.exports = grammar({
       field('type', $.type),
     ),
 
-    timestamp_literal: $ => seq('@', $.string),
+    timestamp_literal: $ => seq(
+      '@',
+      choice(
+        $.string,
+        $.format_string,
+        $.number,
+        seq('(', $.expression, ')'),
+      ),
+    ),
 
     interval_unit: _ => /[dhms]/,
 
