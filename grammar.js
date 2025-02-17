@@ -292,7 +292,7 @@ module.exports = grammar({
     choose_command: $ => seq(
       choice('choose', 'select'),
       comma_separatedq1(
-        field('keypath', $._keypath),
+        field('keypath', $.expression),
         optionalq(
           'as',
           field('alias', $._keypath),

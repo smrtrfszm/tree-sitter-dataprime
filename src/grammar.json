@@ -1820,7 +1820,7 @@
                   "name": "keypath",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "expression"
                   }
                 },
                 {
@@ -1867,7 +1867,7 @@
                         "name": "keypath",
                         "content": {
                           "type": "SYMBOL",
-                          "name": "_keypath"
+                          "name": "expression"
                         }
                       },
                       {

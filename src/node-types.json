@@ -520,15 +520,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
-            "named": true
-          },
-          {
-            "type": "variable",
+            "type": "expression",
             "named": true
           }
         ]
