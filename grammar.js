@@ -84,9 +84,27 @@ module.exports = grammar({
       $.case,
     ),
 
+    named_argument: $ => seq(
+      field('name', $.identifier),
+      '=',
+      field('value', choice(
+        $.expression,
+        // TODO: move this into expression
+        $.regex,
+      )),
+    ),
+
     arguments: $ => seq(
       '(',
-      optional(comma_separatedq1($.expression)),
+      optional(comma_separatedq1(
+        choice(
+          $.named_argument,
+          choice(
+            $.expression,
+            $.regex,
+          ),
+        ),
+      )),
       ')',
     ),
 
@@ -386,19 +404,8 @@ module.exports = grammar({
     ),
 
     extract_function: $ => seq(
-      field('type', $.identifier),
-      '(',
-      optional(comma_separatedq1($.extract_argument)),
-      ')',
-    ),
-
-    extract_argument: $ => seq(
-      field('argument', $.identifier),
-      '=',
-      field('value', choice(
-        $.expression,
-        $.regex,
-      )),
+      field('function', $.identifier),
+      field('arguments', $.arguments),
     ),
 
     filter_command: $ => seq(

@@ -249,3 +249,58 @@ filter case {
       (case_clause
         value: (key)
         result: (key)))))
+
+=========
+arguments
+=========
+
+filter empty()
+| filter single('arg')
+| filter multiple('arg1', 2)
+| filter singleNamed(name='arg')
+| filter multipleNamed(name='arg', nameTwo=2)
+| filter both(name='arg1', 2)
+
+---
+
+(query
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments)))
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (string))))
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (string)
+        (number))))
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (named_argument
+          name: (identifier)
+          value: (string)))))
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (named_argument
+          name: (identifier)
+          value: (string))
+        (named_argument
+          name: (identifier)
+          value: (number)))))
+  (filter_command
+    condition: (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (named_argument
+          name: (identifier)
+          value: (string))
+        (number)))))

@@ -11,11 +11,12 @@ extract message into my_data using regexp(e=/regexp/)
     expr: (key)
     into: (key)
     extract_function: (extract_function
-      type: (identifier)
-      (extract_argument
-        argument: (identifier)
-        value: (regex
-          (regex_pattern))))))
+      function: (identifier)
+      arguments: (arguments
+        (named_argument
+          name: (identifier)
+          value: (regex
+            (regex_pattern)))))))
 
 =========================
 extract multiple argument
@@ -30,14 +31,15 @@ extract message into my_data using regexp(e=/regexp/, b='asd')
     expr: (key)
     into: (key)
     extract_function: (extract_function
-      type: (identifier)
-        (extract_argument
-          argument: (identifier)
+      function: (identifier)
+      arguments: (arguments
+        (named_argument
+          name: (identifier)
           value: (regex
             (regex_pattern)))
-        (extract_argument
-          argument: (identifier)
-          value: (string)))))
+        (named_argument
+          name: (identifier)
+          value: (string))))))
 
 =================
 extract datatypes
@@ -52,7 +54,8 @@ extract msg into data using kv() datatypes field:number
     expr: (key)
     into: (key)
     extract_function: (extract_function
-      type: (identifier))
+      function: (identifier)
+      arguments: (arguments))
     datatype: (type_cast
       keypath: (key)
       type: (type))))
@@ -70,7 +73,8 @@ extract msg into data using kv() datatypes field:number, field2:number
     expr: (key)
     into: (key)
     extract_function: (extract_function
-      type: (identifier))
+      function: (identifier)
+      arguments: (arguments))
     datatype: (type_cast
       keypath: (key)
       type: (type))

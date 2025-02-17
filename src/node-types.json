@@ -232,6 +232,14 @@
         {
           "type": "expression",
           "named": true
+        },
+        {
+          "type": "named_argument",
+          "named": true
+        },
+        {
+          "type": "regex",
+          "named": true
         }
       ]
     }
@@ -818,36 +826,6 @@
     }
   },
   {
-    "type": "extract_argument",
-    "named": true,
-    "fields": {
-      "argument": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          },
-          {
-            "type": "regex",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "extract_command",
     "named": true,
     "fields": {
@@ -905,7 +883,17 @@
     "type": "extract_function",
     "named": true,
     "fields": {
-      "type": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arguments",
+            "named": true
+          }
+        ]
+      },
+      "function": {
         "multiple": false,
         "required": true,
         "types": [
@@ -915,16 +903,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "extract_argument",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1324,6 +1302,36 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "named_argument",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           }
         ]
