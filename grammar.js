@@ -40,6 +40,7 @@ module.exports = grammar({
 
     identifier: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
     number: _ => /-?([0-9]\.)?[0-9]+/,
+    // TODO: escapes
     string: _ => /'[^']*'/,
     string_fragment: _ => /[^`{}]+/,
     type: _ => /[a-z]+/,
@@ -50,6 +51,7 @@ module.exports = grammar({
     false: _ => 'false',
     null: _ => 'null',
 
+    // TODO: escapes
     string_interpolation: $ => seq(
       '`',
       repeat(choice(
