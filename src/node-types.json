@@ -104,6 +104,10 @@
         "named": true
       },
       {
+        "type": "roundtime_command",
+        "named": true
+      },
+      {
         "type": "source_command",
         "named": true
       },
@@ -1481,6 +1485,58 @@
     }
   },
   {
+    "type": "roundtime_command",
+    "named": true,
+    "fields": {
+      "interval": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "interval",
+            "named": true
+          }
+        ]
+      },
+      "into": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "key",
+            "named": true
+          },
+          {
+            "type": "property_expression",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      },
+      "source": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "key",
+            "named": true
+          },
+          {
+            "type": "property_expression",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_command",
     "named": true,
     "fields": {
@@ -2089,6 +2145,10 @@
   },
   {
     "type": "right",
+    "named": false
+  },
+  {
+    "type": "roundtime",
     "named": false
   },
   {

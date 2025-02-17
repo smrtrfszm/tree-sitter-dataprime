@@ -1,0 +1,59 @@
+=========
+roundtime
+=========
+
+roundtime to 1h
+
+---
+
+(query
+  (roundtime_command
+    interval: (interval
+      (number)
+      (interval_unit))))
+
+=====================
+roundtime with source
+=====================
+
+roundtime source to 1h
+
+---
+
+(query
+  (roundtime_command
+    source: (key)
+    interval: (interval
+      (number)
+      (interval_unit))))
+
+===================
+roundtime with into
+===================
+
+roundtime to 1h into key
+
+---
+
+(query
+  (roundtime_command
+    interval: (interval
+      (number)
+      (interval_unit))
+    into: (key)))
+
+==============================
+roundtime with source and into
+==============================
+
+roundtime source to 1h into key
+
+---
+
+(query
+  (roundtime_command
+    source: (key)
+    interval: (interval
+      (number)
+      (interval_unit))
+    into: (key)))

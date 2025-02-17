@@ -192,6 +192,7 @@ module.exports = grammar({
       $.redact_command,
       $.remove_command,
       $.replace_command,
+      $.roundtime_command,
       $.stitch_command,
       $.wildfind_command,
     ),
@@ -535,6 +536,17 @@ module.exports = grammar({
       field('keypath', $._keypath),
       'with',
       field('with', $.expression),
+    ),
+
+    roundtime_command: $ => seq(
+      'roundtime',
+      optional(field('source', $._keypath)),
+      'to',
+      field('interval', $.interval),
+      optionalq(
+        'into',
+        field('into', $._keypath),
+      ),
     ),
 
     stitch_command: $ => seq(
