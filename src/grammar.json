@@ -339,6 +339,10 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "variable"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",

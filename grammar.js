@@ -99,6 +99,7 @@ module.exports = grammar({
     ),
 
     _keypath: $ => choice(
+      $.variable,
       alias($.identifier, $.key),
       $.property_expression,
     ),
