@@ -77,7 +77,7 @@ module.exports = grammar({
       $.true,
       $.false,
       $.null,
-
+      $.regex,
       $.string_interpolation,
       $.field_expression,
       $.type_cast,
@@ -89,11 +89,7 @@ module.exports = grammar({
     named_argument: $ => seq(
       field('name', $.identifier),
       '=',
-      field('value', choice(
-        $.expression,
-        // TODO: move this into expression
-        $.regex,
-      )),
+      field('value', $.expression),
     ),
 
     arguments: $ => seq(
@@ -101,10 +97,7 @@ module.exports = grammar({
       optional(comma_separatedq1(
         choice(
           $.named_argument,
-          choice(
-            $.expression,
-            $.regex,
-          ),
+          $.expression,
         ),
       )),
       ')',

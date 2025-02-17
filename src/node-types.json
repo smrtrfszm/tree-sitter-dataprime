@@ -162,6 +162,10 @@
         "named": true
       },
       {
+        "type": "regex",
+        "named": true
+      },
+      {
         "type": "string",
         "named": true
       },
@@ -235,10 +239,6 @@
         },
         {
           "type": "named_argument",
-          "named": true
-        },
-        {
-          "type": "regex",
           "named": true
         }
       ]
@@ -1301,10 +1301,6 @@
         "types": [
           {
             "type": "expression",
-            "named": true
-          },
-          {
-            "type": "regex",
             "named": true
           }
         ]

@@ -220,6 +220,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "regex"
+        },
+        {
+          "type": "SYMBOL",
           "name": "string_interpolation"
         },
         {
@@ -263,17 +267,8 @@
           "type": "FIELD",
           "name": "value",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "expression"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "regex"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "expression"
           }
         }
       ]
@@ -302,17 +297,8 @@
                           "name": "named_argument"
                         },
                         {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "expression"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "regex"
-                            }
-                          ]
+                          "type": "SYMBOL",
+                          "name": "expression"
                         }
                       ]
                     }
@@ -338,17 +324,8 @@
                                 "name": "named_argument"
                               },
                               {
-                                "type": "CHOICE",
-                                "members": [
-                                  {
-                                    "type": "SYMBOL",
-                                    "name": "expression"
-                                  },
-                                  {
-                                    "type": "SYMBOL",
-                                    "name": "regex"
-                                  }
-                                ]
+                                "type": "SYMBOL",
+                                "name": "expression"
                               }
                             ]
                           }
