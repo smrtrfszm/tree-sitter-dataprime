@@ -1022,30 +1022,6 @@
     }
   },
   {
-    "type": "interval",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "interval_unit",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "interval_unit",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "join_command",
     "named": true,
     "fields": {
@@ -1979,10 +1955,6 @@
     "named": false
   },
   {
-    "type": "d",
-    "named": false
-  },
-  {
     "type": "datatype",
     "named": false
   },
@@ -2067,16 +2039,16 @@
     "named": false
   },
   {
-    "type": "h",
-    "named": false
-  },
-  {
     "type": "identifier",
     "named": true
   },
   {
     "type": "in",
     "named": false
+  },
+  {
+    "type": "interval",
+    "named": true
   },
   {
     "type": "interval",
@@ -2137,10 +2109,6 @@
   },
   {
     "type": "move",
-    "named": false
-  },
-  {
-    "type": "ms",
     "named": false
   },
   {
@@ -2208,10 +2176,6 @@
     "named": false
   },
   {
-    "type": "s",
-    "named": false
-  },
-  {
     "type": "select",
     "named": false
   },
@@ -2262,10 +2226,6 @@
   {
     "type": "type",
     "named": true
-  },
-  {
-    "type": "us",
-    "named": false
   },
   {
     "type": "using",

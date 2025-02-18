@@ -1158,51 +1158,9 @@
         }
       ]
     },
-    "interval_unit": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "d"
-        },
-        {
-          "type": "STRING",
-          "value": "h"
-        },
-        {
-          "type": "STRING",
-          "value": "m"
-        },
-        {
-          "type": "STRING",
-          "value": "s"
-        },
-        {
-          "type": "STRING",
-          "value": "ms"
-        },
-        {
-          "type": "STRING",
-          "value": "us"
-        },
-        {
-          "type": "STRING",
-          "value": "ms"
-        }
-      ]
-    },
     "interval": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "interval_unit"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "-?([0-9]+(d|h|m|s|ms|us|ns))+"
     },
     "case": {
       "type": "SEQ",

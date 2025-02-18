@@ -57,7 +57,6 @@ module.exports = grammar({
     type: _ => /[a-z]+/,
     regex_pattern: _ => /[^/]*/,
     regex: $ => seq('/', $.regex_pattern, token.immediate('/')),
-
     true: _ => 'true',
     false: _ => 'false',
     null: _ => 'null',
@@ -181,10 +180,7 @@ module.exports = grammar({
       ),
     ),
 
-    interval_unit: _ => choice('d', 'h', 'm', 's', 'ms', 'us', 'ms'),
-
-    // TODO: multi unit
-    interval: $ => seq($.number, $.interval_unit),
+    interval: _ => /-?([0-9]+(d|h|m|s|ms|us|ns))+/,
 
     case: $ => seq(
       choice('case', 'case_contains', 'case_equals', 'case_greatherthan', 'case_lessthan'),

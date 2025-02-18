@@ -8,9 +8,7 @@ roundtime to 1h
 
 (query
   (roundtime_command
-    interval: (interval
-      (number)
-      (interval_unit))))
+    interval: (interval)))
 
 =====================
 roundtime with source
@@ -23,9 +21,7 @@ roundtime source to 1h
 (query
   (roundtime_command
     source: (key)
-    interval: (interval
-      (number)
-      (interval_unit))))
+    interval: (interval)))
 
 ===================
 roundtime with into
@@ -37,9 +33,7 @@ roundtime to 1h into key
 
 (query
   (roundtime_command
-    interval: (interval
-      (number)
-      (interval_unit))
+    interval: (interval)
     into: (key)))
 
 ==============================
@@ -53,7 +47,5 @@ roundtime source to 1h into key
 (query
   (roundtime_command
     source: (key)
-    interval: (interval
-      (number)
-      (interval_unit))
+    interval: (interval)
     into: (key)))

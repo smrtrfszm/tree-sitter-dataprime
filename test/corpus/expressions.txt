@@ -189,26 +189,27 @@ filter 1s
 | filter 2m
 | filter 3h
 | filter 4d
+| filter -123d
+| filter 7d6h5m4s3ms2us1ns
+| filter -32d23h1m12s
 
 ---
 
 (query
   (filter_command
-    condition: (interval
-      (number)
-      (interval_unit)))
+    condition: (interval))
   (filter_command
-    condition: (interval
-      (number)
-      (interval_unit)))
+    condition: (interval))
   (filter_command
-    condition: (interval
-      (number)
-      (interval_unit)))
+    condition: (interval))
   (filter_command
-    condition: (interval
-      (number)
-      (interval_unit))))
+    condition: (interval))
+  (filter_command
+    condition: (interval))
+  (filter_command
+    condition: (interval))
+  (filter_command
+    condition: (interval)))
 
 =========
 typecasts
