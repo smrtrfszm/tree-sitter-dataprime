@@ -78,8 +78,10 @@
 
 [
   "@"
-  "$"
 ] @punctuation.special
+
+(variable
+  "$" @punctuation.special)
 
 [
  "a"
