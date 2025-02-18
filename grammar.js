@@ -38,11 +38,22 @@ module.exports = grammar({
       '/'
     )),
 
+    escape_sequence: _ => token(seq(
+      '\\',
+      choice('\'', '{', '}', '`', 'r', 'n', 't', 'f', 'b', '\\'),
+    )),
+
+    string: $ => seq(
+      '\'',
+      repeat(choice(
+        $.escape_sequence,
+        token.immediate(/[^'\\\n]/),
+      )),
+      '\'',
+    ),
+
     identifier: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
     number: _ => /-?([0-9]\.)?[0-9]+/,
-    // TODO: escapes
-    string: _ => /'[^']*'/,
-    string_fragment: _ => /[^`{}]+/,
     type: _ => /[a-z]+/,
     regex_pattern: _ => /[^/]*/,
     regex: $ => seq('/', $.regex_pattern, token.immediate('/')),
@@ -51,20 +62,22 @@ module.exports = grammar({
     false: _ => 'false',
     null: _ => 'null',
 
-    // TODO: escapes
-    string_interpolation: $ => seq(
-      '`',
-      repeat(choice(
-        $.string_fragment,
-        $.template_substitution,
-      )),
-      '`',
-    ),
+    string_fragment: _ => token.immediate(/[^`\\{\n]+/),
 
     template_substitution: $ => seq(
       '{',
       optional($.expression),
       '}',
+    ),
+
+    string_interpolation: $ => seq(
+      '`',
+      repeat(choice(
+        $.escape_sequence,
+        $.string_fragment,
+        $.template_substitution,
+      )),
+      '`',
     ),
 
     expression: $ => choice(

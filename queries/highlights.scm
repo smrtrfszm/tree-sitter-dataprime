@@ -4,6 +4,7 @@
 (number) @number
 (string) @string
 (string_interpolation) @string
+(escape_sequence) @string.escape
 (type) @type
 (variable) @variable
 (key) @variable

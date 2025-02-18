@@ -1637,6 +1637,21 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string_interpolation",
     "named": true,
     "fields": {},
@@ -1644,6 +1659,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
         {
           "type": "string_fragment",
           "named": true
@@ -1756,6 +1775,10 @@
   },
   {
     "type": "&&",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -1992,6 +2015,10 @@
     "named": false
   },
   {
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
     "type": "exists",
     "named": false
   },
@@ -2207,10 +2234,6 @@
   {
     "type": "stitch",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
   },
   {
     "type": "string_fragment",

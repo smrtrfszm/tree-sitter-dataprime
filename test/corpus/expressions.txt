@@ -25,9 +25,11 @@ strings
 
 filter ''
 | filter 'some string'
+| filter '\'\\'
 | filter `asdfsadf`
 | filter `{asd} asdfsadf`
 | filter `empty {}`
+| filter `'\`\\\{`
 
 ---
 
@@ -36,6 +38,10 @@ filter ''
     condition: (string))
   (filter_command
     condition: (string))
+  (filter_command
+    condition: (string
+      (escape_sequence)
+      (escape_sequence)))
   (filter_command
     condition: (string_interpolation
       (string_fragment)))
@@ -47,7 +53,13 @@ filter ''
   (filter_command
     condition: (string_interpolation
       (string_fragment)
-      (template_substitution))))
+      (template_substitution)))
+  (filter_command
+    condition: (string_interpolation
+      (string_fragment)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence))))
 
 ==========
 timestamps
