@@ -9,7 +9,8 @@ find 'a' in path
 (query
   (find_command
     search: (string)
-    keypath: (key)))
+    keypath: (key
+      (identifier))))
 
 ==========
 text alias
@@ -22,4 +23,5 @@ text 'a' in path
 (query
   (find_command
     search: (string)
-    keypath: (key)))
+    keypath: (key
+      (identifier))))

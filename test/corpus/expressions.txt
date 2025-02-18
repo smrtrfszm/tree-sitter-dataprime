@@ -48,7 +48,8 @@ filter ''
   (filter_command
     condition: (string_interpolation
       (template_substitution
-        (key))
+        (key
+	  (identifier)))
       (string_fragment)))
   (filter_command
     condition: (string_interpolation
@@ -86,14 +87,16 @@ filter @'now'
   (filter_command
     condition: (timestamp_literal
       (binary_expression
-        left: (key)
+        left: (key
+	  (identifier))
         right: (number))))
   (filter_command
     condition: (timestamp_literal
       (string_interpolation
         (string_fragment)
         (template_substitution
-          (key))))))
+          (key
+	    (identifier)))))))
 
 ========
 keypaths
@@ -104,32 +107,39 @@ filter path
 | filter $d.message
 | filter $d
 | filter path['subpath']
+| filter right=>$d
 
 ---
 
 (query
   (filter_command
-    condition: (key))
+    condition: (key
+      (identifier)))
   (filter_command
     condition: (field_expression
       expression: (field_expression
         expression: (field_expression
-          expression: (key)
+          expression: (key
+	    (identifier))
           field: (field))
         field: (field))
       field: (field)))
   (filter_command
     condition: (field_expression
-      expression: (variable
+      expression: (key
         (identifier))
       field: (field)))
   (filter_command
-    condition: (variable
+    condition: (key
       (identifier)))
   (filter_command
     condition: (field_expression
-      expression: (key)
-      field: (string))))
+      expression: (key
+        (identifier))
+      field: (string)))
+  (filter_command
+    condition: (key
+      (identifier))))
 
 =========
 functions
@@ -152,27 +162,34 @@ filter function()
     condition: (call_expression
       function: (identifier)
       arguments: (arguments
-        (key)
-        (key))))
+        (key
+          (identifier))
+        (key
+          (identifier)))))
   (filter_command
     condition: (call_expression
       expression: (field_expression
-        expression: (key)
-	field: (field))
-      function: (identifier)
-      arguments: (arguments
-        (key)
-        (key))))
-  (filter_command
-    condition: (call_expression
-      expression: (field_expression
-        expression: (variable
+        expression: (key
           (identifier))
         field: (field))
       function: (identifier)
       arguments: (arguments
-        (key)
-        (key))))
+        (key
+	  (identifier))
+        (key
+	  (identifier)))))
+  (filter_command
+    condition: (call_expression
+      expression: (field_expression
+        expression: (key
+          (identifier))
+        field: (field))
+      function: (identifier)
+      arguments: (arguments
+        (key
+	  (identifier))
+        (key
+	  (identifier)))))
   (filter_command
     condition: (call_expression
       expression: (call_expression
@@ -223,12 +240,14 @@ filter path:type
 (query
   (filter_command
     condition: (type_cast
-      keypath: (key)
+      keypath: (key
+        (identifier))
       type: (type)))
   (filter_command
     condition: (type_cast
       keypath: (field_expression
-        expression: (key)
+        expression: (key
+	  (identifier))
 	field: (field))
       type: (type))))
 
@@ -251,17 +270,24 @@ filter case {
   (filter_command
     condition: (case
       (case_clause
-        value: (key)
-        result: (key))
+        value: (key
+	  (identifier))
+        result: (key
+	  (identifier)))
       (case_clause
-        value: (key)
-        result: (key))))
+        value: (key
+	  (identifier))
+        result: (key
+	  (identifier)))))
   (filter_command
     condition: (case
-      subject: (key)
+      subject: (key
+        (identifier))
       (case_clause
-        value: (key)
-        result: (key)))))
+        value: (key
+	  (identifier))
+        result: (key
+	  (identifier))))))
 
 =========
 arguments

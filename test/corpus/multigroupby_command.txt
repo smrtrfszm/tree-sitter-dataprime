@@ -9,7 +9,8 @@ multigroupby (expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (key))
+      grouping: (key
+        (identifier)))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))))
@@ -25,11 +26,15 @@ multigroupby (expr, expr), (expr, expr) aggregate count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (key)
-      grouping: (key))
+      grouping: (key
+        (identifier))
+      grouping: (key
+        (identifier)))
     group: (multigroupby_group
-      grouping: (key)
-      grouping: (key))
+      grouping: (key
+        (identifier))
+      grouping: (key
+        (identifier)))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))))
@@ -45,15 +50,23 @@ multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggr
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (key)
-      alias: (key)
-      grouping: (key)
-      alias: (key))
+      grouping: (key
+        (identifier))
+      alias: (key
+        (identifier))
+      grouping: (key
+        (identifier))
+      alias: (key
+        (identifier)))
     group: (multigroupby_group
-      grouping: (key)
-      alias: (key)
-      grouping: (key)
-      alias: (key))
+      grouping: (key
+        (identifier))
+      alias: (key
+        (identifier))
+      grouping: (key
+        (identifier))
+      alias: (key
+        (identifier)))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))))
@@ -69,7 +82,8 @@ multigroupby (expr) aggregate count(), count()
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (key))
+      grouping: (key
+        (identifier)))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))
@@ -88,12 +102,15 @@ multigroupby (expr) aggregate count() as alias, count() as alias
 (query
   (multigroupby_command
     group: (multigroupby_group
-      grouping: (key))
+      grouping: (key
+        (identifier)))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))
-    alias: (key)
+    alias: (key
+      (identifier))
     aggregation: (call_expression
       function: (identifier)
       arguments: (arguments))
-    alias: (key)))
+    alias: (key
+      (identifier))))

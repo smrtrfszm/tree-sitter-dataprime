@@ -8,5 +8,7 @@ replace key with expr
 
 (query
   (replace_command
-    keypath: (key)
-    with: (key)))
+    keypath: (key
+      (identifier))
+    with: (key
+      (identifier))))

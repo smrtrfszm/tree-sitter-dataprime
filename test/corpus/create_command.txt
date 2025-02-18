@@ -8,8 +8,10 @@ create path from expr
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 ========================
 create on keypath exists
@@ -21,8 +23,10 @@ create path from expr on keypath exists fail
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 =========================
 create on keypath missing
@@ -34,8 +38,10 @@ create path from expr on keypath missing create
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 =========================
 create on datatype change
@@ -47,8 +53,10 @@ create path from expr on datatype change overwrite
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 ======================
 create with everything
@@ -60,8 +68,10 @@ create path from expr on keypath exists fail on keypath missing create on dataty
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 =======
 c alias
@@ -73,8 +83,10 @@ c path from expr
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 =========
 add alias
@@ -86,8 +98,10 @@ add path from expr
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))
 
 =======
 a alias
@@ -99,5 +113,7 @@ a path from expr
 
 (query
   (create_command
-    keypath: (key)
-    from: (key)))
+    keypath: (key
+      (identifier))
+    from: (key
+      (identifier))))

@@ -83,8 +83,7 @@ module.exports = grammar({
       $.number,
       $.string,
       $.timestamp_literal,
-      alias($.identifier, $.key),
-      $.variable,
+      $.key,
       $.interval,
       $.true,
       $.false,
@@ -115,7 +114,11 @@ module.exports = grammar({
       ')',
     ),
 
-    variable: $ => seq('$', $.identifier),
+    key: $ => seq(
+      optional(field('side', choice('left=>', 'right=>'))),
+      optional('$'),
+      $.identifier,
+    ),
 
     field_expression: $ => seq(
       field('expression', $.expression),
@@ -126,8 +129,7 @@ module.exports = grammar({
     ),
 
     _keypath: $ => choice(
-      $.variable,
-      alias($.identifier, $.key),
+      $.key,
       $.field_expression,
     ),
 

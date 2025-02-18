@@ -11,4 +11,5 @@ stitch (source logs) into keypath
     subquery: (query
       (source_command
         datastore: (identifier)))
-    into: (key)))
+    into: (key
+      (identifier))))

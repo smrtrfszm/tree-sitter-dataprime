@@ -8,8 +8,10 @@ explode expr into path
 
 (query
   (explode_command
-    expr: (key)
-    into: (key)))
+    expr: (key
+      (identifier))
+    into: (key
+      (identifier))))
 
 =====================
 explode with original
@@ -21,5 +23,7 @@ explode expr into path original discard
 
 (query
   (explode_command
-    expr: (key)
-    into: (key)))
+    expr: (key
+      (identifier))
+    into: (key
+      (identifier))))

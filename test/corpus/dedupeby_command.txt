@@ -8,7 +8,8 @@ dedupeby a keep 10
 
 (query
   (dedupeby_command
-    expr: (key)
+    expr: (key
+      (identifier))
     keep: (number)))
 
 ======================
@@ -21,6 +22,8 @@ dedupeby a, b keep 10
 
 (query
   (dedupeby_command
-    expr: (key)
-    expr: (key)
+    expr: (key
+      (identifier))
+    expr: (key
+      (identifier))
     keep: (number)))

@@ -291,17 +291,8 @@
           "name": "timestamp_literal"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          "named": true,
-          "value": "key"
-        },
-        {
           "type": "SYMBOL",
-          "name": "variable"
+          "name": "key"
         },
         {
           "type": "SYMBOL",
@@ -448,12 +439,45 @@
         }
       ]
     },
-    "variable": {
+    "key": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "$"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "side",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "left=>"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "right=>"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -527,16 +551,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "variable"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          "named": true,
-          "value": "key"
+          "name": "key"
         },
         {
           "type": "SYMBOL",
