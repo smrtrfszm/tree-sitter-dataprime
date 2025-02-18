@@ -1,0 +1,43 @@
+==============
+slash comments
+==============
+
+// before query
+filter 123 // after line
+// between queries
+| filter 123
+// after query
+
+---
+
+(query
+  (line_comment)
+  (filter_command
+    condition: (number))
+  (line_comment)
+  (line_comment)
+  (filter_command
+    condition: (number))
+  (line_comment))
+
+================
+hashtag comments
+================
+
+# before query
+filter 123 # after line
+# between queries
+| filter 123
+# after query
+
+---
+
+(query
+  (line_comment)
+  (filter_command
+    condition: (number))
+  (line_comment)
+  (line_comment)
+  (filter_command
+    condition: (number))
+  (line_comment))

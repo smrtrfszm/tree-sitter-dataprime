@@ -30,7 +30,7 @@ module.exports = grammar({
   rules: {
     query: $ => delimited1($.command, '|'),
 
-    line_comment: _ => token(seq('//', /[^\r\n]*/)),
+    line_comment: _ => token(seq(choice('//', '#'), /[^\r\n]*/)),
 
     block_comment: _ => token(seq(
       '/*',
