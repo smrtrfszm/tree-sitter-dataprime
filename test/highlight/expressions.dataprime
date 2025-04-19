@@ -1,0 +1,21 @@
+filter a['b']
+// <- keyword
+//      ^ punctuation.bracket
+//          ^ punctuation.bracket
+//        ^ string
+| filter 1.1.f()
+// <- punctuation.delimiter
+//       ^ number
+//        ^ number
+//         ^ number
+//          ^ punctuation.delimiter
+//           ^ function.call
+| filter `a{a}`
+//        ^ string
+//         ^ punctuation.special
+//          ^ variable
+//           ^ punctuation.special
+| filter a.b.c()
+//       ^ variable
+//         ^ variable.member
+//           ^ function.call
