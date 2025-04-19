@@ -71,7 +71,7 @@
   [
     "{"
     "}"
-  ] @punctuation.special) @none
+  ] @punctuation.special)
 
 [
   ","
