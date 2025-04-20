@@ -1,0 +1,20 @@
+f `text`
+//^ string
+// ^ string
+//     ^ string
+| f `t{}ext`
+//   ^ string
+//    ^ punctuation.special
+//     ^ punctuation.special
+//      ^ string
+| f `t{var}ext`
+//   ^ string
+//    ^ punctuation.special
+//     ^ variable
+//        ^ punctuation.special
+//         ^ string
+| f `\{text}`
+//   ^ string.escape
+//    ^ string.escape
+//     ^ string
+//         ^ string
