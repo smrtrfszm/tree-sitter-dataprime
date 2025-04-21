@@ -3316,6 +3316,10 @@
                   },
                   {
                     "type": "STRING",
+                    "value": "inner"
+                  },
+                  {
+                    "type": "STRING",
                     "value": "cross"
                   }
                 ]

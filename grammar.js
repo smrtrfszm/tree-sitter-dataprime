@@ -352,6 +352,7 @@ module.exports = grammar({
         choice('fail', 'skip', 'create'),
       ),
       optionalq(
+        // TODO: this is maybe "changed"
         'on', 'datatype', 'change',
         choice('fail', 'skip', 'overwrite'),
       ),
@@ -485,8 +486,7 @@ module.exports = grammar({
     join_command: $ => seq(
       'join',
       optional(
-        // TODO: maybe left and right is not acceptable
-        field('type', choice('left', 'right', 'full', 'cross')),
+        field('type', choice('left', 'right', 'full', 'inner', 'cross')),
       ),
       '(',
       field('right_query', $.query),

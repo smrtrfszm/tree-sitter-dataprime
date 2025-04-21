@@ -53,3 +53,21 @@ join (source logs) on expr into logins
       (identifier))
     into: (key
       (identifier))))
+
+==========
+inner join
+==========
+
+join inner (source logs) using id into logins
+
+---
+
+(query
+  (join_command
+    right_query: (query
+      (source_command
+        datastore: (identifier)))
+    join_path: (key
+      (identifier))
+    into: (key
+      (identifier))))
