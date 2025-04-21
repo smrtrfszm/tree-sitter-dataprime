@@ -561,6 +561,7 @@ module.exports = grammar({
       field('keypath', $._keypath),
       'with',
       field('with', $.expression),
+      // TODO: maybe on datatype change clause
     ),
 
     roundtime_command: $ => seq(
