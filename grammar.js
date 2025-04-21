@@ -311,7 +311,7 @@ module.exports = grammar({
       choice('conv', 'convert'),
       optional('datatypes'),
       comma_separatedq1(
-        field('keypath', $.identifier),
+        field('keypath', $.expression),
         ':',
         field('type', $.type),
       ),

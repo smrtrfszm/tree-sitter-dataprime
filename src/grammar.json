@@ -1994,7 +1994,7 @@
                   "name": "keypath",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "identifier"
+                    "name": "expression"
                   }
                 },
                 {
@@ -2028,7 +2028,7 @@
                         "name": "keypath",
                         "content": {
                           "type": "SYMBOL",
-                          "name": "identifier"
+                          "name": "expression"
                         }
                       },
                       {
