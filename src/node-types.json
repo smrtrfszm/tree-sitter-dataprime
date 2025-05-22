@@ -1649,10 +1649,6 @@
     "named": false
   },
   {
-    "type": "$",
-    "named": false
-  },
-  {
     "type": "%",
     "named": false
   },
@@ -1959,11 +1955,11 @@
   },
   {
     "type": "interval",
-    "named": true
+    "named": false
   },
   {
     "type": "interval",
-    "named": false
+    "named": true
   },
   {
     "type": "into",

@@ -52,7 +52,7 @@ module.exports = grammar({
       '\'',
     ),
 
-    identifier: _ => /[A-Za-z_][A-Za-z0-9_-]*/,
+    identifier: _ => /\$?[A-Za-z_][A-Za-z0-9_-]*/,
     number: _ => /-?([0-9]\.)?[0-9]+/,
     type: _ => /[a-z]+/,
     regex_pattern: _ => /[^/]*/,
@@ -116,7 +116,6 @@ module.exports = grammar({
 
     key: $ => seq(
       optional(field('side', choice('left=>', 'right=>'))),
-      optional('$'),
       $.identifier,
     ),
 

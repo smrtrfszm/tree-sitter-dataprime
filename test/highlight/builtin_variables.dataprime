@@ -1,0 +1,9 @@
+f $m
+//^ variable.builtin
+// ^ variable.builtin
+| f $l
+//  ^ variable.builtin
+//   ^ variable.builtin
+| f $d
+//  ^ variable.builtin
+//   ^ variable.builtin
