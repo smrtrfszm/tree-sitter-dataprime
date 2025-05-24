@@ -7,3 +7,6 @@ f $m
 | f $d
 //  ^ variable.builtin
 //   ^ variable.builtin
+| f $p
+//  ^ variable.builtin
+//   ^ variable.builtin
