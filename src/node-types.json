@@ -1437,7 +1437,7 @@
         "required": false,
         "types": [
           {
-            "type": "timestamp_literal",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1467,7 +1467,7 @@
         "required": false,
         "types": [
           {
-            "type": "interval",
+            "type": "expression",
             "named": true
           }
         ]
@@ -1477,7 +1477,7 @@
         "required": false,
         "types": [
           {
-            "type": "interval",
+            "type": "expression",
             "named": true
           }
         ]

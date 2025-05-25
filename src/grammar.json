@@ -1459,7 +1459,7 @@
                       "name": "around",
                       "content": {
                         "type": "SYMBOL",
-                        "name": "timestamp_literal"
+                        "name": "expression"
                       }
                     },
                     {
@@ -1477,7 +1477,7 @@
                               "name": "interval",
                               "content": {
                                 "type": "SYMBOL",
-                                "name": "interval"
+                                "name": "expression"
                               }
                             }
                           ]
@@ -1530,7 +1530,7 @@
                       "name": "last",
                       "content": {
                         "type": "SYMBOL",
-                        "name": "interval"
+                        "name": "expression"
                       }
                     }
                   ]

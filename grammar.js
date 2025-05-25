@@ -238,10 +238,10 @@ module.exports = grammar({
       optional(choice(
         seq(
           'around',
-          field('around', $.timestamp_literal),
+          field('around', $.expression),
           optionalq(
             'interval',
-            field('interval', $.interval),
+            field('interval', $.expression),
           ),
         ),
         seq(
@@ -252,7 +252,7 @@ module.exports = grammar({
         ),
         seq(
           'last',
-          field('last', $.interval)
+          field('last', $.expression)
         ),
         seq(
           'timeshifted',

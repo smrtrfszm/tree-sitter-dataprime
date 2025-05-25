@@ -49,6 +49,29 @@ source logs around @'2024-12-30T00:12:23Z' interval 1h
       (string))
     interval: (interval)))
 
+==================================
+source logs around time expression
+==================================
+
+source logs around $p.timeRange.endTime - 2h interval 1h * 2
+
+---
+
+(query
+  (source_command
+    datastore: (identifier)
+    around: (binary_expression
+      left: (field_expression
+        expression: (field_expression
+          expression: (key
+            (identifier))
+          field: (field))
+        field: (field))
+      right: (interval))
+    interval: (binary_expression
+      left: (interval)
+      right: (number))))
+
 ========================================
 source logs around time without interval
 ========================================
@@ -62,6 +85,26 @@ source logs around @'2024-12-30T00:12:23Z'
     datastore: (identifier)
     around: (timestamp_literal
       (string))))
+
+===================================================
+source logs around time expression without interval
+===================================================
+
+source logs around $p.timeRange.endTime - 2h
+
+---
+
+(query
+  (source_command
+    datastore: (identifier)
+    around: (binary_expression
+      left: (field_expression
+        expression: (field_expression
+          expression: (key
+            (identifier))
+          field: (field))
+        field: (field))
+      right: (interval))))
 
 ========================
 source logs between time 
@@ -111,6 +154,21 @@ source logs last 1h
   (source_command
     datastore: (identifier)
     last: (interval)))
+
+===========================
+source logs last expression
+===========================
+
+source logs last 1h * 2
+
+---
+
+(query
+  (source_command
+    datastore: (identifier)
+    last: (binary_expression
+      left: (interval)
+      right: (number))))
 
 =======================
 source logs timeshifted
