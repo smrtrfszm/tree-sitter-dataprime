@@ -343,3 +343,28 @@ filter empty()
           name: (identifier)
           value: (string))
         (number)))))
+
+===============================================
+binary_expression - field_expression precedence
+===============================================
+
+source logs last $p.timeRange.startTime - $p.timeRange.endTime
+
+---
+
+(query
+  (source_command
+    datastore: (identifier)
+    last: (binary_expression
+      left: (field_expression
+        expression: (field_expression
+          expression: (key
+            (identifier))
+          field: (field))
+        field: (field))
+      right: (field_expression
+        expression: (field_expression
+          expression: (key
+            (identifier))
+          field: (field))
+        field: (field)))))

@@ -16,6 +16,18 @@ module.exports = grammar({
     /[ \t\f\r\n]/,
   ],
 
+  precedences: $ => [
+    [
+      'member',
+      'binary_times',
+      'binary_plus',
+      'binary_relation',
+      'binary_equality',
+      'logical_and',
+      'logical_or',
+    ]
+  ],
+
   conflicts: $ => [
     [$.expression, $._keypath],
   ],
@@ -119,13 +131,13 @@ module.exports = grammar({
       $.identifier,
     ),
 
-    field_expression: $ => seq(
+    field_expression: $ => prec('member', seq(
       field('expression', $.expression),
       choice(
         seq('.', field('field', alias($.identifier, $.field))),
         seq('[', field('field', $.string), ']'),
       ),
-    ),
+    )),
 
     _keypath: $ => choice(
       $.key,
@@ -143,21 +155,21 @@ module.exports = grammar({
 
     binary_expression: $ => choice(
       ...[
-        [0, '&&'],
-        [0, '||'],
-        [1, '+'],
-        [1, '-'],
-        [1, '/'],
-        [1, '*'],
-        [1, '%'],
-        [2, '<'],
-        [2, '<='],
-        [2, '>'],
-        [2, '>='],
-        [3, '=='],
-        [3, '!='],
-        [3, '~'],
-        [3, '~~'],
+        ['logical_and', '&&'],
+        ['logical_or', '||'],
+        ['binary_plus', '+'],
+        ['binary_plus', '-'],
+        ['binary_times', '/'],
+        ['binary_times', '*'],
+        ['binary_times', '%'],
+        ['binary_relation', '<'],
+        ['binary_relation', '<='],
+        ['binary_relation', '>'],
+        ['binary_relation', '>='],
+        ['binary_equality', '=='],
+        ['binary_equality', '!='],
+        ['binary_equality', '~'],
+        ['binary_equality', '~~'],
       ].map(([precedence, operator]) => prec.left(precedence, seq(
         field('left', $.expression),
         field('operator', operator),
@@ -594,12 +606,8 @@ function optionalq(...items) {
   return optional(seq(...items))
 }
 
-function delimited(item, delimiter) {
-  return optional(delimited1(item, delimiter))
-}
-
 function delimited1(item, delimiter) {
-  return seq(item, repeat(seq(delimiter, item)))
+  return seq(item, repeat(seq(delimiter, prec.left(item))))
 }
 
 function comma_separatedq1(...item) {
