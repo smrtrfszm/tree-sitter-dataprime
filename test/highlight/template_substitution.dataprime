@@ -18,3 +18,7 @@ f `text`
 //    ^ string.escape
 //     ^ string
 //         ^ string
+| f `#`
+//   ^ string
+| f '#'
+//   ^ string

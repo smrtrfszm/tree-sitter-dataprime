@@ -78,7 +78,7 @@
       }
     },
     "escape_sequence": {
-      "type": "TOKEN",
+      "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "SEQ",
         "members": [
@@ -153,8 +153,12 @@
               {
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "[^'\\\\\\n]"
+                  "type": "PREC",
+                  "value": 1,
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^'\\\\\\n]"
+                  }
                 }
               }
             ]
@@ -220,8 +224,12 @@
     "string_fragment": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
-        "type": "PATTERN",
-        "value": "[^`\\\\{\\n]+"
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[^`\\\\{\\n]+"
+        }
       }
     },
     "template_substitution": {

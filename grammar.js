@@ -50,7 +50,7 @@ module.exports = grammar({
       '/'
     )),
 
-    escape_sequence: _ => token(seq(
+    escape_sequence: _ => token.immediate(seq(
       '\\',
       choice('\'', '{', '}', '`', 'r', 'n', 't', 'f', 'b', '\\'),
     )),
@@ -59,9 +59,9 @@ module.exports = grammar({
       '\'',
       repeat(choice(
         $.escape_sequence,
-        token.immediate(/[^'\\\n]/),
+        token.immediate(prec(1, /[^'\\\n]/)),
       )),
-      '\'',
+      token.immediate('\''),
     ),
 
     identifier: _ => /\$?[A-Za-z_][A-Za-z0-9_-]*/,
@@ -73,7 +73,7 @@ module.exports = grammar({
     false: _ => 'false',
     null: _ => 'null',
 
-    string_fragment: _ => token.immediate(/[^`\\{\n]+/),
+    string_fragment: _ => token.immediate(prec(1, /[^`\\{\n]+/)),
 
     template_substitution: $ => seq(
       '{',

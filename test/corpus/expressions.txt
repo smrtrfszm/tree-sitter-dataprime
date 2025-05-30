@@ -30,6 +30,8 @@ filter ''
 | filter `{asd} asdfsadf`
 | filter `empty {}`
 | filter `'\`\\\{`
+| filter '#'
+| filter `#`
 
 ---
 
@@ -60,7 +62,12 @@ filter ''
       (string_fragment)
       (escape_sequence)
       (escape_sequence)
-      (escape_sequence))))
+      (escape_sequence)))
+  (filter_command
+    condition: (string))
+  (filter_command
+    condition: (string_interpolation
+      (string_fragment))))
 
 ==========
 timestamps
