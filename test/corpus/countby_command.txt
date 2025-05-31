@@ -8,7 +8,7 @@ countby expr
 
 (query
   (countby_command
-    expr: (key)))
+    expression: (key)))
 
 ==================
 countby with alias
@@ -20,7 +20,7 @@ countby expr as e
 
 (query
   (countby_command
-    expr: (key)
+    expression: (key)
     alias: (key)))
 
 =================
@@ -33,7 +33,7 @@ countby expr into path
 
 (query
   (countby_command
-    expr: (key)
+    expression: (key)
     into: (key)))
 
 ===========================
@@ -46,6 +46,6 @@ countby expr as a into path
 
 (query
   (countby_command
-    expr: (key)
+    expression: (key)
     alias: (key)
     into: (key)))

@@ -345,16 +345,17 @@
   {
     "type": "block_command",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -573,7 +574,7 @@
           }
         ]
       },
-      "expr": {
+      "expression": {
         "multiple": false,
         "required": true,
         "types": [
@@ -625,7 +626,7 @@
     "type": "dedupeby_command",
     "named": true,
     "fields": {
-      "expr": {
+      "expression": {
         "multiple": true,
         "required": true,
         "types": [
@@ -661,7 +662,7 @@
           }
         ]
       },
-      "expr": {
+      "expression": {
         "multiple": true,
         "required": true,
         "types": [
@@ -713,7 +714,7 @@
     "type": "explode_command",
     "named": true,
     "fields": {
-      "expr": {
+      "expression": {
         "multiple": false,
         "required": true,
         "types": [
@@ -749,7 +750,7 @@
           }
         ]
       },
-      "expr": {
+      "expression": {
         "multiple": false,
         "required": true,
         "types": [

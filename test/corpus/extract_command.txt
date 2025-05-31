@@ -8,7 +8,7 @@ extract message into my_data using regexp(e=/regexp/)
 
 (query
   (extract_command
-    expr: (key)
+    expression: (key)
     into: (key)
     extract_function: (extract_function
       function: (identifier)
@@ -28,7 +28,7 @@ extract message into my_data using regexp(e=/regexp/, b='asd')
 
 (query
   (extract_command
-    expr: (key)
+    expression: (key)
     into: (key)
     extract_function: (extract_function
       function: (identifier)
@@ -51,7 +51,7 @@ extract msg into data using kv() datatypes field:number
 
 (query
   (extract_command
-    expr: (key)
+    expression: (key)
     into: (key)
     extract_function: (extract_function
       function: (identifier)
@@ -70,7 +70,7 @@ extract msg into data using kv() datatypes field:number, field2:number
 
 (query
   (extract_command
-    expr: (key)
+    expression: (key)
     into: (key)
     extract_function: (extract_function
       function: (identifier)

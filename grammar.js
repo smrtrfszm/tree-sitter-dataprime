@@ -135,6 +135,8 @@ module.exports = grammar({
         seq('[', field('field', $.string), ']'),
       ),
     )),
+    
+    // TODO: aliased_expression
 
     side_prefixed_keypath: $ => seq(
       field('side', choice('left=>', 'right=>')),
@@ -288,8 +290,7 @@ module.exports = grammar({
 
     block_command: $ => seq(
       'block',
-      // TODO: field()
-      $.expression,
+      field('expression', $.expression),
     ),
 
     bottom_command: $ => seq(
@@ -341,7 +342,7 @@ module.exports = grammar({
 
     countby_command: $ => seq(
       'countby',
-      field('expr', $.expression),
+      field('expression', $.expression),
       optionalq(
         'as',
         field('alias', $.keypath),
@@ -375,7 +376,7 @@ module.exports = grammar({
     dedupeby_command: $ => seq(
       'dedupeby',
       comma_separatedq1(
-        field('expr', $.expression),
+        field('expression', $.expression),
       ),
       'keep',
       field('keep', $.number),
@@ -384,7 +385,7 @@ module.exports = grammar({
     distinct_command: $ => seq(
       'distinct',
       comma_separatedq1(
-        field('expr', $.expression),
+        field('expression', $.expression),
         optionalq(
           'as',
           field('alias', $.keypath),
@@ -404,7 +405,7 @@ module.exports = grammar({
 
     explode_command: $ => seq(
       'explode',
-      field('expr', $.expression),
+      field('expression', $.expression),
       'into',
       field('into', $.keypath),
       optionalq(
@@ -415,7 +416,7 @@ module.exports = grammar({
 
     extract_command: $ => seq(
       choice('e', 'extract'),
-      field('expr', $.expression),
+      field('expression', $.expression),
       'into',
       field('into', $.keypath),
       'using',
