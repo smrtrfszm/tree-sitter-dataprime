@@ -9,7 +9,7 @@ filter a['b']
 //        ^ number
 //         ^ number
 //          ^ punctuation.delimiter
-//           ^ function.call
+//           ^ function.method.call
 | filter `a{a}`
 //        ^ string
 //         ^ punctuation.special
@@ -18,4 +18,6 @@ filter a['b']
 | filter a.b.c()
 //       ^ variable
 //         ^ variable.member
-//           ^ function.call
+//           ^ function.method.call
+| filter a()
+//       ^ function.call
