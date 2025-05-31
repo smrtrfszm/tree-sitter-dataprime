@@ -13,7 +13,7 @@ multigroupby (expr) aggregate count()
         expression: (key)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ===========================
@@ -38,7 +38,7 @@ multigroupby (expr, expr), (expr, expr) aggregate count()
         expression: (key)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ======================================
@@ -67,7 +67,7 @@ multigroupby (expr as alias, expr as alias), (expr as alias, expr as alias) aggr
         alias: (key)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ======================================
@@ -85,11 +85,11 @@ multigroupby (expr) aggregate count(), count()
         expression: (key)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 =================================================
@@ -107,11 +107,11 @@ multigroupby (expr) aggregate count() as alias, count() as alias
         expression: (key)))
       aggregation: (aliased_expression
         expression: (call_expression
-          function: (identifier)
+          function: (key)
           arguments: (arguments))
         alias: (key))
       aggregation: (aliased_expression
         expression: (call_expression
-          function: (identifier)
+          function: (key)
           arguments: (arguments))
         alias: (key))))

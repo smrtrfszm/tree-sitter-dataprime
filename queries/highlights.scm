@@ -29,7 +29,8 @@
   (#any-of? @variable.builtin "$m" "$l" "$d" "$p"))
 
 (call_expression
-  function: (identifier) @function.call)
+  function: (field_expression
+    field: (field) @function.call))
 
 (extract_function
   function: (identifier) @function.call)

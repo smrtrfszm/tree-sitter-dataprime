@@ -24,9 +24,10 @@ replace key with $d.original_log.length() + 10
     keypath: (key)
     with: (binary_expression
       left: (call_expression
-        expression: (field_expression
-          expression: (key)
+        function: (field_expression
+          expression: (field_expression
+            expression: (key)
+            field: (field))
           field: (field))
-        function: (identifier)
         arguments: (arguments))
       right: (number))))

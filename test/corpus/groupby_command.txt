@@ -12,7 +12,7 @@ groupby expr aggregate func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ==========================
@@ -31,7 +31,7 @@ groupby expr, expr aggregate func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 =====================================
@@ -52,7 +52,7 @@ groupby expr as alias, expr as alias aggregate func()
       alias: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ============================
@@ -69,11 +69,11 @@ groupby expr aggregate func(), func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ==============================
@@ -90,7 +90,7 @@ groupby expr aggregate func() as alias
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments))
       alias: (key))))
 
@@ -108,12 +108,12 @@ groupby expr aggregate func() as alias, func() as alias
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments))
       alias: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments))
       alias: (key))))
 
@@ -131,7 +131,7 @@ groupby expr agg func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 =======================
@@ -148,7 +148,7 @@ groupby expr calculate func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 ==================
@@ -165,5 +165,5 @@ groupby expr calc func()
       expression: (key))
     aggregation: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))

@@ -155,38 +155,41 @@ filter function()
 (query
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments)))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      expression: (field_expression
-        expression: (key)
+      function: (field_expression
+        expression: (field_expression
+          expression: (key)
+          field: (field))
         field: (field))
-      function: (identifier)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      expression: (field_expression
-        expression: (key)
+      function: (field_expression
+        expression: (field_expression
+          expression: (key)
+          field: (field))
         field: (field))
-      function: (identifier)
       arguments: (arguments
         (key)
         (key))))
   (filter_command
     condition: (call_expression
-      expression: (call_expression
-        function: (identifier)
-        arguments: (arguments))
-      function: (identifier)
+      function: (field_expression
+        expression: (call_expression
+          function: (key)
+          arguments: (arguments))
+        field: (field))
       arguments: (arguments))))
 
 =========
@@ -287,29 +290,29 @@ filter empty()
 (query
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments)))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (string))))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (string)
         (number))))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (named_argument
           name: (identifier)
           value: (string)))))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (named_argument
           name: (identifier)
@@ -319,7 +322,7 @@ filter empty()
           value: (number)))))
   (filter_command
     condition: (call_expression
-      function: (identifier)
+      function: (key)
       arguments: (arguments
         (named_argument
           name: (identifier)

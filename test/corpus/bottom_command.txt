@@ -13,7 +13,7 @@ bottom 10 user by count()
       expression: (key))
     orderby: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 =================
@@ -32,7 +32,7 @@ bottom 10 user as u by count() as c
       alias: (key))
     orderby: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments))
       alias: (key))))
 
@@ -53,7 +53,7 @@ bottom 10 user, user2 by count()
       expression: (key))
     orderby: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
 
 =======================================
@@ -75,7 +75,7 @@ bottom 10 user as u, user2 as u2 by count() as c
       alias: (key))
     orderby: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments))
       alias: (key))))
 
@@ -94,5 +94,5 @@ top 10 user by count()
       expression: (key))
     orderby: (aliased_expression
       expression: (call_expression
-        function: (identifier)
+        function: (key)
         arguments: (arguments)))))
