@@ -8,8 +8,7 @@ choose path
 
 (query
   (choose_command
-    keypath: (key
-      (identifier))))
+    keypath: (key)))
 
 ==========================
 choose with multiple paths
@@ -21,10 +20,8 @@ choose path, path2
 
 (query
   (choose_command
-    keypath: (key
-      (identifier))
-    keypath: (key
-      (identifier))))
+    keypath: (key)
+    keypath: (key)))
 
 =================
 choose with alias
@@ -36,10 +33,8 @@ choose path as alias
 
 (query
   (choose_command
-    keypath: (key
-      (identifier))
-    alias: (key
-      (identifier))))
+    keypath: (key)
+    alias: (key)))
 
 =====================================
 choose with multiple paths with alias
@@ -51,14 +46,10 @@ choose path as alias, path2 as alias2
 
 (query
   (choose_command
-    keypath: (key
-      (identifier))
-    alias: (key
-      (identifier))
-    keypath: (key
-      (identifier))
-    alias: (key
-      (identifier))))
+    keypath: (key)
+    alias: (key)
+    keypath: (key)
+    alias: (key)))
 
 ============
 select alias
@@ -70,5 +61,4 @@ select path
 
 (query
   (choose_command
-    keypath: (key
-      (identifier))))
+    keypath: (key)))

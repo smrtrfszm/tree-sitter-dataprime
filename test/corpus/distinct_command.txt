@@ -8,8 +8,7 @@ distinct expr
 
 (query
   (distinct_command
-    expr: (key
-      (identifier))))
+    expr: (key)))
 
 ===================
 distinct with alias
@@ -21,10 +20,8 @@ distinct expr as alias
 
 (query
   (distinct_command
-    expr: (key
-      (identifier))
-    alias: (key
-      (identifier))))
+    expr: (key)
+    alias: (key)))
 
 =================
 distinct multiple
@@ -36,10 +33,8 @@ distinct expr, expr2
 
 (query
   (distinct_command
-    expr: (key
-      (identifier))
-    expr: (key
-      (identifier))))
+    expr: (key)
+    expr: (key)))
 
 ============================
 distinct multiple with alias
@@ -51,11 +46,7 @@ distinct expr1 as alias2, expr2 as alias2
 
 (query
   (distinct_command
-    expr: (key
-      (identifier))
-    alias: (key
-      (identifier))
-    expr: (key
-      (identifier))
-    alias: (key
-      (identifier))))
+    expr: (key)
+    alias: (key)
+    expr: (key)
+    alias: (key)))

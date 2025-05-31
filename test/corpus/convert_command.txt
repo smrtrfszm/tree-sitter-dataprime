@@ -8,8 +8,7 @@ convert keypath:type
 
 (query
   (convert_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)))
 
 ==============================
@@ -22,8 +21,7 @@ convert datatypes keypath:type
 
 (query
   (convert_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)))
 
 ================
@@ -36,11 +34,9 @@ convert keypath:type, path2:type
 
 (query
   (convert_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)))
 
 =======================================
@@ -53,11 +49,9 @@ convert datatypes keypath:type, path2:type
 
 (query
   (convert_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)))
 
 ==========
@@ -70,8 +64,7 @@ conv keypath:type
 
 (query
   (convert_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     type: (type)))
 
 =========================
@@ -85,7 +78,6 @@ convert $d.keypath:type
 (query
   (convert_command
     keypath: (field_expression
-      expression: (key
-        (identifier))
+      expression: (key)
       field: (field))
     type: (type)))

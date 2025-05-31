@@ -8,5 +8,4 @@ block expr
 
 (query
   (block_command
-    (key
-      (identifier))))
+    (key)))

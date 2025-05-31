@@ -23,11 +23,9 @@
 (null) @constant.builtin
 
 
-(key
-  (identifier) @variable)
+(key) @variable
 
-(key
-  (identifier) @variable.builtin
+((key) @variable.builtin
   (#any-of? @variable.builtin "$m" "$l" "$d" "$p"))
 
 (call_expression

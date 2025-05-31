@@ -50,8 +50,7 @@ filter ''
   (filter_command
     condition: (string_interpolation
       (template_substitution
-        (key
-	  (identifier)))
+        (key))
       (string_fragment)))
   (filter_command
     condition: (string_interpolation
@@ -94,16 +93,14 @@ filter @'now'
   (filter_command
     condition: (timestamp_literal
       (binary_expression
-        left: (key
-	  (identifier))
+        left: (key)
         right: (number))))
   (filter_command
     condition: (timestamp_literal
       (string_interpolation
         (string_fragment)
         (template_substitution
-          (key
-	    (identifier)))))))
+          (key))))))
 
 ========
 keypaths
@@ -120,33 +117,28 @@ filter path
 
 (query
   (filter_command
-    condition: (key
-      (identifier)))
+    condition: (key))
   (filter_command
     condition: (field_expression
       expression: (field_expression
         expression: (field_expression
-          expression: (key
-	    (identifier))
+          expression: (key)
           field: (field))
         field: (field))
       field: (field)))
   (filter_command
     condition: (field_expression
-      expression: (key
-        (identifier))
+      expression: (key)
       field: (field)))
   (filter_command
-    condition: (key
-      (identifier)))
+    condition: (key))
   (filter_command
     condition: (field_expression
-      expression: (key
-        (identifier))
+      expression: (key)
       field: (string)))
   (filter_command
-    condition: (key
-      (identifier))))
+    condition: (side_prefixed_keypath
+      key: (key))))
 
 =========
 functions
@@ -169,34 +161,26 @@ filter function()
     condition: (call_expression
       function: (identifier)
       arguments: (arguments
-        (key
-          (identifier))
-        (key
-          (identifier)))))
+        (key)
+        (key))))
   (filter_command
     condition: (call_expression
       expression: (field_expression
-        expression: (key
-          (identifier))
+        expression: (key)
         field: (field))
       function: (identifier)
       arguments: (arguments
-        (key
-	  (identifier))
-        (key
-	  (identifier)))))
+        (key)
+        (key))))
   (filter_command
     condition: (call_expression
       expression: (field_expression
-        expression: (key
-          (identifier))
+        expression: (key)
         field: (field))
       function: (identifier)
       arguments: (arguments
-        (key
-	  (identifier))
-        (key
-	  (identifier)))))
+        (key)
+        (key))))
   (filter_command
     condition: (call_expression
       expression: (call_expression
@@ -247,15 +231,13 @@ filter path:type
 (query
   (filter_command
     condition: (type_cast
-      keypath: (key
-        (identifier))
+      keypath: (key)
       type: (type)))
   (filter_command
     condition: (type_cast
       keypath: (field_expression
-        expression: (key
-	  (identifier))
-	field: (field))
+        expression: (key)
+        field: (field))
       type: (type))))
 
 =====
@@ -277,24 +259,17 @@ filter case {
   (filter_command
     condition: (case
       (case_clause
-        value: (key
-	  (identifier))
-        result: (key
-	  (identifier)))
+        value: (key)
+        result: (key))
       (case_clause
-        value: (key
-	  (identifier))
-        result: (key
-	  (identifier)))))
+        value: (key)
+        result: (key))))
   (filter_command
     condition: (case
-      subject: (key
-        (identifier))
+      subject: (key)
       (case_clause
-        value: (key
-	  (identifier))
-        result: (key
-	  (identifier))))))
+        value: (key)
+        result: (key)))))
 
 =========
 arguments
@@ -365,13 +340,11 @@ source logs last $p.timeRange.startTime - $p.timeRange.endTime
     last: (binary_expression
       left: (field_expression
         expression: (field_expression
-          expression: (key
-            (identifier))
+          expression: (key)
           field: (field))
         field: (field))
       right: (field_expression
         expression: (field_expression
-          expression: (key
-            (identifier))
+          expression: (key)
           field: (field))
         field: (field)))))

@@ -8,10 +8,27 @@ move path1 to path2
 
 (query
   (move_command
-    keypath: (key
-      (identifier))
-    to: (key
-      (identifier))))
+    keypath: (key)
+    to: (key)))
+
+==================
+move with subpaths
+==================
+
+move $p.sub1 to $p.sub2.sub3
+
+---
+
+(query
+  (move_command
+    keypath: (field_expression
+      expression: (key)
+      field: (field))
+    to: (field_expression
+      expression: (field_expression
+        expression: (key)
+        field: (field))
+      field: (field))))
 
 =======
 m alias
@@ -23,7 +40,5 @@ m path1 to path2
 
 (query
   (move_command
-    keypath: (key
-      (identifier))
-    to: (key
-      (identifier))))
+    keypath: (key)
+    to: (key)))

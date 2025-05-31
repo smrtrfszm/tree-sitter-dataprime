@@ -8,9 +8,6 @@ enrich userid into user_enriched using my_users
 
 (query
   (enrich_command
-    value: (key
-      (identifier))
-    key: (key
-      (identifier))
-    table: (key
-      (identifier))))
+    lookup: (key)
+    into: (key)
+    using: (table)))

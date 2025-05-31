@@ -11,10 +11,8 @@ join (source logs) using id into logins
     right_query: (query
       (source_command
         datastore: (identifier)))
-    join_path: (key
-      (identifier))
-    into: (key
-      (identifier))))
+    join_path: (key)
+    into: (key)))
 
 =========================
 join using multiple paths
@@ -29,18 +27,15 @@ join (source logs) using id, id2 into logins
     right_query: (query
       (source_command
         datastore: (identifier)))
-    join_path: (key
-      (identifier))
-    join_path: (key
-      (identifier))
-    into: (key
-      (identifier))))
+    join_path: (key)
+    join_path: (key)
+    into: (key)))
 
 =================
 join on condition
 =================
 
-join (source logs) on expr into logins
+join (source logs) on true into logins
 
 ---
 
@@ -49,10 +44,8 @@ join (source logs) on expr into logins
     right_query: (query
       (source_command
         datastore: (identifier)))
-    condition: (key
-      (identifier))
-    into: (key
-      (identifier))))
+    condition: (true)
+    into: (key)))
 
 ==========
 inner join
@@ -67,7 +60,5 @@ join inner (source logs) using id into logins
     right_query: (query
       (source_command
         datastore: (identifier)))
-    join_path: (key
-      (identifier))
-    into: (key
-      (identifier))))
+    join_path: (key)
+    into: (key)))

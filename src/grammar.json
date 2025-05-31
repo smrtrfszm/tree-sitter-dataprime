@@ -307,10 +307,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "key"
-        },
-        {
-          "type": "SYMBOL",
           "name": "interval"
         },
         {
@@ -352,6 +348,19 @@
         {
           "type": "SYMBOL",
           "name": "case"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "key"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "side_prefixed_keypath"
         }
       ]
     },
@@ -458,40 +467,6 @@
         }
       ]
     },
-    "key": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "side",
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "left=>"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "right=>"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        }
-      ]
-    },
     "field_expression": {
       "type": "PREC",
       "value": "member",
@@ -557,12 +532,47 @@
         ]
       }
     },
-    "_keypath": {
+    "side_prefixed_keypath": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "side",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "left=>"
+              },
+              {
+                "type": "STRING",
+                "value": "right=>"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "key",
+          "content": {
+            "type": "SYMBOL",
+            "name": "keypath"
+          }
+        }
+      ]
+    },
+    "keypath": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "key"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "key"
         },
         {
           "type": "SYMBOL",
@@ -1624,7 +1634,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -1674,7 +1684,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -1760,7 +1770,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -1810,7 +1820,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -1855,7 +1865,7 @@
                   "name": "alias",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -1912,7 +1922,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -1962,7 +1972,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -2105,7 +2115,7 @@
                   "name": "into",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -2147,7 +2157,7 @@
                   "name": "alias",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -2172,7 +2182,7 @@
                   "name": "into",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -2213,7 +2223,7 @@
           "name": "keypath",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -2460,7 +2470,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -2510,7 +2520,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -2539,10 +2549,10 @@
         },
         {
           "type": "FIELD",
-          "name": "value",
+          "name": "lookup",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "expression"
           }
         },
         {
@@ -2551,10 +2561,10 @@
         },
         {
           "type": "FIELD",
-          "name": "key",
+          "name": "into",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -2563,10 +2573,15 @@
         },
         {
           "type": "FIELD",
-          "name": "table",
+          "name": "using",
           "content": {
-            "type": "SYMBOL",
-            "name": "_keypath"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            "named": true,
+            "value": "table"
           }
         }
       ]
@@ -2595,7 +2610,7 @@
           "name": "into",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -2663,7 +2678,7 @@
           "name": "into",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -2828,7 +2843,7 @@
           "name": "keypath",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         }
       ]
@@ -2869,7 +2884,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -2919,7 +2934,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -2995,7 +3010,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -3045,7 +3060,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -3101,7 +3116,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -3151,7 +3166,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -3279,7 +3294,7 @@
                           "name": "alias",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -3329,7 +3344,7 @@
                                   "name": "alias",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -3447,7 +3462,7 @@
                           "name": "join_path",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -3472,7 +3487,7 @@
                                   "name": "join_path",
                                   "content": {
                                     "type": "SYMBOL",
-                                    "name": "_keypath"
+                                    "name": "keypath"
                                   }
                                 }
                               ]
@@ -3496,7 +3511,7 @@
           "name": "into",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         }
       ]
@@ -3556,7 +3571,7 @@
           "name": "keypath",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -3568,7 +3583,7 @@
           "name": "to",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         }
       ]
@@ -3726,7 +3741,7 @@
           "name": "keypath",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -3799,7 +3814,7 @@
                   "name": "keypath",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -3824,7 +3839,7 @@
                           "name": "keypath",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "_keypath"
+                            "name": "keypath"
                           }
                         }
                       ]
@@ -3849,7 +3864,7 @@
           "name": "keypath",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         },
         {
@@ -3881,7 +3896,7 @@
               "name": "source",
               "content": {
                 "type": "SYMBOL",
-                "name": "_keypath"
+                "name": "expression"
               }
             },
             {
@@ -3916,7 +3931,7 @@
                   "name": "into",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_keypath"
+                    "name": "keypath"
                   }
                 }
               ]
@@ -3960,7 +3975,7 @@
           "name": "into",
           "content": {
             "type": "SYMBOL",
-            "name": "_keypath"
+            "name": "keypath"
           }
         }
       ]
@@ -4009,7 +4024,7 @@
   "conflicts": [
     [
       "expression",
-      "_keypath"
+      "keypath"
     ]
   ],
   "precedences": [
@@ -4048,7 +4063,8 @@
   "inline": [],
   "supertypes": [
     "expression",
-    "command"
+    "command",
+    "keypath"
   ],
   "reserved": {}
 }

@@ -19,5 +19,4 @@ count into path
 
 (query
   (count_command
-    into: (key
-      (identifier))))
+    into: (key)))

@@ -166,6 +166,10 @@
         "named": true
       },
       {
+        "type": "side_prefixed_keypath",
+        "named": true
+      },
+      {
         "type": "string",
         "named": true
       },
@@ -183,6 +187,20 @@
       },
       {
         "type": "type_cast",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "keypath",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "field_expression",
+        "named": true
+      },
+      {
+        "type": "key",
         "named": true
       }
     ]
@@ -206,11 +224,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -352,11 +366,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -490,11 +500,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -546,11 +552,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -566,11 +568,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -590,11 +588,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -620,11 +614,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -666,11 +656,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -691,44 +677,32 @@
     "type": "enrich_command",
     "named": true,
     "fields": {
-      "key": {
+      "into": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
       },
-      "table": {
+      "lookup": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "expression",
             "named": true
           }
         ]
       },
-      "value": {
+      "using": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "table",
             "named": true
           }
         ]
@@ -754,11 +728,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -804,11 +774,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -896,11 +862,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -936,11 +898,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -976,11 +934,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -990,11 +944,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1038,36 +988,6 @@
     }
   },
   {
-    "type": "key",
-    "named": true,
-    "fields": {
-      "side": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "left=>",
-            "named": false
-          },
-          {
-            "type": "right=>",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "limit_command",
     "named": true,
     "fields": {
@@ -1108,11 +1028,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1122,11 +1038,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1152,11 +1064,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1182,11 +1090,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1284,11 +1188,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1343,11 +1243,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1363,11 +1259,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1403,11 +1295,7 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1417,12 +1305,38 @@
         "required": false,
         "types": [
           {
-            "type": "field_expression",
+            "type": "expression",
             "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "side_prefixed_keypath",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "side": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "left=>",
+            "named": false
           },
           {
-            "type": "key",
-            "named": true
+            "type": "right=>",
+            "named": false
           }
         ]
       }
@@ -1513,11 +1427,7 @@
         "required": true,
         "types": [
           {
-            "type": "field_expression",
-            "named": true
-          },
-          {
-            "type": "key",
+            "type": "keypath",
             "named": true
           }
         ]
@@ -1974,6 +1884,10 @@
     "named": false
   },
   {
+    "type": "key",
+    "named": true
+  },
+  {
     "type": "keypath",
     "named": false
   },
@@ -2112,6 +2026,10 @@
   },
   {
     "type": "string_fragment",
+    "named": true
+  },
+  {
+    "type": "table",
     "named": true
   },
   {

@@ -8,8 +8,7 @@ redact keypath 'pattern' to 'redacted'
 
 (query
   (redact_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     pattern: (string)
     to: (string)))
 
@@ -23,8 +22,7 @@ redact keypath /pattern/ to 'redacted'
 
 (query
   (redact_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     pattern: (regex
       (regex_pattern))
     to: (string)))
@@ -39,8 +37,7 @@ redact keypath matching 'pattern' to 'redacted'
 
 (query
   (redact_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     pattern: (string)
     to: (string)))
 
@@ -54,8 +51,7 @@ redact keypath matching /pattern/ to 'redacted'
 
 (query
   (redact_command
-    keypath: (key
-      (identifier))
+    keypath: (key)
     pattern: (regex
       (regex_pattern))
     to: (string)))

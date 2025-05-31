@@ -8,8 +8,23 @@ remove path
 
 (query
   (remove_command
-    keypath: (key
-      (identifier))))
+    keypath: (key)))
+
+====================
+remove with subpaths
+====================
+
+remove $p.sub1.sub2
+
+---
+
+(query
+  (remove_command
+    keypath: (field_expression
+      expression: (field_expression
+        expression: (key)
+        field: (field))
+      field: (field))))
 
 ========================
 remove multiple keypaths
@@ -21,12 +36,9 @@ remove path, path2, path3
 
 (query
   (remove_command
-    keypath: (key
-      (identifier))
-    keypath: (key
-      (identifier))
-    keypath: (key
-      (identifier))))
+    keypath: (key)
+    keypath: (key)
+    keypath: (key)))
 
 =======
 r alias
@@ -38,5 +50,4 @@ r path
 
 (query
   (remove_command
-    keypath: (key
-      (identifier))))
+    keypath: (key)))

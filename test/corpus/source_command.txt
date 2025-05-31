@@ -63,8 +63,7 @@ source logs around $p.timeRange.endTime - 2h interval 1h * 2
     around: (binary_expression
       left: (field_expression
         expression: (field_expression
-          expression: (key
-            (identifier))
+          expression: (key)
           field: (field))
         field: (field))
       right: (interval))
@@ -100,8 +99,7 @@ source logs around $p.timeRange.endTime - 2h
     around: (binary_expression
       left: (field_expression
         expression: (field_expression
-          expression: (key
-            (identifier))
+          expression: (key)
           field: (field))
         field: (field))
       right: (interval))))

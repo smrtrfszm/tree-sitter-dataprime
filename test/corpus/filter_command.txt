@@ -2,37 +2,50 @@
 filter
 ======
 
-filter expr
+filter true
 
 ---
 
 (query
   (filter_command
-    condition: (key
-      (identifier))))
+    condition: (true)))
 
 =======
 f alias
 =======
 
-f expr
+f false
 
 ---
 
 (query
   (filter_command
-    condition: (key
-      (identifier))))
+    condition: (false)))
 
 ===========
 where alias
 ===========
 
-where expr
+where null
 
 ---
 
 (query
   (filter_command
-    condition: (key
-      (identifier))))
+    condition: (null)))
+
+======================
+filter with expression
+======================
+
+filter $d.statusCode >= 500
+
+---
+
+(query
+  (filter_command
+    condition: (binary_expression
+      left: (field_expression
+        expression: (key)
+        field: (field))
+      right: (number))))

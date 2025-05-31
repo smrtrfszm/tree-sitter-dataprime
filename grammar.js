@@ -29,12 +29,13 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
-    [$.expression, $._keypath],
+    [$.expression, $.keypath],
   ],
 
   supertypes: $ => [
     $.expression,
     $.command,
+    $.keypath,
   ],
 
   word: $ => $.identifier,
@@ -95,7 +96,6 @@ module.exports = grammar({
       $.number,
       $.string,
       $.timestamp_literal,
-      $.key,
       $.interval,
       $.true,
       $.false,
@@ -107,6 +107,8 @@ module.exports = grammar({
       $.call_expression,
       $.binary_expression,
       $.case,
+      alias($.identifier, $.key),
+      $.side_prefixed_keypath,
     ),
 
     named_argument: $ => seq(
@@ -126,11 +128,6 @@ module.exports = grammar({
       ')',
     ),
 
-    key: $ => seq(
-      optional(field('side', choice('left=>', 'right=>'))),
-      $.identifier,
-    ),
-
     field_expression: $ => prec('member', seq(
       field('expression', $.expression),
       choice(
@@ -139,8 +136,13 @@ module.exports = grammar({
       ),
     )),
 
-    _keypath: $ => choice(
-      $.key,
+    side_prefixed_keypath: $ => seq(
+      field('side', choice('left=>', 'right=>')),
+      field('key', $.keypath),
+    ),
+
+    keypath: $ => choice(
+      alias($.identifier, $.key),
       $.field_expression,
     ),
 
@@ -279,13 +281,14 @@ module.exports = grammar({
         field('aggregation', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
     ),
 
     block_command: $ => seq(
       'block',
+      // TODO: field()
       $.expression,
     ),
 
@@ -296,14 +299,14 @@ module.exports = grammar({
         field('groupby', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
       'by',
       field('orderby', $.expression),
       optionalq(
         'as',
-        field('alias', $._keypath),
+        field('alias', $.keypath),
       ),
     ),
 
@@ -313,7 +316,7 @@ module.exports = grammar({
         field('keypath', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
     ),
@@ -332,7 +335,7 @@ module.exports = grammar({
       'count',
       optionalq(
         'into',
-        field('into', $._keypath),
+        field('into', $.keypath),
       ),
     ),
 
@@ -341,17 +344,17 @@ module.exports = grammar({
       field('expr', $.expression),
       optionalq(
         'as',
-        field('alias', $._keypath),
+        field('alias', $.keypath),
       ),
       optionalq(
         'into',
-        field('into', $._keypath),
+        field('into', $.keypath),
       ),
     ),
 
     create_command: $ => seq(
       choice('a', 'add', 'c', 'create'),
-      field('keypath', $._keypath),
+      field('keypath', $.keypath),
       'from',
       field('from', $.expression),
       optionalq(
@@ -384,25 +387,26 @@ module.exports = grammar({
         field('expr', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
     ),
 
     enrich_command: $ => seq(
       'enrich',
-      field('value', $._keypath),
+      field('lookup', $.expression),
       'into',
-      field('key', $._keypath),
+      field('into', $.keypath),
       'using',
-      field('table', $._keypath),
+      // TODO: highlight
+      field('using', alias($.identifier, $.table)),
     ),
 
     explode_command: $ => seq(
       'explode',
       field('expr', $.expression),
       'into',
-      field('into', $._keypath),
+      field('into', $.keypath),
       optionalq(
         'original',
         choice('discard', 'preserve'),
@@ -413,7 +417,7 @@ module.exports = grammar({
       choice('e', 'extract'),
       field('expr', $.expression),
       'into',
-      field('into', $._keypath),
+      field('into', $.keypath),
       'using',
       field('extract_function', $.extract_function),
       optionalq(
@@ -422,6 +426,7 @@ module.exports = grammar({
       ),
     ),
 
+    // TODO: remove this
     extract_function: $ => seq(
       field('function', $.identifier),
       field('arguments', $.arguments),
@@ -436,7 +441,7 @@ module.exports = grammar({
       choice('find', 'text'),
       field('search', $.string),
       'in',
-      field('keypath', $._keypath),
+      field('keypath', $.keypath),
     ),
 
     groupby_command: $ => seq(
@@ -445,7 +450,7 @@ module.exports = grammar({
         field('grouping', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
       optional(choice(
@@ -459,7 +464,7 @@ module.exports = grammar({
         field('aggregation', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
     ),
@@ -470,7 +475,7 @@ module.exports = grammar({
         field('grouping', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
       ')',
@@ -489,7 +494,7 @@ module.exports = grammar({
         field('aggregation', $.expression),
         optionalq(
           'as',
-          field('alias', $._keypath),
+          field('alias', $.keypath),
         ),
       ),
     ),
@@ -510,12 +515,12 @@ module.exports = grammar({
         seq(
           'using',
           comma_separatedq1(
-            field('join_path', $._keypath),
+            field('join_path', $.keypath),
           ),
         ),
       ),
       'into',
-      field('into', $._keypath),
+      field('into', $.keypath),
     ),
 
     limit_command: $ => seq(
@@ -530,9 +535,9 @@ module.exports = grammar({
 
     move_command: $ => seq(
       choice('m', 'move'),
-      field('keypath', $._keypath),
+      field('keypath', $.keypath),
       'to',
-      field('to', $._keypath),
+      field('to', $.keypath),
     ),
 
     orderby_command: $ => seq(
@@ -550,7 +555,7 @@ module.exports = grammar({
 
     redact_command: $ => seq(
       'redact',
-      field('keypath', $._keypath),
+      field('keypath', $.keypath),
       optional('matching'),
       field('pattern', choice(
         $.regex,
@@ -563,13 +568,13 @@ module.exports = grammar({
     remove_command: $ => seq(
       choice('r', 'remove'),
       comma_separatedq1(
-        field('keypath', $._keypath),
+        field('keypath', $.keypath),
       ),
     ),
 
     replace_command: $ => seq(
       'replace',
-      field('keypath', $._keypath),
+      field('keypath', $.keypath),
       'with',
       field('with', $.expression),
       // TODO: maybe on datatype change clause
@@ -577,12 +582,12 @@ module.exports = grammar({
 
     roundtime_command: $ => seq(
       'roundtime',
-      optional(field('source', $._keypath)),
+      optional(field('source', $.expression)),
       'to',
       field('interval', $.interval),
       optionalq(
         'into',
-        field('into', $._keypath),
+        field('into', $.keypath),
       ),
     ),
 
@@ -592,7 +597,7 @@ module.exports = grammar({
       field('subquery', $.query),
       ')',
       'into',
-      field('into', $._keypath),
+      field('into', $.keypath),
     ),
 
     wildfind_command: $ => seq(
