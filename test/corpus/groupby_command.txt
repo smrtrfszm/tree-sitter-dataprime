@@ -8,10 +8,12 @@ groupby expr aggregate func()
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 ==========================
 groupby multiple groupings
@@ -23,11 +25,14 @@ groupby expr, expr aggregate func()
 
 (query
   (groupby_command
-    grouping: (key)
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 =====================================
 groupby multiple groupings with alias
@@ -39,13 +44,16 @@ groupby expr as alias, expr as alias aggregate func()
 
 (query
   (groupby_command
-    grouping: (key)
-    alias: (key)
-    grouping: (key)
-    alias: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key)
+      alias: (key))
+    grouping: (aliased_expression
+      expression: (key)
+      alias: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 ============================
 groupby multiple aggregation
@@ -57,13 +65,16 @@ groupby expr aggregate func(), func()
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 ==============================
 groupby aggregation with alias
@@ -75,11 +86,13 @@ groupby expr aggregate func() as alias
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    alias: (key)))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments))
+      alias: (key))))
 
 =======================================
 groupby multiple aggregation with alias
@@ -91,15 +104,18 @@ groupby expr aggregate func() as alias, func() as alias
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    alias: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    alias: (key)))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments))
+      alias: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments))
+      alias: (key))))
 
 =================
 groupby agg alias
@@ -111,10 +127,12 @@ groupby expr agg func()
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 =======================
 groupby calculate alias
@@ -126,10 +144,12 @@ groupby expr calculate func()
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 ==================
 groupby calc alias
@@ -141,7 +161,9 @@ groupby expr calc func()
 
 (query
   (groupby_command
-    grouping: (key)
-    aggregation: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    grouping: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))

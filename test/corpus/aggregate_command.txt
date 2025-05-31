@@ -8,7 +8,8 @@ aggregate count
 
 (query
   (aggregate_command
-    aggregation: (key)))
+    aggregation: (aliased_expression
+      expression: (key))))
 
 ============
 aggregate as
@@ -20,8 +21,9 @@ aggregate count as cnt
 
 (query
   (aggregate_command
-    aggregation: (key)
-    alias: (key)))
+    aggregation: (aliased_expression
+      expression: (key)
+      alias: (key))))
 
 ====================
 aggregate as keypath
@@ -33,10 +35,11 @@ aggregate count as cnt.asd
 
 (query
   (aggregate_command
-    aggregation: (key)
-    alias: (field_expression
+    aggregation: (aliased_expression
       expression: (key)
-      field: (field))))
+      alias: (field_expression
+        expression: (key)
+        field: (field)))))
 
 ==================
 aggregate multiple
@@ -48,8 +51,10 @@ aggregate count, count2
 
 (query
   (aggregate_command
-    aggregation: (key)
-    aggregation: (key)))
+    aggregation: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (key))))
 
 ==========================
 aggregate multiple with as
@@ -61,10 +66,12 @@ aggregate count as cnt, count2 as cnt2
 
 (query
   (aggregate_command
-    aggregation: (key)
-    alias: (key)
-    aggregation: (key)
-    alias: (key)))
+    aggregation: (aliased_expression
+      expression: (key)
+      alias: (key))
+    aggregation: (aliased_expression
+      expression: (key)
+      alias: (key))))
 
 ===============================
 aggregate multiple with some as
@@ -76,6 +83,8 @@ aggregate count, count2 as cnt2
 
 (query
   (aggregate_command
-    aggregation: (key)
-    aggregation: (key)
-    alias: (key)))
+    aggregation: (aliased_expression
+      expression: (key))
+    aggregation: (aliased_expression
+      expression: (key)
+      alias: (key))))

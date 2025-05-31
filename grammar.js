@@ -135,8 +135,14 @@ module.exports = grammar({
         seq('[', field('field', $.string), ']'),
       ),
     )),
-    
-    // TODO: aliased_expression
+
+    aliased_expression: $ => prec.right(seq(
+      field('expression', $.expression),
+      optionalq(
+        'as',
+        field('alias', $.keypath),
+      ),
+    )),
 
     side_prefixed_keypath: $ => seq(
       field('side', choice('left=>', 'right=>')),
@@ -279,13 +285,7 @@ module.exports = grammar({
 
     aggregate_command: $ => seq(
       'aggregate',
-      comma_separatedq1(
-        field('aggregation', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('aggregation', $.aliased_expression)),
     ),
 
     block_command: $ => seq(
@@ -296,30 +296,14 @@ module.exports = grammar({
     bottom_command: $ => seq(
       choice('bottom', 'top'),
       field('limit', $.number),
-      comma_separatedq1(
-        field('groupby', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('groupby', $.aliased_expression)),
       'by',
-      field('orderby', $.expression),
-      optionalq(
-        'as',
-        field('alias', $.keypath),
-      ),
+      field('orderby', $.aliased_expression),
     ),
 
     choose_command: $ => seq(
       choice('choose', 'select'),
-      comma_separatedq1(
-        field('keypath', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('keypath', $.aliased_expression)),
     ),
 
     convert_command: $ => seq(
@@ -342,11 +326,7 @@ module.exports = grammar({
 
     countby_command: $ => seq(
       'countby',
-      field('expression', $.expression),
-      optionalq(
-        'as',
-        field('alias', $.keypath),
-      ),
+      field('expression', $.aliased_expression),
       optionalq(
         'into',
         field('into', $.keypath),
@@ -384,13 +364,7 @@ module.exports = grammar({
 
     distinct_command: $ => seq(
       'distinct',
-      comma_separatedq1(
-        field('expression', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('expression', $.aliased_expression)),
     ),
 
     enrich_command: $ => seq(
@@ -447,13 +421,7 @@ module.exports = grammar({
 
     groupby_command: $ => seq(
       'groupby',
-      comma_separatedq1(
-        field('grouping', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('grouping', $.aliased_expression)),
       optional(choice(
         'aggregate',
         'agg',
@@ -461,24 +429,12 @@ module.exports = grammar({
         'calculate',
         'calc',
       )),
-      comma_separatedq1(
-        field('aggregation', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('aggregation', $.aliased_expression)),
     ),
 
     multigroupby_group: $ => seq(
       '(',
-      comma_separatedq1(
-        field('grouping', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('grouping', $.aliased_expression)),
       ')',
     ),
 
@@ -491,13 +447,7 @@ module.exports = grammar({
         'aggregate',
         'agg',
       )),
-      comma_separatedq1(
-        field('aggregation', $.expression),
-        optionalq(
-          'as',
-          field('alias', $.keypath),
-        ),
-      ),
+      comma_separatedq1(field('aggregation', $.aliased_expression)),
     ),
 
     join_command: $ => seq(

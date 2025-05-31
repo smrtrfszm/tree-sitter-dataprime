@@ -9,10 +9,12 @@ bottom 10 user by count()
 (query
   (bottom_command
     limit: (number)
-    groupby: (key)
-    orderby: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    groupby: (aliased_expression
+      expression: (key))
+    orderby: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 =================
 bottom with alias
@@ -25,12 +27,14 @@ bottom 10 user as u by count() as c
 (query
   (bottom_command
     limit: (number)
-    groupby: (key)
-    alias: (key)
-    orderby: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    alias: (key)))
+    groupby: (aliased_expression
+      expression: (key)
+      alias: (key))
+    orderby: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments))
+      alias: (key))))
 
 ============================
 bottom with multiple groupby
@@ -43,11 +47,14 @@ bottom 10 user, user2 by count()
 (query
   (bottom_command
     limit: (number)
-    groupby: (key)
-    groupby: (key)
-    orderby: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    groupby: (aliased_expression
+      expression: (key))
+    groupby: (aliased_expression
+      expression: (key))
+    orderby: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))
 
 =======================================
 bottom with multiple groupby with alias
@@ -60,14 +67,17 @@ bottom 10 user as u, user2 as u2 by count() as c
 (query
   (bottom_command
     limit: (number)
-    groupby: (key)
-    alias: (key)
-    groupby: (key)
-    alias: (key)
-    orderby: (call_expression
-      function: (identifier)
-      arguments: (arguments))
-    alias: (key)))
+    groupby: (aliased_expression
+      expression: (key)
+      alias: (key))
+    groupby: (aliased_expression
+      expression: (key)
+      alias: (key))
+    orderby: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments))
+      alias: (key))))
 
 =========
 top alias
@@ -80,7 +90,9 @@ top 10 user by count()
 (query
   (bottom_command
     limit: (number)
-    groupby: (key)
-    orderby: (call_expression
-      function: (identifier)
-      arguments: (arguments))))
+    groupby: (aliased_expression
+      expression: (key))
+    orderby: (aliased_expression
+      expression: (call_expression
+        function: (identifier)
+        arguments: (arguments)))))

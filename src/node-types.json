@@ -214,17 +214,33 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
-      },
+      }
+    }
+  },
+  {
+    "type": "aliased_expression",
+    "named": true,
+    "fields": {
       "alias": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
             "type": "keypath",
+            "named": true
+          }
+        ]
+      },
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
@@ -362,22 +378,12 @@
     "type": "bottom_command",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
-            "named": true
-          }
-        ]
-      },
       "groupby": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -397,7 +403,7 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -496,22 +502,12 @@
     "type": "choose_command",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
-            "named": true
-          }
-        ]
-      },
       "keypath": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -564,22 +560,12 @@
     "type": "countby_command",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
-            "named": true
-          }
-        ]
-      },
       "expression": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -652,22 +638,12 @@
     "type": "distinct_command",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
-            "named": true
-          }
-        ]
-      },
       "expression": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -889,17 +865,7 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -909,7 +875,7 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -1055,17 +1021,7 @@
         "required": true,
         "types": [
           {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
+            "type": "aliased_expression",
             "named": true
           }
         ]
@@ -1086,22 +1042,12 @@
     "type": "multigroupby_group",
     "named": true,
     "fields": {
-      "alias": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "keypath",
-            "named": true
-          }
-        ]
-      },
       "grouping": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": "aliased_expression",
             "named": true
           }
         ]
