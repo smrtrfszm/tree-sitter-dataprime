@@ -18,6 +18,7 @@ module.exports = grammar({
 
   precedences: $ => [
     [
+      'call',
       'member',
       'binary_times',
       'binary_plus',
@@ -157,10 +158,10 @@ module.exports = grammar({
       $.field_expression,
     ),
 
-    call_expression: $ => seq(
+    call_expression: $ => prec('call', seq(
       field('function', $.expression),
       field('arguments', $.arguments),
-    ),
+    )),
 
     binary_expression: $ => choice(
       ...[

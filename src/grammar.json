@@ -644,25 +644,29 @@
       ]
     },
     "call_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "function",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expression"
+      "type": "PREC",
+      "value": "call",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "function",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "arguments"
+            }
           }
-        },
-        {
-          "type": "FIELD",
-          "name": "arguments",
-          "content": {
-            "type": "SYMBOL",
-            "name": "arguments"
-          }
-        }
-      ]
+        ]
+      }
     },
     "binary_expression": {
       "type": "CHOICE",
@@ -3621,6 +3625,10 @@
   ],
   "precedences": [
     [
+      {
+        "type": "STRING",
+        "value": "call"
+      },
       {
         "type": "STRING",
         "value": "member"
