@@ -21,3 +21,12 @@ filter a['b']
 //           ^ function.method.call
 | filter a()
 //       ^ function.call
+
+| filter 1 - (2 + 3)
+//       ^ number
+//            ^ number
+//                ^ number
+//         ^ operator
+//              ^ operator
+//           ^ punctuation.bracket
+//                 ^ punctuation.bracket

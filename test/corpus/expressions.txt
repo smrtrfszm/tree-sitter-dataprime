@@ -351,3 +351,20 @@ source logs last $p.timeRange.startTime - $p.timeRange.endTime
           expression: (key)
           field: (field))
         field: (field)))))
+
+========================
+parenthesized expression
+========================
+
+f 1 - (2 + 3)
+
+---
+
+(query
+  (filter_command
+    condition: (binary_expression
+      left: (number)
+      right: (parenthesized_expression
+        (binary_expression
+          left: (number)
+          right: (number))))))

@@ -109,7 +109,10 @@ module.exports = grammar({
       $.case,
       alias($.identifier, $.key),
       $.side_prefixed_keypath,
+      $.parenthesized_expression,
     ),
+
+    parenthesized_expression: $ => seq('(', $.expression, ')'),
 
     named_argument: $ => seq(
       field('name', $.identifier),
